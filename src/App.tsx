@@ -1,8 +1,13 @@
-import './App.css'
-import {renderPages} from "./utils/renderPages.tsx";
-import {pages} from "./page";
+import {renderPages} from "@utils";
+import {ThemeProvider} from "@mui/material";
+import {useContext} from "react";
+import {ThemeDefaultValueCtx} from "@theme";
+import {pages} from "@pages";
 
 export const App = () => {
-  return renderPages(pages)
+  const {theme} = useContext(ThemeDefaultValueCtx);
+  return <ThemeProvider theme={theme}>
+    {renderPages(pages)}
+  </ThemeProvider>
 }
 

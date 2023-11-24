@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import {Button} from "@mui/material";
 
 export const About = () => {
   const navigate = useNavigate()
@@ -8,7 +9,7 @@ export const About = () => {
   return (
     <div>
       About page
-      <button onClick={gotomain}>go to main</button>
+      <Button onClick={gotomain} variant={'contained'} color={'primary'}>go to main</Button>
     </div>
   );
 };

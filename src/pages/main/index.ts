@@ -1,8 +1,10 @@
 import {Component} from "./component";
-import {main} from "../../constants/pagePath.tsx";
-import {PageConfig} from "../types";
+import {PageConfig} from "@pages";
+import {main} from "@constants";
 
 export default {
   component: Component,
   path: main.mainRoot,
+  showNavbar: true,
+  showSidebar: true
 } satisfies PageConfig

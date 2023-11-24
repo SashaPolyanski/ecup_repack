@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import {PageConfig} from "src/page/types.ts";
+import {PageConfig} from "@pages";
 
 export const renderPages = (pages: PageConfig[]) => (
   <Routes>
