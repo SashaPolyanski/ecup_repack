@@ -36,7 +36,15 @@
       "@constants": [
         "src/constants/index"
       ],
-      "@/*": ["src/*"]
+      "@shared": [
+        "src/shared/index"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ]
     },
     /* Linting */
     "strict": true,

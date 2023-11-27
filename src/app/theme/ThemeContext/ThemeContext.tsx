@@ -1,13 +1,12 @@
 import {FC, ReactNode, useMemo, useState} from "react";
-import {createTheme, PaletteMode} from "@mui/material";
+import {PaletteMode, ThemeProvider} from "@mui/material";
 import {ThemeCtxProvider, ThemeCtxType} from "./types.ts";
 import {dark, light} from '../mods';
 
 export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<PaletteMode>('dark');
   const colorMode = useMemo(
     () => ({
-      // The dark mode switch would invoke this method
       toggleColorMode: () => {
         setMode((prevMode: PaletteMode) =>
           prevMode === 'light' ? 'dark' : 'light',
@@ -17,25 +16,17 @@ export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
     [],
   );
 
-
-  const getDesignTokens = (mode: PaletteMode) => ({
-    palette: {
-      mode,
-      ...(mode === 'light'
-        ? light
-        : dark),
-    },
-  });
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const theme = useMemo(() => (mode === 'light' ? light : dark), [mode]);
   const contextValue: ThemeCtxType = {
     theme,
     toggleColorMode: colorMode.toggleColorMode,
   };
+
   return (
-    <ThemeCtxProvider
-      value={contextValue}
-    >
-      {children}
-    </ThemeCtxProvider>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <ThemeCtxProvider value={contextValue}>
+        {children}
+      </ThemeCtxProvider>
+    </ThemeProvider>
+  );
+};

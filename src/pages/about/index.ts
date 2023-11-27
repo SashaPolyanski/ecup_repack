@@ -5,6 +5,6 @@ import {about} from "@constants";
 export default {
   component: Component,
   path: about.aboutRoot,
-  showNavbar: true,
-  showSidebar: true
+  showNavbar: false,
+  showSidebar: false
 } satisfies PageConfig

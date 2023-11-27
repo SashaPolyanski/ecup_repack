@@ -1,11 +1,27 @@
-import {FC} from 'react'
+import {Box, Typography} from "@mui/material";
+import styled from "@emotion/styled";
+import EcupLogo from '@assets/ecupLogo.svg'
+import {LoginButton, SignUpButton} from "@shared";
 
-type NavbarProps = {}
-
-export const Navbar: FC<NavbarProps> = ({}) => {
+const NavbarContainer = styled(Box)`
+  background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
+  height: 50px;
+  display: flex;
+  padding: 0 40px 0 23px;
+  justify-content: space-between;
+  align-items: center;
+`
+export const Navbar = () => {
   return (
-    <div>
-      NAVBAR
-    </div>
+    <NavbarContainer>
+      <Box display={'flex'} alignItems={'center'}>
+        <EcupLogo/>
+        <Typography fontSize={20} ml={2.5}>Ecup eSport</Typography>
+      </Box>
+      <Box>
+        <LoginButton/>
+        <SignUpButton/>
+      </Box>
+    </NavbarContainer>
   );
 };

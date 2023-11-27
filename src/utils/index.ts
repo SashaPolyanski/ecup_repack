@@ -1,3 +1,4 @@
-import {renderPages} from "./renderPages.tsx";
+import {renderPages} from "./renderPages";
+import {transientOptions} from "./transientOptions";
 
-export {renderPages}
+export {renderPages, transientOptions}

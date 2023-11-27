@@ -4,15 +4,18 @@ import {BrowserRouter} from "react-router-dom";
 import {ThemeContext} from "@theme";
 import {GlobalStyles} from "@global";
 import {Layout} from "@/app/layout";
+import {QueryProvider} from "@/api/hooks/QueryProvider";
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <ThemeContext>
-      <GlobalStyles/>
-      <Layout>
-        <App/>
-      </Layout>
-    </ThemeContext>
+    <QueryProvider>
+      <ThemeContext>
+        <GlobalStyles/>
+        <Layout>
+          <App/>
+        </Layout>
+      </ThemeContext>
+    </QueryProvider>
   </BrowserRouter>
 )

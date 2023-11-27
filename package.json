@@ -8,8 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "generate-types": "npx openapi-typescript https://ecup.pro/api/swagger/schema.yml -o src/api/schema/schema.ts",
-    "my-awesome-script-name": "openapi-generator-cli generate -i https://ecup.pro/api/swagger/schema.yml -g typescript-redux-query -o generated-sources/openapi --additional-properties=ngVersion=6.1.7,npmName=restClient,supportsES6=true,npmVersion=6.9.0,withInterfaces=true"
+    "generate-types": "npx openapi-typescript https://ecup.pro/api/swagger/schema.yml -o src/api/schema/schema.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -20,6 +19,7 @@
     "@tanstack/react-query": "^5.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
     "react-router-dom": "^6.20.0",
     "zustand": "^4.4.6"
   },
@@ -29,12 +29,14 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "js-yaml": "^4.1.0",
     "openapi-typescript": "^6.7.1",
     "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-svgr": "2.4.0"
   }
 }

@@ -26,6 +26,7 @@ export const GlobalStyles: React.FC = () => {
           background-color: ${theme.palette.background.default};
           margin: 0;
           padding: 0;
+          color: ${theme.palette.text.primary};
         }
 
         a {
