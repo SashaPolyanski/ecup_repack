@@ -1,5 +1,4 @@
-import {LoginButton} from "./LoginButton";
 import {Modal} from "./Modal";
-import {SignUpButton} from "./SignUpButton";
+import {AuthButton} from "./AuthButton";
 
-export {LoginButton, Modal, SignUpButton}
+export {Modal, AuthButton}

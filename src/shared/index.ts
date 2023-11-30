@@ -1,3 +1,3 @@
-import {LoginButton, Modal, SignUpButton} from "./ui";
+import {AuthButton, Modal} from "./ui";
 
-export {LoginButton, Modal, SignUpButton}
+export {Modal, AuthButton}

@@ -1,7 +1,7 @@
 import {Box, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import EcupLogo from '@assets/ecupLogo.svg'
-import {LoginButton, SignUpButton} from "@shared";
+import {AuthButton} from "@shared";
 
 const NavbarContainer = styled(Box)`
   background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
@@ -19,8 +19,8 @@ export const Navbar = () => {
         <Typography fontSize={20} ml={2.5}>Ecup eSport</Typography>
       </Box>
       <Box>
-        <LoginButton/>
-        <SignUpButton/>
+        <AuthButton type={'signin'}/>
+        <AuthButton type={'signup'}/>
       </Box>
     </NavbarContainer>
   );

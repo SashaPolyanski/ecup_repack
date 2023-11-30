@@ -1,5 +1,5 @@
 import {FC, useCallback, useState} from 'react'
-import {useQuery} from "@/api/hooks";
+import {useQuery} from "@/api/hooks/useQuery.ts";
 import {GameReadOnly, PaginatedGameReadOnlyList} from "@/api/types";
 import {Box, Collapse, IconButton, Typography} from "@mui/material";
 import styled from "@emotion/styled";

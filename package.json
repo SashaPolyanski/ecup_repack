@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "translations": "node scripts/downloadTranslations.js",
     "generate-types": "npx openapi-typescript https://ecup.pro/api/swagger/schema.yml -o src/api/schema/schema.ts"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "@mui/lab": "5.0.0-alpha.153",
     "@mui/material": "^5.14.18",
     "@tanstack/react-query": "^5.8.4",
+    "cookie-universal": "^2.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
