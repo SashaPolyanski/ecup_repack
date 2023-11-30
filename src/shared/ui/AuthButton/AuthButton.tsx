@@ -48,7 +48,8 @@ export const AuthButton: FC<AuthButtonProps> = ({type}) => {
   const [modalHeight, setModalHeight] = useState<number>(height[type])
   const openModalFormHandler = useCallback(() => {
     setFormType(type)
-  }, [type])
+    setModalHeight(height[type])
+  }, [height, type])
   const changeModalComponent = useCallback((type: AuthButtonProps['type']) => {
     setFormType(type)
     setModalHeight(height[type])
@@ -57,13 +58,13 @@ export const AuthButton: FC<AuthButtonProps> = ({type}) => {
     setFormType(null)
   }, [])
   return (
-    <div>
+    <>
       <Button onClick={openModalFormHandler}>
         {title[type]}
       </Button>
       <Modal open={!!formType} onClose={closeModalHandler} title={desc[type]} height={modalHeight} width={500}>
         {Component && <Component changeModalComponent={changeModalComponent}/>}
       </Modal>
-    </div>
+    </>
   );
 };
