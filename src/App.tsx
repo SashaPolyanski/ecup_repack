@@ -1,9 +1,8 @@
 import {renderPages} from "@utils";
 import {pages} from "@pages";
-import Cookie from 'cookie-universal'
+import './i18n';
 
 export const App = () => {
-  const cookies = Cookie()
   return renderPages(pages)
 }
 
