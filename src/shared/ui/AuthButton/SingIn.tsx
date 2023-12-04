@@ -46,10 +46,11 @@ type FormsType = {
   name: keyof SignInTypes
   marginBottom: number
   label: string
+  password?: boolean
 }
 const forms: FormsType[] = [
   {id: 1, name: 'email', marginBottom: 35, label: 'Email'},
-  {id: 4, name: 'password', marginBottom: 45, label: 'Password'},
+  {id: 4, name: 'password', marginBottom: 45, label: 'Password', password: true},
 ]
 export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
   const cookies = Cookie()
@@ -81,11 +82,12 @@ export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ContentModal>
-        {forms.map(({id, name, marginBottom, label}) => <FormField
+        {forms.map(({id, name, marginBottom, label, password}) => <FormField
           key={id}
           type={'string'}
           control={control}
           name={name}
+          password={password}
           label={label}
           disabled={loading}
           marginBottom={marginBottom}
