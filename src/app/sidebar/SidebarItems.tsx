@@ -14,12 +14,6 @@ const NavbarItemsContainer = styled(Box)`
   margin-top: 20px;
   width: 100%;
 `
-const NavbarLogoContainer = styled(Box)`
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-  margin-left: 20px;
-`
 const NavbarItemContainer = styled(Box)`
   display: flex;
   align-items: center;

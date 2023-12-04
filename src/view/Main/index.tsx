@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {ThemeDefaultValueCtx} from "@theme";
-import {Button} from "@mui/material";
+import {Button, Typography} from "@mui/material";
 import {useQuery} from "@/api/hooks/useQuery.ts";
 import {PaginatedGameReadOnlyList} from "@/api/types";
 import {useTranslation} from "react-i18next";
@@ -17,8 +17,9 @@ export const Main = () => {
   return (
     <div>
       main page
-      <Button variant={'contained'} onClick={toggleColorMode}>go to about</Button>
-      <Button variant={'contained'} onClick={changeLanguageHandler}>{t('PROFILE')}</Button>
+      <Button variant={'contained'} onClick={toggleColorMode}>Switch theme</Button>
+      <Typography>{`Example: ${t('PROFILE')}`}</Typography>
+      <Button variant={'contained'} onClick={changeLanguageHandler}>Change language</Button>
     </div>
   );
 };
