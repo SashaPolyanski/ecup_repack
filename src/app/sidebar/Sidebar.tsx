@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import {Box} from "@mui/material";
 import {SidebarItems} from "@/app/sidebar/SidebarItems";
 import {SidebarContacts} from "@/app/sidebar/SidebarContacts.tsx";
+import {useGlobalPreloader} from "@/Zustand/globalPreloaderStore.ts";
 
 const NavbarContainer = styled(Box, transientOptions)<{ $collapsed: boolean }>`
   width: ${({$collapsed}) => ($collapsed ? '80px' : '300px')};
@@ -20,12 +21,12 @@ const ContactsContainer = styled(Box)`
 `
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(true)
-
+  const {isLoading} = useGlobalPreloader()
   const toggleCollapsedHandler = useCallback(() => {
     setCollapsed((p) => !p)
   }, [])
   return (
-    <NavbarContainer $collapsed={collapsed}>
+    isLoading ? null : <NavbarContainer $collapsed={collapsed}>
       <SidebarItems collapsed={collapsed}/>
       <button onClick={toggleCollapsedHandler}>asdasd</button>
       <ContactsContainer>

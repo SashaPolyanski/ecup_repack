@@ -6,6 +6,7 @@ import {GlobalStyles} from "@global";
 import {Layout} from "@/app/layout";
 import {QueryProvider} from "@/api/hooks/QueryProvider";
 
+import {Notification} from "@shared";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <GlobalStyles/>
         <Layout>
           <App/>
+          <Notification/>
         </Layout>
       </ThemeContext>
     </QueryProvider>

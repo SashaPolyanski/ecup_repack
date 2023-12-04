@@ -1,7 +1,10 @@
 import {Box, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import EcupLogo from '@assets/ecupLogo.svg'
-import {AuthButton} from "@shared";
+import {useIsAuthStore} from "@/Zustand/isAuthStore";
+import {useGlobalPreloader} from "@/Zustand/globalPreloaderStore";
+import {Header} from "./Header";
+import {IsAuthHeader} from "./isAuthHeader";
 
 const NavbarContainer = styled(Box)`
   background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
@@ -11,16 +14,19 @@ const NavbarContainer = styled(Box)`
   justify-content: space-between;
   align-items: center;
 `
+
 export const Navbar = () => {
+  const {isAuth} = useIsAuthStore()
+  const {isLoading} = useGlobalPreloader()
+
   return (
-    <NavbarContainer>
+    isLoading ? null : <NavbarContainer>
       <Box display={'flex'} alignItems={'center'}>
         <EcupLogo/>
         <Typography fontSize={20} ml={2.5}>Ecup eSport</Typography>
       </Box>
       <Box>
-        <AuthButton type={'signin'}/>
-        <AuthButton type={'signup'}/>
+        {isAuth ? <IsAuthHeader/> : <Header/>}
       </Box>
     </NavbarContainer>
   );

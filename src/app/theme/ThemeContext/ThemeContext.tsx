@@ -4,7 +4,11 @@ import {ThemeCtxProvider, ThemeCtxType} from "./types.ts";
 import {dark, light} from '../mods';
 
 export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
-  const [mode, setMode] = useState<PaletteMode>('dark');
+  const themeMode = () => {
+    const theme = localStorage.getItem('theme') as PaletteMode
+    return theme ? theme : 'dark'
+  }
+  const [mode, setMode] = useState<PaletteMode>(themeMode());
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
@@ -16,7 +20,10 @@ export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
     [],
   );
 
-  const theme = useMemo(() => (mode === 'light' ? light : dark), [mode]);
+  const theme = useMemo(() => {
+    localStorage.setItem('theme', mode)
+    return (mode === 'light' ? light : dark)
+  }, [mode]);
   const contextValue: ThemeCtxType = {
     theme,
     toggleColorMode: colorMode.toggleColorMode,

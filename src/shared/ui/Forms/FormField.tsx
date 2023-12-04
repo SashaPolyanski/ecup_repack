@@ -7,11 +7,12 @@ import {
   FieldValues,
   UseFormStateReturn
 } from "react-hook-form";
-import {ComponentByType, FormFieldTypeByKey} from "@/shared/ui/Forms/types.ts";
-import {useCallback} from "react";
+import {ComponentByType, FormFieldTypeByKey} from "./types";
+import {ReactNode, useCallback} from "react";
 import styled from "@emotion/styled";
 import {Box} from "@mui/material";
 import {transientOptions} from "@utils";
+import {HelperTextWrapper} from "./HelperText";
 
 const FormFieldContainer = styled(Box, transientOptions)<{ $marginBottom?: number }>`
   margin-bottom: ${({$marginBottom}) => $marginBottom ? `${$marginBottom}px` : '12px'};
@@ -25,19 +26,25 @@ export const FormField = <
 ) => {
   const {
     control,
-    name, defaultValue, type, label, marginBottom, ...rest
+    name, defaultValue, type, label, marginBottom, helperText, disabled, ...rest
   } = props
   const Component = ComponentByType[type] || ComponentByType.string
 
   const render = useCallback(
     ({
-       field: {name, onBlur, onChange, value},
+       field: {name, onBlur, onChange, value}, formState
      }: {
       field: ControllerRenderProps<TFieldValues, TName>
       fieldState: ControllerFieldState
       formState: UseFormStateReturn<TFieldValues>
     }) => {
-
+      const {errors} = formState
+      const errorText = errors[`${name}`]?.message as ReactNode
+      const helperTextComponent = (
+        <HelperTextWrapper
+          helperText={errorText || helperText}
+        />
+      )
       return (
         <FormFieldContainer $marginBottom={marginBottom}>
           <Component
@@ -45,13 +52,16 @@ export const FormField = <
               ...rest,
               name,
               value,
+              disabled,
               onChange,
               label,
-              onBlur
+              onBlur,
+              helperText: helperTextComponent,
+              hasError: !!errorText,
             } as any)}
           />
         </FormFieldContainer>
       )
-    }, [Component, label, marginBottom, rest])
+    }, [Component, disabled, helperText, label, marginBottom, rest])
   return <Controller control={control} name={name} defaultValue={defaultValue} render={render}/>
 }

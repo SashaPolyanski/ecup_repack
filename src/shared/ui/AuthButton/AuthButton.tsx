@@ -5,22 +5,22 @@ import {SignUp} from "./SignUp";
 import {Modal} from "@shared";
 
 export type AuthButtonProps = {
-  type: 'signin' | 'signup'
+  action: 'signin' | 'signup'
 }
 type Components = {
-  [K in AuthButtonProps['type']]: FC<{
-  changeModalComponent: (type: AuthButtonProps['type']) => void
+  [K in AuthButtonProps['action']]: FC<{
+  changeModalComponent: (type: AuthButtonProps['action']) => void
 }> | null;
 };
 type ComponentConfig = {
   title: {
-    [K in AuthButtonProps['type']]: string;
+    [K in AuthButtonProps['action']]: string;
   },
   desc: {
-    [K in AuthButtonProps['type']]: string;
+    [K in AuthButtonProps['action']]: string;
   },
   height: {
-    [K in AuthButtonProps['type']]: number
+    [K in AuthButtonProps['action']]: number
   }
 };
 const components: Components = {
@@ -37,20 +37,20 @@ const componentConfig: ComponentConfig = {
     signin: 'Log in'
   },
   height: {
-    signup: 630,
-    signin: 450,
+    signup: 670,
+    signin: 470,
   }
 }
-export const AuthButton: FC<AuthButtonProps> = ({type}) => {
-  const [formType, setFormType] = useState<AuthButtonProps['type'] | null>(null)
+export const AuthButton: FC<AuthButtonProps> = ({action}) => {
+  const [formType, setFormType] = useState<AuthButtonProps['action'] | null>(null)
   const Component = formType && components[formType]
   const {desc, height, title} = componentConfig
-  const [modalHeight, setModalHeight] = useState<number>(height[type])
+  const [modalHeight, setModalHeight] = useState<number>(height[action])
   const openModalFormHandler = useCallback(() => {
-    setFormType(type)
-    setModalHeight(height[type])
-  }, [height, type])
-  const changeModalComponent = useCallback((type: AuthButtonProps['type']) => {
+    setFormType(action)
+    setModalHeight(height[action])
+  }, [height, action])
+  const changeModalComponent = useCallback((type: AuthButtonProps['action']) => {
     setFormType(type)
     setModalHeight(height[type])
   }, [height])
@@ -60,9 +60,10 @@ export const AuthButton: FC<AuthButtonProps> = ({type}) => {
   return (
     <>
       <Button onClick={openModalFormHandler}>
-        {title[type]}
+        {title[action]}
       </Button>
-      <Modal open={!!formType} onClose={closeModalHandler} title={desc[type]} height={modalHeight} width={500}>
+      <Modal open={!!formType} onClose={closeModalHandler} title={formType ? desc[formType] : ''} height={modalHeight}
+             width={500}>
         {Component && <Component changeModalComponent={changeModalComponent}/>}
       </Modal>
     </>

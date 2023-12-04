@@ -4,3 +4,5 @@ export type PaginatedGameReadOnlyList = components['schemas']['PaginatedGameRead
 export type GameReadOnly = components['schemas']['GameReadOnly'];
 export type Register = components['schemas']['Register'];
 export type JWT = components['schemas']['JWT'];
+export type User = components['schemas']['User'];
+export type Login = components['schemas']['Login'];

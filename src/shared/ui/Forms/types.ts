@@ -23,7 +23,6 @@ export type FormFieldString = FormFieldCommon & {
   type: 'string'
   password?: boolean
   variant?: TextFieldProps['variant']
-  maxLength?: number
   placeholder?: string
   testId?: string
   size?: TextFieldProps['size']
