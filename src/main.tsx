@@ -7,16 +7,19 @@ import {Layout} from "@/app/layout";
 import {QueryProvider} from "@/api/hooks/QueryProvider";
 
 import {Notification} from "@shared";
+import {Suspense} from "react";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <QueryProvider>
       <ThemeContext>
-        <GlobalStyles/>
-        <Layout>
-          <App/>
-          <Notification/>
-        </Layout>
+        <Suspense>
+          <GlobalStyles/>
+          <Layout>
+            <App/>
+            <Notification/>
+          </Layout>
+        </Suspense>
       </ThemeContext>
     </QueryProvider>
   </BrowserRouter>

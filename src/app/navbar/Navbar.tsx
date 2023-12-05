@@ -5,6 +5,7 @@ import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import {useGlobalPreloader} from "@/Zustand/globalPreloaderStore";
 import {Header} from "./Header";
 import {IsAuthHeader} from "./isAuthHeader";
+import {LanguageSwitcher, ThemeSwitcher} from "@shared";
 
 const NavbarContainer = styled(Box)`
   background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
@@ -25,7 +26,9 @@ export const Navbar = () => {
         <EcupLogo/>
         <Typography fontSize={20} ml={2.5}>Ecup eSport</Typography>
       </Box>
-      <Box>
+      <Box display={'flex'} alignItems={'center'}>
+        <LanguageSwitcher/>
+        <ThemeSwitcher/>
         {isAuth ? <IsAuthHeader/> : <Header/>}
       </Box>
     </NavbarContainer>

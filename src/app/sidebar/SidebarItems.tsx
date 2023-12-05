@@ -1,7 +1,7 @@
 import {FC, useCallback, useState} from 'react'
-import {useQuery} from "@/api/hooks/useQuery.ts";
+import {useQuery} from "@/api/hooks/useQuery";
 import {GameReadOnly, PaginatedGameReadOnlyList} from "@/api/types";
-import {Box, Collapse, IconButton, Typography} from "@mui/material";
+import {Box, Collapse, IconButton, Skeleton, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {transientOptions} from "@utils";
@@ -32,14 +32,14 @@ type ModifyData = {
 }
 
 const renderNavbarItems = (items?: GameReadOnly[], collapsed?: boolean) => {
-  return items?.map(({avatar, id, name}) => (
+  return items ? items?.map(({avatar, id, name}) => (
     <NavbarItemContainer key={id}>
       <img src={avatar.file} alt="asd" width="35px" height="35px"/>
       <Typography fontSize={19} ml={1}>
         {collapsed ? null : name}
       </Typography>
     </NavbarItemContainer>
-  ));
+  )) : <NavbarItemContainer><Skeleton variant="rounded" width={35} height={35}/></NavbarItemContainer>;
 };
 export const SidebarItems: FC<SidebarItemsProps> = ({collapsed}) => {
   const theme = useTheme()

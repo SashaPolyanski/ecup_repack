@@ -13,6 +13,8 @@ import {signInResolver} from "./Schemas";
 import {getError} from "@utils";
 import {notification} from "@shared";
 import {LoadingButton} from "@mui/lab";
+import {useTranslation} from "react-i18next";
+import {TFunction} from "i18next";
 
 type SingInProps = {
   changeModalComponent: (type: AuthButtonProps['action']) => void
@@ -48,12 +50,13 @@ type FormsType = {
   label: string
   password?: boolean
 }
-const forms: FormsType[] = [
-  {id: 1, name: 'email', marginBottom: 35, label: 'Email'},
-  {id: 4, name: 'password', marginBottom: 45, label: 'Password', password: true},
+const forms = (t: TFunction): FormsType[] => [
+  {id: 1, name: 'email', marginBottom: 35, label: t('email')},
+  {id: 4, name: 'password', marginBottom: 45, label: t('password'), password: true},
 ]
 export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
   const cookies = Cookie()
+  const {t} = useTranslation('common')
   const {setUser} = useUserStore()
   const {setIsAuth} = useIsAuthStore()
   const {control, handleSubmit} = useForm<SignInTypes>({resolver: signInResolver})
@@ -64,7 +67,7 @@ export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
         res.json().then((data) => {
           setIsAuth(true)
           setUser(data.user)
-          notification({message: `Hello ${data.user.username}`})
+          notification({message: `${t('hi')} ${data.user.username}`, type: 'success'})
           cookies.set('token', data.access_token);
           cookies.set('refresh', data.refresh_token);
         });
@@ -75,14 +78,14 @@ export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
         });
       }
     })
-  }, [Login, cookies, setIsAuth, setUser])
+  }, [t, Login, cookies, setIsAuth, setUser])
   const changeFormToSignUp = useCallback(() => {
     changeModalComponent('signup')
   }, [changeModalComponent])
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ContentModal>
-        {forms.map(({id, name, marginBottom, label, password}) => <FormField
+        {forms(t).map(({id, name, marginBottom, label, password}) => <FormField
           key={id}
           type={'string'}
           control={control}
@@ -93,11 +96,11 @@ export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
           marginBottom={marginBottom}
         />)}
         <ButtonContainer>
-          <LoadingButton loading={loading} type={'submit'} variant={'contained'}>Log in</LoadingButton>
-          <Typography fontSize={12} mb={1} mt={2}>Forgot your password</Typography>
-          <Typography fontSize={12}>Don’t have an account?</Typography>
+          <LoadingButton loading={loading} type={'submit'} variant={'contained'}>{t('login')}</LoadingButton>
+          <Typography fontSize={12} mb={1} mt={2}>{t('forgotPassword')}</Typography>
+          <Typography fontSize={12}>{t('dontHaveAccount')}</Typography>
           <SignUpLink mt={1}
-                      onClick={changeFormToSignUp}>Go to registration</SignUpLink>
+                      onClick={changeFormToSignUp}>{t('goToRegistration')}</SignUpLink>
         </ButtonContainer>
       </ContentModal>
     </form>

@@ -3,9 +3,12 @@ import {Button} from "@mui/material";
 import {SingIn} from "./SingIn";
 import {SignUp} from "./SignUp";
 import {Modal} from "@shared";
+import {TFunction} from "i18next";
+import {useTranslation} from "react-i18next";
 
 export type AuthButtonProps = {
   action: 'signin' | 'signup'
+  title: string
 }
 type Components = {
   [K in AuthButtonProps['action']]: FC<{
@@ -13,9 +16,6 @@ type Components = {
 }> | null;
 };
 type ComponentConfig = {
-  title: {
-    [K in AuthButtonProps['action']]: string;
-  },
   desc: {
     [K in AuthButtonProps['action']]: string;
   },
@@ -27,24 +27,23 @@ const components: Components = {
   signin: SingIn,
   signup: SignUp
 }
-const componentConfig: ComponentConfig = {
-  title: {
-    signup: 'Sign Up',
-    signin: 'Login'
-  },
-  desc: {
-    signup: "Create your account",
-    signin: 'Log in'
-  },
-  height: {
-    signup: 670,
-    signin: 470,
-  }
-}
-export const AuthButton: FC<AuthButtonProps> = ({action}) => {
+const componentConfig = (t: TFunction): ComponentConfig => {
+  return {
+    desc: {
+      signup: t("registration"),
+      signin: t("login")
+    },
+    height: {
+      signup: 690,
+      signin: 470,
+    }
+  };
+};
+export const AuthButton: FC<AuthButtonProps> = ({action, title}) => {
+  const {t} = useTranslation('common')
   const [formType, setFormType] = useState<AuthButtonProps['action'] | null>(null)
   const Component = formType && components[formType]
-  const {desc, height, title} = componentConfig
+  const {desc, height} = componentConfig(t)
   const [modalHeight, setModalHeight] = useState<number>(height[action])
   const openModalFormHandler = useCallback(() => {
     setFormType(action)
@@ -60,7 +59,7 @@ export const AuthButton: FC<AuthButtonProps> = ({action}) => {
   return (
     <>
       <Button onClick={openModalFormHandler}>
-        {title[action]}
+        {title}
       </Button>
       <Modal open={!!formType} onClose={closeModalHandler} title={formType ? desc[formType] : ''} height={modalHeight}
              width={500}>

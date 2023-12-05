@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "types": "tsc --noEmit",
     "preview": "vite preview",
     "translations": "node scripts/downloadTranslations.js",
     "generate-types": "npx openapi-typescript https://ecup.pro/api/swagger/schema.yml -o src/api/schema/schema.ts"

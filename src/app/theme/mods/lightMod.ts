@@ -57,6 +57,18 @@ export const light = createTheme({
           },
         },
       },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          padding: 6
+        },
+        root: {
+          svg: {
+            color: 'rgb(0,0,0)'
+          },
+        },
+      }
     }
   }
 })

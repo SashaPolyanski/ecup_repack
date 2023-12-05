@@ -6,3 +6,5 @@ export type Register = components['schemas']['Register'];
 export type JWT = components['schemas']['JWT'];
 export type User = components['schemas']['User'];
 export type Login = components['schemas']['Login'];
+export type PatchedUser = components['schemas']['PatchedUser'];
+export type LanguageEnum = components['schemas']['LanguageEnum'];

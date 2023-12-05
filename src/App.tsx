@@ -10,6 +10,7 @@ import {Preloader} from "@shared";
 import {useQuery} from "@/api/hooks/useQuery";
 import {useUserStore} from "@/Zustand/userStore";
 import {User} from "@/api/types";
+import i18next from "i18next";
 
 export const App = () => {
   const {isLoading, setIsLoading} = useGlobalPreloader()
@@ -21,9 +22,14 @@ export const App = () => {
   const {mutate: refresh} = useMutation({path: '/auth/token/refresh', method: 'POST'})
   const {data} = useQuery<User>({path: '/auth/user', skip: isAuth, token: true})
   useEffect(() => {
-    data && setUser(data)
-  }, [data, setUser])
+    if (data) {
+      data && setUser(data)
+      setIsLoading(false)
+    }
+  }, [data, setIsLoading, setUser])
   useEffect(() => {
+    const lang = localStorage.getItem('i18nextLng')
+    i18next.changeLanguage(lang || 'en')
     const accessToken = cookies.get('token')
     verify({token: accessToken}).then((res) => {
       if (res.status === 401) {
@@ -33,13 +39,15 @@ export const App = () => {
         }).then((token) => {
           setIsAuth(true)
           cookies.set('token', token.access_token);
+          setIsLoading(false)
         })
       }
       if (res.status === 200) {
         setIsAuth(true)
       }
-    }).finally(() => {
-      setIsLoading(false)
+      if (res.status === 400) {
+        setIsLoading(false)
+      }
     })
   }, [])
   return isLoading ? <Preloader/> : renderPages(pages)

@@ -14,6 +14,8 @@ import {signUpResolver} from "@/shared/ui/AuthButton/Schemas.ts";
 import {notification} from "@shared";
 import {getError} from "@utils";
 import {LoadingButton} from "@mui/lab";
+import {useTranslation} from "react-i18next";
+import {TFunction} from "i18next";
 
 type SignUpProps = {
   changeModalComponent: (type: AuthButtonProps['action']) => void
@@ -50,13 +52,14 @@ type FormsType = {
   label: string
   password?: boolean
 }
-const forms: FormsType[] = [
-  {id: 1, name: 'username', marginBottom: 35, label: 'User Name'},
-  {id: 2, name: 'email', marginBottom: 35, label: 'Email'},
-  {id: 3, name: 'password1', marginBottom: 35, label: 'Password', password: true},
-  {id: 4, name: 'password2', marginBottom: 45, label: 'Confirm password', password: true},
+const forms = (t: TFunction): FormsType[] => [
+  {id: 1, name: 'username', marginBottom: 35, label: t('userName')},
+  {id: 2, name: 'email', marginBottom: 35, label: t('email')},
+  {id: 3, name: 'password1', marginBottom: 35, label: t('password'), password: true},
+  {id: 4, name: 'password2', marginBottom: 45, label: t('confirmPassword'), password: true},
 ]
 export const SignUp: FC<SignUpProps> = ({changeModalComponent}) => {
+  const {t} = useTranslation('common')
   const cookies = Cookie()
   const {setUser} = useUserStore()
   const {setIsAuth} = useIsAuthStore()
@@ -95,7 +98,7 @@ export const SignUp: FC<SignUpProps> = ({changeModalComponent}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ContentModal>
-        {forms.map(({id, name, marginBottom, label, password}) => <FormField
+        {forms(t).map(({id, name, marginBottom, label, password}) => <FormField
           key={id}
           type={'string'}
           control={control}
@@ -107,15 +110,16 @@ export const SignUp: FC<SignUpProps> = ({changeModalComponent}) => {
         />)}
         <ButtonContainer>
           <LoadingButton type={'submit'} variant={'contained'}
-                         loading={loading || loadingVerify}>Registration
+                         loading={loading || loadingVerify}>{t('registration')}
           </LoadingButton>
-          <Typography fontSize={12} mb={1} mt={3}>By clicking "Continue", you agree to the <Link to={'/'}>Ecup
-            Privacy
-            Policy.</Link></Typography>
+          <Typography fontSize={12} mb={1} mt={3}>{t('clickToagree')}</Typography>
+          <Typography fontSize={12} mb={1}> <Link
+            to={'/'}>{t('privatePolicy')}</Link></Typography>
+
           <Typography fontSize={12}></Typography>
-          <Typography fontSize={12}>Already have an account?</Typography>
+          <Typography fontSize={12}>{t('haveAccount')}</Typography>
           <SignInLink mt={1}
-                      onClick={changeFormToSignIn}>Go to login</SignInLink>
+                      onClick={changeFormToSignIn}>{t('clickToLogin')}</SignInLink>
         </ButtonContainer>
       </ContentModal>
     </form>

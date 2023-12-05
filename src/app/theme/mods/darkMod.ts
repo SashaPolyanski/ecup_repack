@@ -44,7 +44,6 @@ export const dark = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          // цвет бордера
           borderColor: 'rgb(255,255,255)',
         },
         root: {
@@ -57,6 +56,19 @@ export const dark = createTheme({
           },
         },
       },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          padding: 6,
+
+        },
+        root: {
+          svg: {
+            color: 'rgb(255, 255, 255)'
+          },
+        },
+      }
     }
   }
 });
