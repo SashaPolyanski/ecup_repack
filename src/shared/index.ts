@@ -1,3 +1,3 @@
-import {AuthButton, LanguageSwitcher, Modal, notification, Notification, Preloader, ThemeSwitcher} from "./ui";
+import {AuthButton, LanguageSwitcher, Menu, Modal, Notification, notification, Preloader, ThemeSwitcher} from "./ui";
 
-export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher}
+export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher, Menu}

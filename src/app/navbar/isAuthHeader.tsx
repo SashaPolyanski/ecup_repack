@@ -20,6 +20,6 @@ export const IsAuthHeader = () => {
       notification({message: t('missYou', {username: user?.username})})
       cookies.remove('token');
     })
-  }, [cookies, logout, setIsAuth, t])
+  }, [cookies, logout, setIsAuth, t, user?.username])
   return <Button onClick={logoutHandler}>{t('logout')}</Button>
 };

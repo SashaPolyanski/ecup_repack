@@ -1,6 +1,6 @@
 import {FC, useCallback} from 'react'
 import {FormField} from "@/shared/ui/Forms/FormField";
-import {Box, Typography} from "@mui/material";
+import {Box, Typography, useMediaQuery} from "@mui/material";
 import styled from "@emotion/styled";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {AuthButtonProps} from "./AuthButton";
@@ -15,6 +15,7 @@ import {notification} from "@shared";
 import {LoadingButton} from "@mui/lab";
 import {useTranslation} from "react-i18next";
 import {TFunction} from "i18next";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 type SingInProps = {
   changeModalComponent: (type: AuthButtonProps['action']) => void
@@ -50,11 +51,12 @@ type FormsType = {
   label: string
   password?: boolean
 }
-const forms = (t: TFunction): FormsType[] => [
-  {id: 1, name: 'email', marginBottom: 35, label: t('email')},
-  {id: 4, name: 'password', marginBottom: 45, label: t('password'), password: true},
+const forms = (t: TFunction, isSmallScreen: boolean): FormsType[] => [
+  {id: 1, name: 'email', marginBottom: isSmallScreen ? 27 : 35, label: t('email')},
+  {id: 4, name: 'password', marginBottom: isSmallScreen ? 27 : 45, label: t('password'), password: true},
 ]
 export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
+  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const cookies = Cookie()
   const {t} = useTranslation('common')
   const {setUser} = useUserStore()
@@ -85,7 +87,7 @@ export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ContentModal>
-        {forms(t).map(({id, name, marginBottom, label, password}) => <FormField
+        {forms(t, isSmallScreen).map(({id, name, marginBottom, label, password}) => <FormField
           key={id}
           type={'string'}
           control={control}

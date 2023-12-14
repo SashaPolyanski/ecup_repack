@@ -6,6 +6,8 @@ import styled from "@emotion/styled";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {transientOptions} from "@utils";
 import {useTheme} from "@emotion/react";
+import {NavigateFunction, useNavigate} from "react-router-dom";
+import {games} from "@/constants/pagePath.tsx";
 
 type SidebarItemsProps = {
   collapsed: boolean
@@ -20,6 +22,7 @@ const NavbarItemContainer = styled(Box)`
   margin-bottom: 5px;
   margin-left: 20px;
   width: 100%;
+  cursor: pointer;
 `
 const ShowMoreIcon = styled(KeyboardArrowDownIcon, transientOptions)<{ $collapsed: boolean }>`
   transition-duration: 0.3s;
@@ -31,9 +34,12 @@ type ModifyData = {
   collapsedItems: GameReadOnly[];
 }
 
-const renderNavbarItems = (items?: GameReadOnly[], collapsed?: boolean) => {
+const renderNavbarItems = (items?: GameReadOnly[], collapsed?: boolean, navigate?: NavigateFunction) => {
+  const navigateToGameHandler = (gameId: string) => () => {
+    navigate && navigate(games.game.replace(':gameId', gameId))
+  }
   return items ? items?.map(({avatar, id, name}) => (
-    <NavbarItemContainer key={id}>
+    <NavbarItemContainer key={id} onClick={navigateToGameHandler(id.toString())}>
       <img src={avatar.file} alt="asd" width="35px" height="35px"/>
       <Typography fontSize={19} ml={1}>
         {collapsed ? null : name}
@@ -43,6 +49,7 @@ const renderNavbarItems = (items?: GameReadOnly[], collapsed?: boolean) => {
 };
 export const SidebarItems: FC<SidebarItemsProps> = ({collapsed}) => {
   const theme = useTheme()
+  const navigate = useNavigate()
   const {data} = useQuery<PaginatedGameReadOnlyList>({path: '/games'})
   const [collapsedItems, setCollapsedItems] = useState(false)
   const modifyData = data?.results?.reduce((acc, cur, i) => {
@@ -53,14 +60,15 @@ export const SidebarItems: FC<SidebarItemsProps> = ({collapsed}) => {
     }
     return acc;
   }, {visibleItems: [], collapsedItems: []} as ModifyData);
+
   const toggleNavbarItems = useCallback(() => {
     setCollapsedItems((p) => !p)
   }, [])
   return (
     <NavbarItemsContainer>
-      {renderNavbarItems(modifyData?.visibleItems, collapsed)}
+      {renderNavbarItems(modifyData?.visibleItems, collapsed, navigate)}
       <Collapse in={collapsedItems}>
-        {renderNavbarItems(modifyData?.collapsedItems, collapsed)}
+        {renderNavbarItems(modifyData?.collapsedItems, collapsed, navigate)}
       </Collapse>
       <Box sx={{width: '100%'}} display={'flex'} justifyContent={'center'}>
         <IconButton onClick={toggleNavbarItems}>

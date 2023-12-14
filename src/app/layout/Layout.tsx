@@ -33,9 +33,11 @@ const ContentWrapper = styled(Box)`
   position: absolute;
   height: 100%;
 `
-// const Footer = styled(Box)`
-//   width: 100%;
-// `
+const ContentContainer = styled(Box)`
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+`
 export const Layout: FC<{ children: ReactNode }> = ({children}) => {
   const location = useLocation()
   const curPage = useMemo(
@@ -47,7 +49,11 @@ export const Layout: FC<{ children: ReactNode }> = ({children}) => {
       <Main component={'main'}>
         {!curPage || curPage.showSidebar ? <Sidebar/> : null}
         <ContentBox>
-          <ContentWrapper>{children}</ContentWrapper>
+          <ContentWrapper>
+            <ContentContainer>
+              {children}
+            </ContentContainer>
+          </ContentWrapper>
         </ContentBox>
       </Main>
       {/*<Footer>{curPage?.layoutOptions?.footer?.footerContent}</Footer>*/}

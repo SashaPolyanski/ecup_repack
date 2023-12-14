@@ -1,5 +1,5 @@
-import {about, main} from "./pagePath";
+import {games, main} from "./pagePath";
 
 export {
-  main, about
+  main, games
 }

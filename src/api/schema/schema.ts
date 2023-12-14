@@ -147,157 +147,54 @@ export interface paths {
   "/api/games/{game_pk}/tournaments/{id}/": {
     get: operations["api_games_tournaments_retrieve"];
   };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/": {
-    get: operations["api_games_tournaments_matches_list"];
+  "/api/games/{game_pk}/tournaments/{id}/finish/": {
+    get: operations["api_games_tournaments_finish_retrieve"];
   };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/scores/": {
-    get: operations["api_games_tournaments_matches_scores_list"];
-    /** @description Override create method for return ScoreReadOnlySerializer data */
-    post: operations["api_games_tournaments_matches_scores_create"];
+  "/api/games/{game_pk}/tournaments/{id}/start/": {
+    get: operations["api_games_tournaments_start_retrieve"];
   };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/scores/{id}/": {
-    get: operations["api_games_tournaments_matches_scores_retrieve"];
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/": {
+    get: operations["api_games_tournaments_matches_periods_list"];
   };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/screenshots/": {
-    get: operations["api_games_tournaments_matches_screenshots_list"];
-    /** @description Create object */
-    post: operations["api_games_tournaments_matches_screenshots_create"];
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/{period_pk}/scores/": {
+    post: operations["api_games_tournaments_matches_periods_scores_create"];
   };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/screenshots/{id}/": {
-    get: operations["api_games_tournaments_matches_screenshots_retrieve"];
-    /** @description Delete object */
-    delete: operations["api_games_tournaments_matches_screenshots_destroy"];
-  };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/statuses/{id}/": {
-    /** @description Update object */
-    put: operations["api_games_tournaments_matches_statuses_update"];
-    patch: operations["api_games_tournaments_matches_statuses_partial_update"];
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/{id}/": {
+    get: operations["api_games_tournaments_matches_periods_retrieve"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{id}/": {
     get: operations["api_games_tournaments_matches_retrieve"];
   };
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{id}/finish/": {
+    get: operations["api_games_tournaments_matches_finish_retrieve"];
+  };
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/": {
+    get: operations["api_games_tournaments_stages_list"];
+  };
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/{id}/": {
+    get: operations["api_games_tournaments_stages_retrieve"];
+  };
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/{id}/finish/": {
+    get: operations["api_games_tournaments_stages_finish_retrieve"];
+  };
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/{id}/start/": {
+    get: operations["api_games_tournaments_stages_start_retrieve"];
+  };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/teams/": {
     get: operations["api_games_tournaments_teams_list"];
-    /** @description Create object */
     post: operations["api_games_tournaments_teams_create"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/teams/{id}/": {
-    get: operations["api_games_tournaments_teams_retrieve"];
-    /** @description Delete object */
     delete: operations["api_games_tournaments_teams_destroy"];
   };
   "/api/games/{id}/": {
     get: operations["api_games_retrieve"];
   };
-  "/api/grid/update-grid/": {
-    get: operations["api_grid_update_grid_retrieve"];
-  };
-  "/api/matches/": {
-    /** @description ViewSet for get list matches for current player */
-    get: operations["api_matches_list"];
-  };
-  "/api/matches/{id}/": {
-    /** @description ViewSet for get list matches for current player */
-    get: operations["api_matches_retrieve"];
-  };
-  "/api/oauth2/connect/": {
-    /**
-     * @description Connects created social account to player
-     *
-     * Bypasses request to the concrete system connect view according to player value
-     */
-    post: operations["api_oauth2_connect_create"];
-  };
-  "/api/oauth2/link/": {
-    /**
-     * @description Bypasses request to the concrete system login view according to connector value
-     *
-     * :return: Response with redirect to system login page
-     */
-    post: operations["api_oauth2_link_create"];
-  };
-  "/api/platforms/": {
-    get: operations["api_platforms_list"];
-  };
-  "/api/platforms/{id}/": {
-    get: operations["api_platforms_retrieve"];
-  };
-  "/api/players/": {
-    /** @description Manager for Player model. */
-    get: operations["api_players_list"];
-  };
-  "/api/players/{id}/": {
-    /** @description Manager for Player model. */
-    get: operations["api_players_retrieve"];
-  };
-  "/api/players/{player_pk}/games/": {
-    get: operations["api_players_games_list"];
-  };
-  "/api/players/{player_pk}/games/{id}/": {
-    get: operations["api_players_games_retrieve"];
-  };
-  "/api/positions/": {
-    /** @description Viewset for Position model */
-    get: operations["api_positions_list"];
-  };
-  "/api/positions/{id}/": {
-    /** @description Viewset for Position model */
-    get: operations["api_positions_retrieve"];
-  };
   "/api/teams/": {
-    /** @description Manager for Team model. */
     get: operations["api_teams_list"];
-    /** @description Create object */
-    post: operations["api_teams_create"];
   };
   "/api/teams/{id}/": {
-    /** @description Manager for Team model. */
     get: operations["api_teams_retrieve"];
-    /** @description Update object */
-    put: operations["api_teams_update"];
-    /** @description Delete object */
-    delete: operations["api_teams_destroy"];
-    /** @description Manager for Team model. */
-    patch: operations["api_teams_partial_update"];
-  };
-  "/api/teams/{team_pk}/games/": {
-    /** @description Used to get a list of games in the team. */
-    get: operations["api_teams_games_list"];
-  };
-  "/api/teams/{team_pk}/games/{game_pk}/players/": {
-    /** @description Used to manage players in teams. */
-    get: operations["api_teams_games_players_list"];
-    /** @description Create object */
-    post: operations["api_teams_games_players_create"];
-  };
-  "/api/teams/{team_pk}/games/{game_pk}/players/{id}/": {
-    /** @description Used to manage players in teams. */
-    get: operations["api_teams_games_players_retrieve"];
-    /** @description Update object */
-    put: operations["api_teams_games_players_update"];
-    /** @description Delete object */
-    delete: operations["api_teams_games_players_destroy"];
-    /** @description Used to manage players in teams. */
-    patch: operations["api_teams_games_players_partial_update"];
-  };
-  "/api/teams/{team_pk}/games/{game_pk}/players/{id}/accept/": {
-    /** @description Accepts invitation to team. */
-    get: operations["api_teams_games_players_accept_retrieve"];
-  };
-  "/api/teams/{team_pk}/games/{game_pk}/players/{id}/decline/": {
-    /** @description Declines invitation to team. */
-    get: operations["api_teams_games_players_decline_retrieve"];
-  };
-  "/api/teams/{team_pk}/games/{id}/": {
-    /** @description Used to get a list of games in the team. */
-    get: operations["api_teams_games_retrieve"];
-  };
-  "/api/users/{user_pk}/players/": {
-    get: operations["api_users_players_list"];
-  };
-  "/api/users/{user_pk}/players/{id}/": {
-    put: operations["api_users_players_update"];
-    patch: operations["api_users_players_partial_update"];
   };
   "/attachments/": {
     get: operations["attachments_list"];
@@ -432,167 +329,6 @@ export interface paths {
   "/bot/": {
     post: operations["bot_create"];
   };
-  "/games/": {
-    get: operations["games_list"];
-  };
-  "/games/{game_pk}/tournaments/": {
-    get: operations["games_tournaments_list"];
-  };
-  "/games/{game_pk}/tournaments/{id}/": {
-    get: operations["games_tournaments_retrieve"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/": {
-    get: operations["games_tournaments_matches_list"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/scores/": {
-    get: operations["games_tournaments_matches_scores_list"];
-    /** @description Override create method for return ScoreReadOnlySerializer data */
-    post: operations["games_tournaments_matches_scores_create"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/scores/{id}/": {
-    get: operations["games_tournaments_matches_scores_retrieve"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/screenshots/": {
-    get: operations["games_tournaments_matches_screenshots_list"];
-    /** @description Create object */
-    post: operations["games_tournaments_matches_screenshots_create"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/screenshots/{id}/": {
-    get: operations["games_tournaments_matches_screenshots_retrieve"];
-    /** @description Delete object */
-    delete: operations["games_tournaments_matches_screenshots_destroy"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/statuses/{id}/": {
-    /** @description Update object */
-    put: operations["games_tournaments_matches_statuses_update"];
-    patch: operations["games_tournaments_matches_statuses_partial_update"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/matches/{id}/": {
-    get: operations["games_tournaments_matches_retrieve"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/teams/": {
-    get: operations["games_tournaments_teams_list"];
-    /** @description Create object */
-    post: operations["games_tournaments_teams_create"];
-  };
-  "/games/{game_pk}/tournaments/{tournament_pk}/teams/{id}/": {
-    get: operations["games_tournaments_teams_retrieve"];
-    /** @description Delete object */
-    delete: operations["games_tournaments_teams_destroy"];
-  };
-  "/games/{id}/": {
-    get: operations["games_retrieve"];
-  };
-  "/grid/update-grid/": {
-    get: operations["grid_update_grid_retrieve"];
-  };
-  "/matches/": {
-    /** @description ViewSet for get list matches for current player */
-    get: operations["matches_list"];
-  };
-  "/matches/{id}/": {
-    /** @description ViewSet for get list matches for current player */
-    get: operations["matches_retrieve"];
-  };
-  "/oauth2/connect/": {
-    /**
-     * @description Connects created social account to player
-     *
-     * Bypasses request to the concrete system connect view according to player value
-     */
-    post: operations["oauth2_connect_create"];
-  };
-  "/oauth2/link/": {
-    /**
-     * @description Bypasses request to the concrete system login view according to connector value
-     *
-     * :return: Response with redirect to system login page
-     */
-    post: operations["oauth2_link_create"];
-  };
-  "/platforms/": {
-    get: operations["platforms_list"];
-  };
-  "/platforms/{id}/": {
-    get: operations["platforms_retrieve"];
-  };
-  "/players/": {
-    /** @description Manager for Player model. */
-    get: operations["players_list"];
-  };
-  "/players/{id}/": {
-    /** @description Manager for Player model. */
-    get: operations["players_retrieve"];
-  };
-  "/players/{player_pk}/games/": {
-    get: operations["players_games_list"];
-  };
-  "/players/{player_pk}/games/{id}/": {
-    get: operations["players_games_retrieve"];
-  };
-  "/positions/": {
-    /** @description Viewset for Position model */
-    get: operations["positions_list"];
-  };
-  "/positions/{id}/": {
-    /** @description Viewset for Position model */
-    get: operations["positions_retrieve"];
-  };
-  "/teams/": {
-    /** @description Manager for Team model. */
-    get: operations["teams_list"];
-    /** @description Create object */
-    post: operations["teams_create"];
-  };
-  "/teams/{id}/": {
-    /** @description Manager for Team model. */
-    get: operations["teams_retrieve"];
-    /** @description Update object */
-    put: operations["teams_update"];
-    /** @description Delete object */
-    delete: operations["teams_destroy"];
-    /** @description Manager for Team model. */
-    patch: operations["teams_partial_update"];
-  };
-  "/teams/{team_pk}/games/": {
-    /** @description Used to get a list of games in the team. */
-    get: operations["teams_games_list"];
-  };
-  "/teams/{team_pk}/games/{game_pk}/players/": {
-    /** @description Used to manage players in teams. */
-    get: operations["teams_games_players_list"];
-    /** @description Create object */
-    post: operations["teams_games_players_create"];
-  };
-  "/teams/{team_pk}/games/{game_pk}/players/{id}/": {
-    /** @description Used to manage players in teams. */
-    get: operations["teams_games_players_retrieve"];
-    /** @description Update object */
-    put: operations["teams_games_players_update"];
-    /** @description Delete object */
-    delete: operations["teams_games_players_destroy"];
-    /** @description Used to manage players in teams. */
-    patch: operations["teams_games_players_partial_update"];
-  };
-  "/teams/{team_pk}/games/{game_pk}/players/{id}/accept/": {
-    /** @description Accepts invitation to team. */
-    get: operations["teams_games_players_accept_retrieve"];
-  };
-  "/teams/{team_pk}/games/{game_pk}/players/{id}/decline/": {
-    /** @description Declines invitation to team. */
-    get: operations["teams_games_players_decline_retrieve"];
-  };
-  "/teams/{team_pk}/games/{id}/": {
-    /** @description Used to get a list of games in the team. */
-    get: operations["teams_games_retrieve"];
-  };
-  "/users/{user_pk}/players/": {
-    get: operations["users_players_list"];
-  };
-  "/users/{user_pk}/players/{id}/": {
-    put: operations["users_players_update"];
-    patch: operations["users_players_partial_update"];
-  };
 }
 
 export type webhooks = Record<string, never>;
@@ -631,20 +367,6 @@ export interface components {
     };
     /** @enum {string} */
     CurrencyReadOnlyTypeEnum: "CASH" | "VIRTUAL";
-    ExternalPlatformPlayerReadOnly: {
-      id: number;
-      external_platform: components["schemas"]["ExternalPlatformReadOnly"];
-      url: string;
-    };
-    ExternalPlatformReadOnly: {
-      id: number;
-      name: components["schemas"]["ExternalPlatformReadOnlyNameEnum"];
-      title: string | null;
-      external_id_name: string;
-      avatar: components["schemas"]["AttachmentReadOnly"];
-    };
-    /** @enum {string} */
-    ExternalPlatformReadOnlyNameEnum: "BATTLE_NET" | "STEAM" | "OTHER";
     GameReadOnly: {
       id: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
@@ -669,19 +391,11 @@ export interface components {
       email?: string;
       password: string;
     };
-    /** @enum {integer} */
-    MatchFormatEnum: 1 | 3 | 5;
-    MatchTeamScreenshot: {
+    MatchReadOnly: {
       id: number;
-      team: number;
-      match: number;
-      attachment: number;
-    };
-    MatchTeamScreenshotReadOnly: {
-      id: number;
-      team: number;
-      match: number;
-      attachment: components["schemas"]["AttachmentReadOnly"];
+      status: components["schemas"]["StatusEnum"];
+      teams: components["schemas"]["TeamReadOnly"][];
+      periods: components["schemas"]["PeriodReadOnly"][];
     };
     /** @enum {string} */
     MimeTypeEnum: "image/png" | "image/svg+xml" | "image/jpg" | "image/jpeg";
@@ -717,21 +431,6 @@ export interface components {
       previous?: string | null;
       results?: components["schemas"]["AttachmentReadOnly"][];
     };
-    PaginatedExternalPlatformReadOnlyList: {
-      /** @example 123 */
-      count?: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results?: components["schemas"]["ExternalPlatformReadOnly"][];
-    };
     PaginatedGameReadOnlyList: {
       /** @example 123 */
       count?: number;
@@ -747,7 +446,7 @@ export interface components {
       previous?: string | null;
       results?: components["schemas"]["GameReadOnly"][];
     };
-    PaginatedMatchTeamScreenshotReadOnlyList: {
+    PaginatedPeriodList: {
       /** @example 123 */
       count?: number;
       /**
@@ -760,82 +459,7 @@ export interface components {
        * @example http://api.example.org/accounts/?offset=200&limit=100
        */
       previous?: string | null;
-      results?: components["schemas"]["MatchTeamScreenshotReadOnly"][];
-    };
-    PaginatedPlayerMatchList: {
-      /** @example 123 */
-      count?: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results?: components["schemas"]["PlayerMatch"][];
-    };
-    PaginatedPlayerReadOnlyList: {
-      /** @example 123 */
-      count?: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results?: components["schemas"]["PlayerReadOnly"][];
-    };
-    PaginatedScoreReadOnlyList: {
-      /** @example 123 */
-      count?: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results?: components["schemas"]["ScoreReadOnly"][];
-    };
-    PaginatedTeamPlayerReadOnlyList: {
-      /** @example 123 */
-      count?: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results?: components["schemas"]["TeamPlayerReadOnly"][];
-    };
-    PaginatedTeamPositionReadOnlyList: {
-      /** @example 123 */
-      count?: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results?: components["schemas"]["TeamPositionReadOnly"][];
+      results?: components["schemas"]["Period"][];
     };
     PaginatedTeamReadOnlyList: {
       /** @example 123 */
@@ -866,6 +490,21 @@ export interface components {
        */
       previous?: string | null;
       results?: components["schemas"]["TournamentReadOnly"][];
+    };
+    PaginatedTournamentStageReadOnlyList: {
+      /** @example 123 */
+      count?: number;
+      /**
+       * Format: uri
+       * @example http://api.example.org/accounts/?offset=400&limit=100
+       */
+      next?: string | null;
+      /**
+       * Format: uri
+       * @example http://api.example.org/accounts/?offset=200&limit=100
+       */
+      previous?: string | null;
+      results?: components["schemas"]["TournamentStageReadOnly"][];
     };
     PaginatedTournamentTeamReadOnlyList: {
       /** @example 123 */
@@ -906,32 +545,6 @@ export interface components {
       /** Format: date-time */
       created?: string;
     };
-    PatchedPlayerUpdate: {
-      about?: string;
-      favourite_games?: number[];
-    };
-    PatchedTeamMatchStatus: {
-      id?: number;
-      team?: number;
-      status?: components["schemas"]["TeamMatchStatusStatusEnum"];
-    };
-    PatchedTeamPlayerUpdate: {
-      id?: number;
-      positions?: number[];
-      status?: components["schemas"]["StatusBa0Enum"];
-      role?: components["schemas"]["RoleEnum"];
-    };
-    PatchedTeamUpdate: {
-      currencies?: readonly components["schemas"]["TeamCurrencyReadOnly"][];
-      avatar?: components["schemas"]["AttachmentReadOnly"];
-      is_virtual?: boolean;
-      id?: number;
-      name?: string;
-      location?: string;
-      rating?: number;
-      about?: string;
-      social_media_link?: string;
-    };
     PatchedUser: {
       id?: number;
       /**
@@ -951,52 +564,19 @@ export interface components {
       currencies?: components["schemas"]["UserCurrencyReadOnly"][];
       /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
       username?: string;
+      real_currency?: number;
+      virtual_currency?: number;
+      battle_tag?: string | null;
     };
-    Permission: {
+    Period: {
       id: number;
-      name: components["schemas"]["PermissionNameEnum"];
+      winners: components["schemas"]["TeamReadOnly"][];
+      scores: components["schemas"]["TeamScoreReadOnly"][];
     };
-    /** @enum {string} */
-    PermissionNameEnum: "TEAM_MANAGE" | "TEAM_PLAYER_MANAGE" | "TOURNAMENT_JOIN" | "MATCH_SET_SCORE";
-    Player: {
+    PeriodReadOnly: {
       id: number;
-    };
-    /** @description Fields which need for redirect to match page */
-    PlayerMatch: {
-      id: number;
-      tournament: number | null;
-      game: string;
-      stage: number;
-      status: components["schemas"]["Status1fcEnum"];
-      format: string;
-      teams: components["schemas"]["TeamInMatch"][];
-    };
-    PlayerOAuth2ViewSetConnect: {
-      code: string;
-    };
-    PlayerOAuth2ViewSetLink: {
-      platform: string;
-    };
-    PlayerReadOnly: {
-      id: number;
-      rating: number;
-      user: components["schemas"]["UserPlayer"];
-      teams: components["schemas"]["PlayerTeam"][];
-      favourite_games: components["schemas"]["GameReadOnly"][];
-      about: string | null;
-      virtual_team: components["schemas"]["PlayerTeam"] | null;
-      external_platforms: components["schemas"]["ExternalPlatformPlayerReadOnly"][];
-    };
-    PlayerTeam: {
-      id: number;
-      name: string;
-      location: string | null;
-      rating: number;
-      currencies: readonly components["schemas"]["TeamCurrencyReadOnly"][];
-    };
-    PlayerUpdate: {
-      about?: string;
-      favourite_games?: number[];
+      winners: components["schemas"]["TeamReadOnly"][];
+      scores: components["schemas"]["TeamReadOnly"][];
     };
     Register: {
       username: string;
@@ -1013,117 +593,22 @@ export interface components {
       detail: string;
     };
     /** @enum {string} */
-    RoleEnum: "BASIC" | "OWNER" | "MANAGER";
-    ScheduleReadOnly: {
-      id: number;
-      tournament: number;
-      /** Format: date-time */
-      start_of_applications: string;
-      /** Format: date-time */
-      finish_of_applications: string | null;
-      /** Format: date-time */
-      participation_confirmation: string | null;
-      /** Format: date-time */
-      grid_publication: string | null;
-      tours: components["schemas"]["TournamentScheduleTour"][];
-    };
-    ScoreReadOnly: {
-      id: number;
-      period: number;
-      score_teams: components["schemas"]["ScoreTeamReadOnly"][];
-      period_winner_team: components["schemas"]["TeamReadOnly"] | null;
-      match: number;
-    };
-    ScoreTeamReadOnly: {
-      value: number;
-      team: components["schemas"]["TeamReadOnly"];
-    };
-    ScoreUpdate: {
-      value: number;
-      team?: number;
-    };
-    /** @enum {string} */
-    Status1fcEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
-    /** @enum {string} */
-    StatusBa0Enum: "INVITED" | "ACCEPTED" | "DISMISSED";
-    Team: {
-      currencies: readonly components["schemas"]["TeamCurrencyReadOnly"][];
-      avatar?: components["schemas"]["AttachmentReadOnly"];
-      is_virtual: boolean;
-      id: number;
-      name: string;
-      location: string;
-      about?: string;
-      social_media_link?: string;
-      rating: number;
-    };
-    TeamCurrencyReadOnly: {
-      id: number;
-      currency: components["schemas"]["CurrencyReadOnly"];
-      /** Format: int64 */
-      value?: number;
-    };
-    TeamInMatch: {
-      id: number;
-      name: string;
-    };
-    TeamMatchStatus: {
-      id: number;
-      team: number;
-      status: components["schemas"]["TeamMatchStatusStatusEnum"];
-    };
-    /** @enum {string} */
-    TeamMatchStatusStatusEnum: "READY" | "NOT_READY";
-    TeamPlayerCreate: {
-      id: number;
-      team: number;
-      player: number;
-      game: number;
-    };
-    TeamPlayerReadOnly: {
-      id: number;
-      team: number | null;
-      player: components["schemas"]["PlayerReadOnly"];
-      positions: components["schemas"]["TeamPositionReadOnly"][];
-      status: components["schemas"]["StatusBa0Enum"];
-      role: components["schemas"]["RoleEnum"];
-    };
-    TeamPlayerUpdate: {
-      id: number;
-      positions?: number[];
-      status?: components["schemas"]["StatusBa0Enum"];
-      role?: components["schemas"]["RoleEnum"];
-    };
-    TeamPositionReadOnly: {
-      id: number;
-      name: components["schemas"]["TeamPositionReadOnlyNameEnum"];
-      description: string | null;
-      permissions: components["schemas"]["Permission"][];
-    };
-    /** @enum {string} */
-    TeamPositionReadOnlyNameEnum: "CAPTAIN" | "COACH" | "MANAGER";
+    StatusEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
     TeamReadOnly: {
       id: number;
-      players: components["schemas"]["TeamPlayerReadOnly"][];
-      currencies: components["schemas"]["TeamCurrencyReadOnly"][];
-      captain: components["schemas"]["TeamPlayerReadOnly"];
-      is_virtual: boolean;
-      rating: number;
       name: string;
-      location: string;
-      about: string;
-      social_media_link: string;
+      avatar: components["schemas"]["AttachmentReadOnly"];
+      users: components["schemas"]["User"][];
     };
-    TeamUpdate: {
-      currencies: readonly components["schemas"]["TeamCurrencyReadOnly"][];
-      avatar?: components["schemas"]["AttachmentReadOnly"];
-      is_virtual: boolean;
+    TeamScore: {
+      team: number;
+      value: number;
+      period: number;
+    };
+    TeamScoreReadOnly: {
       id: number;
-      name?: string;
-      location?: string;
-      rating: number;
-      about?: string;
-      social_media_link?: string;
+      team: components["schemas"]["TeamReadOnly"];
+      value: number;
     };
     TokenRefresh: {
       access: string;
@@ -1132,86 +617,39 @@ export interface components {
     TokenVerify: {
       token: string;
     };
-    TournamentCurrencyValue: {
-      stage?: number | null;
-      /** Format: int64 */
-      value: number;
-      currency: components["schemas"]["CurrencyReadOnly"];
-    };
-    TournamentMatch: {
-      id: number;
-      name: string;
-    };
-    TournamentMatchReadOnly: {
-      id: number;
-      tournament: components["schemas"]["TournamentMatch"];
-      teams: components["schemas"]["TeamReadOnly"][];
-      winner: components["schemas"]["TeamReadOnly"];
-      stage: number;
-      parent: number | null;
-      status: components["schemas"]["Status1fcEnum"];
-      scores: components["schemas"]["ScoreReadOnly"][];
-      team_match_statuses: components["schemas"]["TeamMatchStatus"][];
-      referees: components["schemas"]["Player"][];
-      screenshots: components["schemas"]["MatchTeamScreenshot"][];
-    };
-    TournamentPropertiesReadOnly: {
-      match_format: components["schemas"]["MatchFormatEnum"];
-      rules: number;
-      max_participants: number;
-      type: components["schemas"]["TournamentPropertiesReadOnlyTypeEnum"];
-      type_of_opposition: components["schemas"]["TypeOfOppositionEnum"];
-      quantity_of_players_in_team: number;
-    };
-    /** @enum {string} */
-    TournamentPropertiesReadOnlyTypeEnum: "GROUP_ROUND_ROBIN" | "SINGLE_ELIMINATION_PLAYOFF";
     TournamentReadOnly: {
       id: number;
-      game: components["schemas"]["GameReadOnly"];
-      properties: components["schemas"]["TournamentPropertiesReadOnly"];
-      prizes: components["schemas"]["TournamentCurrencyValue"][];
-      place_prizes: {
-        [key: string]: unknown;
-      };
-      places: components["schemas"]["TournamentTeamPlaceReadOnly"][];
-      schedule: components["schemas"]["ScheduleReadOnly"];
-      user_team_id: string | null;
-      referees: components["schemas"]["Player"][];
       name: string;
-      /** Format: uri */
-      avatar: string;
+      game: components["schemas"]["GameReadOnly"];
+      teams: components["schemas"]["TeamReadOnly"][];
+      type: components["schemas"]["TournamentReadOnlyTypeEnum"];
+      teams_in_match: number;
+      winners_in_match_count: number;
+      real_money: number[];
+      virtual_money: number[];
+      description: string | null;
+      rules: string | null;
       /** Format: date-time */
       start_at: string;
-      description: string;
-      current_stage: number;
-      status: string;
-      /** Format: date-time */
-      finished_at: string;
-      teams: components["schemas"]["TeamReadOnly"][];
-    };
-    TournamentScheduleTour: {
-      name: string;
-      /** Format: date-time */
-      datetime?: string | null;
-    };
-    TournamentTeamCreate: {
-      id: number;
-    };
-    TournamentTeamPlaceReadOnly: {
-      id: number;
-      team: components["schemas"]["TeamReadOnly"];
-      place: string | null;
-    };
-    TournamentTeamReadOnly: {
-      name: string;
-      location: string;
-      players: components["schemas"]["TeamPlayerReadOnly"][];
-      captain: components["schemas"]["TeamPlayerReadOnly"];
-      is_virtual: boolean;
+      max_teams: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
     };
     /** @enum {string} */
-    TypeOfOppositionEnum: "VERSUS" | "LOBBY";
+    TournamentReadOnlyTypeEnum: "BO1";
+    TournamentStageReadOnly: {
+      id: number;
+      order: number;
+      matches: readonly number[];
+    };
+    TournamentTeamCreate: {
+      tournament: number;
+      team: number;
+    };
+    TournamentTeamReadOnly: {
+      id: number;
+      team: components["schemas"]["TeamReadOnly"];
+      place: number | null;
+    };
     User: {
       id: number;
       /**
@@ -1231,16 +669,14 @@ export interface components {
       currencies: components["schemas"]["UserCurrencyReadOnly"][];
       /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
       username: string;
+      real_currency?: number;
+      virtual_currency?: number;
+      battle_tag?: string | null;
     };
     UserCurrencyReadOnly: {
       id: number;
       currency: components["schemas"]["CurrencyReadOnly"];
       value: number;
-    };
-    UserPlayer: {
-      avatar: components["schemas"]["AttachmentReadOnly"];
-      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-      username: string;
     };
     VerifyEmail: {
       key: string;
@@ -1730,13 +1166,10 @@ export interface operations {
   api_games_tournaments_list: {
     parameters: {
       query?: {
-        frequency?: "EVERY_DAY" | "EVERY_MONTH" | "EVERY_WEEK" | "EVERY_YEAR" | "SINGLE";
         /** @description Number of results to return per page. */
         limit?: number;
         /** @description The initial index from which to return the results. */
         offset?: number;
-        status?: "CREATED" | "FINISHED" | "IN_PROGRESS";
-        teams_of_match?: number;
       };
       path: {
         game_pk: string;
@@ -1765,22 +1198,37 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_matches_list: {
+  api_games_tournaments_finish_retrieve: {
     parameters: {
       path: {
         game_pk: string;
-        tournament_pk: string;
+        id: string;
       };
     };
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["TournamentMatchReadOnly"][];
+          "application/json": components["schemas"]["TournamentReadOnly"];
         };
       };
     };
   };
-  api_games_tournaments_matches_scores_list: {
+  api_games_tournaments_start_retrieve: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentReadOnly"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_matches_periods_list: {
     parameters: {
       query?: {
         /** @description Number of results to return per page. */
@@ -1797,36 +1245,36 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["PaginatedScoreReadOnlyList"];
+          "application/json": components["schemas"]["PaginatedPeriodList"];
         };
       };
     };
   };
-  /** @description Override create method for return ScoreReadOnlySerializer data */
-  api_games_tournaments_matches_scores_create: {
+  api_games_tournaments_matches_periods_scores_create: {
     parameters: {
       path: {
         game_pk: string;
         match_pk: string;
+        period_pk: string;
         tournament_pk: string;
       };
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ScoreUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["ScoreUpdate"];
-        "multipart/form-data": components["schemas"]["ScoreUpdate"];
+        "application/json": components["schemas"]["TeamScore"];
+        "application/x-www-form-urlencoded": components["schemas"]["TeamScore"];
+        "multipart/form-data": components["schemas"]["TeamScore"];
       };
     };
     responses: {
       201: {
         content: {
-          "application/json": components["schemas"]["ScoreUpdate"];
+          "application/json": components["schemas"]["TeamScore"];
         };
       };
     };
   };
-  api_games_tournaments_matches_scores_retrieve: {
+  api_games_tournaments_matches_periods_retrieve: {
     parameters: {
       path: {
         game_pk: string;
@@ -1838,140 +1286,7 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["ScoreReadOnly"];
-        };
-      };
-    };
-  };
-  api_games_tournaments_matches_screenshots_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        game_pk: string;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedMatchTeamScreenshotReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Create object */
-  api_games_tournaments_matches_screenshots_create: {
-    parameters: {
-      path: {
-        game_pk: string;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["MatchTeamScreenshot"];
-        "application/x-www-form-urlencoded": components["schemas"]["MatchTeamScreenshot"];
-        "multipart/form-data": components["schemas"]["MatchTeamScreenshot"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["MatchTeamScreenshot"];
-        };
-      };
-    };
-  };
-  api_games_tournaments_matches_screenshots_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this match team screenshot. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["MatchTeamScreenshotReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  api_games_tournaments_matches_screenshots_destroy: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this match team screenshot. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /** @description Update object */
-  api_games_tournaments_matches_statuses_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this team match status. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["TeamMatchStatus"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamMatchStatus"];
-        "multipart/form-data": components["schemas"]["TeamMatchStatus"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamMatchStatus"];
-        };
-      };
-    };
-  };
-  api_games_tournaments_matches_statuses_partial_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this team match status. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedTeamMatchStatus"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamMatchStatus"];
-        "multipart/form-data": components["schemas"]["PatchedTeamMatchStatus"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamMatchStatus"];
+          "application/json": components["schemas"]["Period"];
         };
       };
     };
@@ -1980,6 +1295,61 @@ export interface operations {
     parameters: {
       path: {
         game_pk: string;
+        /** @description A unique integer value identifying this match. */
+        id: number;
+        tournament_pk: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["MatchReadOnly"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_matches_finish_retrieve: {
+    parameters: {
+      path: {
+        game_pk: string;
+        /** @description A unique integer value identifying this match. */
+        id: number;
+        tournament_pk: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["MatchReadOnly"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_stages_list: {
+    parameters: {
+      query?: {
+        /** @description Number of results to return per page. */
+        limit?: number;
+        /** @description The initial index from which to return the results. */
+        offset?: number;
+      };
+      path: {
+        game_pk: string;
+        tournament_pk: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["PaginatedTournamentStageReadOnlyList"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_stages_retrieve: {
+    parameters: {
+      path: {
+        game_pk: string;
         id: string;
         tournament_pk: string;
       };
@@ -1987,7 +1357,39 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["TournamentMatchReadOnly"];
+          "application/json": components["schemas"]["TournamentStageReadOnly"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_stages_finish_retrieve: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+        tournament_pk: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentStageReadOnly"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_stages_start_retrieve: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+        tournament_pk: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentStageReadOnly"];
         };
       };
     };
@@ -2013,7 +1415,6 @@ export interface operations {
       };
     };
   };
-  /** @description Create object */
   api_games_tournaments_teams_create: {
     parameters: {
       path: {
@@ -2021,7 +1422,7 @@ export interface operations {
         tournament_pk: string;
       };
     };
-    requestBody?: {
+    requestBody: {
       content: {
         "application/json": components["schemas"]["TournamentTeamCreate"];
         "application/x-www-form-urlencoded": components["schemas"]["TournamentTeamCreate"];
@@ -2036,23 +1437,6 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_teams_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TournamentTeamReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
   api_games_tournaments_teams_destroy: {
     parameters: {
       path: {
@@ -2083,244 +1467,18 @@ export interface operations {
       };
     };
   };
-  api_grid_update_grid_retrieve: {
-    responses: {
-      /** @description No response body */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** @description ViewSet for get list matches for current player */
-  api_matches_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        status?: "BYE" | "FINISHED" | "NOT_STARTED" | "STARTED";
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedPlayerMatchList"];
-        };
-      };
-    };
-  };
-  /** @description ViewSet for get list matches for current player */
-  api_matches_retrieve: {
-    parameters: {
-      query?: {
-        status?: "BYE" | "FINISHED" | "NOT_STARTED" | "STARTED";
-      };
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerMatch"];
-        };
-      };
-    };
-  };
-  /**
-   * @description Connects created social account to player
-   *
-   * Bypasses request to the concrete system connect view according to player value
-   */
-  api_oauth2_connect_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["PlayerOAuth2ViewSetConnect"];
-        "application/x-www-form-urlencoded": components["schemas"]["PlayerOAuth2ViewSetConnect"];
-        "multipart/form-data": components["schemas"]["PlayerOAuth2ViewSetConnect"];
-      };
-    };
-    responses: {
-      /** @description Successfully connected */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * @description Bypasses request to the concrete system login view according to connector value
-   *
-   * :return: Response with redirect to system login page
-   */
-  api_oauth2_link_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["PlayerOAuth2ViewSetLink"];
-        "application/x-www-form-urlencoded": components["schemas"]["PlayerOAuth2ViewSetLink"];
-        "multipart/form-data": components["schemas"]["PlayerOAuth2ViewSetLink"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerOAuth2ViewSetLink"];
-        };
-      };
-    };
-  };
-  api_platforms_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedExternalPlatformReadOnlyList"];
-        };
-      };
-    };
-  };
-  api_platforms_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this external platform. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["ExternalPlatformReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Player model. */
-  api_players_list: {
+  api_teams_list: {
     parameters: {
       query?: {
         /** @description Multiple values may be separated by commas. */
-        favourite_games__in?: number[];
+        favourite_games__in?: string[];
         id?: number;
         id__in?: number[];
         /** @description Number of results to return per page. */
         limit?: number;
         /** @description The initial index from which to return the results. */
         offset?: number;
-        /** @description A search term. */
-        search?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedPlayerReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Player model. */
-  api_players_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this player. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerReadOnly"];
-        };
-      };
-    };
-  };
-  api_players_games_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        player_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedGameReadOnlyList"];
-        };
-      };
-    };
-  };
-  api_players_games_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this game. */
-        id: number;
-        player_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GameReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Viewset for Position model */
-  api_positions_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTeamPositionReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Viewset for Position model */
-  api_positions_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team position. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPositionReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Team model. */
-  api_teams_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description A search term. */
-        search?: string;
+        users?: number[];
       };
     };
     responses: {
@@ -2331,24 +1489,6 @@ export interface operations {
       };
     };
   };
-  /** @description Create object */
-  api_teams_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Team"];
-        "application/x-www-form-urlencoded": components["schemas"]["Team"];
-        "multipart/form-data": components["schemas"]["Team"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Team"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Team model. */
   api_teams_retrieve: {
     parameters: {
       path: {
@@ -2360,332 +1500,6 @@ export interface operations {
       200: {
         content: {
           "application/json": components["schemas"]["TeamReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Update object */
-  api_teams_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["TeamUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamUpdate"];
-        "multipart/form-data": components["schemas"]["TeamUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  api_teams_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /** @description Manager for Team model. */
-  api_teams_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedTeamUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamUpdate"];
-        "multipart/form-data": components["schemas"]["PatchedTeamUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Used to get a list of games in the team. */
-  api_teams_games_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedGameReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Used to manage players in teams. */
-  api_teams_games_players_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description A search term. */
-        search?: string;
-      };
-      path: {
-        game_pk: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTeamPlayerReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Create object */
-  api_teams_games_players_create: {
-    parameters: {
-      path: {
-        game_pk: string;
-        team_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["TeamPlayerCreate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamPlayerCreate"];
-        "multipart/form-data": components["schemas"]["TeamPlayerCreate"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerCreate"];
-        };
-      };
-    };
-  };
-  /** @description Used to manage players in teams. */
-  api_teams_games_players_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Update object */
-  api_teams_games_players_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["TeamPlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamPlayerUpdate"];
-        "multipart/form-data": components["schemas"]["TeamPlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  api_teams_games_players_destroy: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /** @description Used to manage players in teams. */
-  api_teams_games_players_partial_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedTeamPlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamPlayerUpdate"];
-        "multipart/form-data": components["schemas"]["PatchedTeamPlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Accepts invitation to team. */
-  api_teams_games_players_accept_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Declines invitation to team. */
-  api_teams_games_players_decline_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Used to get a list of games in the team. */
-  api_teams_games_retrieve: {
-    parameters: {
-      path: {
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GameReadOnly"];
-        };
-      };
-    };
-  };
-  api_users_players_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        user_pk: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedPlayerReadOnlyList"];
-        };
-      };
-    };
-  };
-  api_users_players_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this player. */
-        id: number;
-        user_pk: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PlayerUpdate"];
-        "multipart/form-data": components["schemas"]["PlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerUpdate"];
-        };
-      };
-    };
-  };
-  api_users_players_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this player. */
-        id: number;
-        user_pk: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedPlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedPlayerUpdate"];
-        "multipart/form-data": components["schemas"]["PatchedPlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerUpdate"];
         };
       };
     };
@@ -3138,986 +1952,6 @@ export interface operations {
       /** @description No response body */
       200: {
         content: never;
-      };
-    };
-  };
-  games_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedGameReadOnlyList"];
-        };
-      };
-    };
-  };
-  games_tournaments_list: {
-    parameters: {
-      query?: {
-        frequency?: "EVERY_DAY" | "EVERY_MONTH" | "EVERY_WEEK" | "EVERY_YEAR" | "SINGLE";
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        status?: "CREATED" | "FINISHED" | "IN_PROGRESS";
-        teams_of_match?: number;
-      };
-      path: {
-        game_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTournamentReadOnlyList"];
-        };
-      };
-    };
-  };
-  games_tournaments_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TournamentReadOnly"];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_list: {
-    parameters: {
-      path: {
-        game_pk: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TournamentMatchReadOnly"][];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_scores_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        game_pk: string;
-        match_pk: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedScoreReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Override create method for return ScoreReadOnlySerializer data */
-  games_tournaments_matches_scores_create: {
-    parameters: {
-      path: {
-        game_pk: string;
-        match_pk: string;
-        tournament_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["ScoreUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["ScoreUpdate"];
-        "multipart/form-data": components["schemas"]["ScoreUpdate"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["ScoreUpdate"];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_scores_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        match_pk: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["ScoreReadOnly"];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_screenshots_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        game_pk: string;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedMatchTeamScreenshotReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Create object */
-  games_tournaments_matches_screenshots_create: {
-    parameters: {
-      path: {
-        game_pk: string;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["MatchTeamScreenshot"];
-        "application/x-www-form-urlencoded": components["schemas"]["MatchTeamScreenshot"];
-        "multipart/form-data": components["schemas"]["MatchTeamScreenshot"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["MatchTeamScreenshot"];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_screenshots_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this match team screenshot. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["MatchTeamScreenshotReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  games_tournaments_matches_screenshots_destroy: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this match team screenshot. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /** @description Update object */
-  games_tournaments_matches_statuses_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this team match status. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["TeamMatchStatus"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamMatchStatus"];
-        "multipart/form-data": components["schemas"]["TeamMatchStatus"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamMatchStatus"];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_statuses_partial_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        /** @description A unique integer value identifying this team match status. */
-        id: number;
-        match_pk: number;
-        tournament_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedTeamMatchStatus"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamMatchStatus"];
-        "multipart/form-data": components["schemas"]["PatchedTeamMatchStatus"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamMatchStatus"];
-        };
-      };
-    };
-  };
-  games_tournaments_matches_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TournamentMatchReadOnly"];
-        };
-      };
-    };
-  };
-  games_tournaments_teams_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        game_pk: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTournamentTeamReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Create object */
-  games_tournaments_teams_create: {
-    parameters: {
-      path: {
-        game_pk: string;
-        tournament_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["TournamentTeamCreate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TournamentTeamCreate"];
-        "multipart/form-data": components["schemas"]["TournamentTeamCreate"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["TournamentTeamCreate"];
-        };
-      };
-    };
-  };
-  games_tournaments_teams_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TournamentTeamReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  games_tournaments_teams_destroy: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        tournament_pk: string;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  games_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this game. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GameReadOnly"];
-        };
-      };
-    };
-  };
-  grid_update_grid_retrieve: {
-    responses: {
-      /** @description No response body */
-      200: {
-        content: never;
-      };
-    };
-  };
-  /** @description ViewSet for get list matches for current player */
-  matches_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        status?: "BYE" | "FINISHED" | "NOT_STARTED" | "STARTED";
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedPlayerMatchList"];
-        };
-      };
-    };
-  };
-  /** @description ViewSet for get list matches for current player */
-  matches_retrieve: {
-    parameters: {
-      query?: {
-        status?: "BYE" | "FINISHED" | "NOT_STARTED" | "STARTED";
-      };
-      path: {
-        id: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerMatch"];
-        };
-      };
-    };
-  };
-  /**
-   * @description Connects created social account to player
-   *
-   * Bypasses request to the concrete system connect view according to player value
-   */
-  oauth2_connect_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["PlayerOAuth2ViewSetConnect"];
-        "application/x-www-form-urlencoded": components["schemas"]["PlayerOAuth2ViewSetConnect"];
-        "multipart/form-data": components["schemas"]["PlayerOAuth2ViewSetConnect"];
-      };
-    };
-    responses: {
-      /** @description Successfully connected */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /**
-   * @description Bypasses request to the concrete system login view according to connector value
-   *
-   * :return: Response with redirect to system login page
-   */
-  oauth2_link_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["PlayerOAuth2ViewSetLink"];
-        "application/x-www-form-urlencoded": components["schemas"]["PlayerOAuth2ViewSetLink"];
-        "multipart/form-data": components["schemas"]["PlayerOAuth2ViewSetLink"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerOAuth2ViewSetLink"];
-        };
-      };
-    };
-  };
-  platforms_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedExternalPlatformReadOnlyList"];
-        };
-      };
-    };
-  };
-  platforms_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this external platform. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["ExternalPlatformReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Player model. */
-  players_list: {
-    parameters: {
-      query?: {
-        /** @description Multiple values may be separated by commas. */
-        favourite_games__in?: number[];
-        id?: number;
-        id__in?: number[];
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description A search term. */
-        search?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedPlayerReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Player model. */
-  players_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this player. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerReadOnly"];
-        };
-      };
-    };
-  };
-  players_games_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        player_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedGameReadOnlyList"];
-        };
-      };
-    };
-  };
-  players_games_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this game. */
-        id: number;
-        player_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GameReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Viewset for Position model */
-  positions_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTeamPositionReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Viewset for Position model */
-  positions_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team position. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPositionReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Team model. */
-  teams_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description A search term. */
-        search?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTeamReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Create object */
-  teams_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Team"];
-        "application/x-www-form-urlencoded": components["schemas"]["Team"];
-        "multipart/form-data": components["schemas"]["Team"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Team"];
-        };
-      };
-    };
-  };
-  /** @description Manager for Team model. */
-  teams_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Update object */
-  teams_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["TeamUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamUpdate"];
-        "multipart/form-data": components["schemas"]["TeamUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  teams_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /** @description Manager for Team model. */
-  teams_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this team. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedTeamUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamUpdate"];
-        "multipart/form-data": components["schemas"]["PatchedTeamUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Used to get a list of games in the team. */
-  teams_games_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedGameReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Used to manage players in teams. */
-  teams_games_players_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description A search term. */
-        search?: string;
-      };
-      path: {
-        game_pk: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedTeamPlayerReadOnlyList"];
-        };
-      };
-    };
-  };
-  /** @description Create object */
-  teams_games_players_create: {
-    parameters: {
-      path: {
-        game_pk: string;
-        team_pk: string;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["TeamPlayerCreate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamPlayerCreate"];
-        "multipart/form-data": components["schemas"]["TeamPlayerCreate"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerCreate"];
-        };
-      };
-    };
-  };
-  /** @description Used to manage players in teams. */
-  teams_games_players_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerReadOnly"];
-        };
-      };
-    };
-  };
-  /** @description Update object */
-  teams_games_players_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["TeamPlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["TeamPlayerUpdate"];
-        "multipart/form-data": components["schemas"]["TeamPlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Delete object */
-  teams_games_players_destroy: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  /** @description Used to manage players in teams. */
-  teams_games_players_partial_update: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedTeamPlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamPlayerUpdate"];
-        "multipart/form-data": components["schemas"]["PatchedTeamPlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Accepts invitation to team. */
-  teams_games_players_accept_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Declines invitation to team. */
-  teams_games_players_decline_retrieve: {
-    parameters: {
-      path: {
-        game_pk: string;
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["TeamPlayerUpdate"];
-        };
-      };
-    };
-  };
-  /** @description Used to get a list of games in the team. */
-  teams_games_retrieve: {
-    parameters: {
-      path: {
-        id: string;
-        team_pk: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["GameReadOnly"];
-        };
-      };
-    };
-  };
-  users_players_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        user_pk: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedPlayerReadOnlyList"];
-        };
-      };
-    };
-  };
-  users_players_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this player. */
-        id: number;
-        user_pk: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PlayerUpdate"];
-        "multipart/form-data": components["schemas"]["PlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerUpdate"];
-        };
-      };
-    };
-  };
-  users_players_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this player. */
-        id: number;
-        user_pk: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedPlayerUpdate"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedPlayerUpdate"];
-        "multipart/form-data": components["schemas"]["PatchedPlayerUpdate"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PlayerUpdate"];
-        };
       };
     };
   };

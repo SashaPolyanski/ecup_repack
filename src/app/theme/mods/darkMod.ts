@@ -25,6 +25,8 @@ export const dark = createTheme({
         contained: {
           backgroundColor: `rgba(211, 74, 77, 0.8)`,
           borderRadius: '25px',
+          textTransform: 'capitalize',
+          color: 'rgb(255,255,255)',
           minWidth: '185px',
           '&:hover': {
             backgroundColor: `rgba(211, 74, 77, 1)`,

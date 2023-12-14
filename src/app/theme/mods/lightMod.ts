@@ -24,6 +24,8 @@ export const light = createTheme({
       styleOverrides: {
         contained: {
           backgroundColor: `rgba(211, 74, 77, 0.8)`,
+          color: 'rgb(0,0,0)',
+          textTransform: 'capitalize',
           borderRadius: '25px',
           minWidth: '185px',
           '&:hover': {

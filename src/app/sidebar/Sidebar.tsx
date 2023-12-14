@@ -7,6 +7,7 @@ import {SidebarContacts} from "@/app/sidebar/SidebarContacts";
 import {useGlobalPreloader} from "@/Zustand/globalPreloaderStore";
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import {useTheme} from "@emotion/react";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 const NavbarContainer = styled(Box, transientOptions)<{ $collapsed: boolean }>`
   width: ${({$collapsed}) => ($collapsed ? '80px' : '300px')};
@@ -15,8 +16,12 @@ const NavbarContainer = styled(Box, transientOptions)<{ $collapsed: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    display: none;
+  }
+
 `
-const Arrow = styled(IconButton)<{ $collapsed: boolean }>`
+const Arrow = styled(IconButton, transientOptions)<{ $collapsed: boolean }>`
   transform: rotate(${({$collapsed}) => (!$collapsed ? '180deg' : '0')});
   transition-duration: 0.5s;
   transition-property: transform;

@@ -1,10 +1,11 @@
 import {FC, useCallback, useState} from 'react'
-import {Button} from "@mui/material";
+import {Button, useMediaQuery} from "@mui/material";
 import {SingIn} from "./SingIn";
 import {SignUp} from "./SignUp";
 import {Modal} from "@shared";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 export type AuthButtonProps = {
   action: 'signin' | 'signup'
@@ -27,23 +28,24 @@ const components: Components = {
   signin: SingIn,
   signup: SignUp
 }
-const componentConfig = (t: TFunction): ComponentConfig => {
+const componentConfig = (t: TFunction, isSmallScreen: boolean): ComponentConfig => {
   return {
     desc: {
       signup: t("registration"),
       signin: t("login")
     },
     height: {
-      signup: 690,
-      signin: 470,
+      signup: isSmallScreen ? 600 : 690,
+      signin: isSmallScreen ? 400 : 470,
     }
   };
 };
 export const AuthButton: FC<AuthButtonProps> = ({action, title}) => {
   const {t} = useTranslation('common')
+  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const [formType, setFormType] = useState<AuthButtonProps['action'] | null>(null)
   const Component = formType && components[formType]
-  const {desc, height} = componentConfig(t)
+  const {desc, height} = componentConfig(t, isSmallScreen)
   const [modalHeight, setModalHeight] = useState<number>(height[action])
   const openModalFormHandler = useCallback(() => {
     setFormType(action)

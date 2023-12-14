@@ -1,12 +1,13 @@
-import {Typography} from "@mui/material";
-import {useTranslation} from "react-i18next";
+import {MainImage} from "./MainImage";
+import {MainDescription} from "./MainDescription";
+import {Box} from "@mui/material";
+
 
 export const Main = () => {
-  const {t} = useTranslation('main')
   return (
-    <div>
-      main page
-      <Typography>{`Example: ${t('PROFILE')}`}</Typography>
-    </div>
+    <Box sx={{height: '100%'}}>
+      <MainImage/>
+      <MainDescription/>
+    </Box>
   );
 };

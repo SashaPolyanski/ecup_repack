@@ -8,3 +8,5 @@ export type User = components['schemas']['User'];
 export type Login = components['schemas']['Login'];
 export type PatchedUser = components['schemas']['PatchedUser'];
 export type LanguageEnum = components['schemas']['LanguageEnum'];
+export type PaginatedTournamentReadOnlyList = components['schemas']['PaginatedTournamentReadOnlyList'];
+export type TournamentReadOnly = components['schemas']['TournamentReadOnly'];

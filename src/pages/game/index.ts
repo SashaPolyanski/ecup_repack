@@ -1,10 +1,10 @@
 import {Component} from "./component";
 import {PageConfig} from "@pages";
-import {about} from "@constants";
+import {games} from "@/constants/pagePath";
 
 export default {
   component: Component,
-  path: about.aboutRoot,
-  showNavbar: false,
-  showSidebar: false
+  path: games.game,
+  showNavbar: true,
+  showSidebar: true
 } satisfies PageConfig

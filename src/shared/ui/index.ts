@@ -4,5 +4,6 @@ import {Preloader} from "./Preloader";
 import {Notification, notification} from "./Notification";
 import {LanguageSwitcher} from "./LanguageSwitcher";
 import {ThemeSwitcher} from "./ThemeSwitcher";
+import {Menu} from "./Menu";
 
-export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher}
+export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher, Menu}

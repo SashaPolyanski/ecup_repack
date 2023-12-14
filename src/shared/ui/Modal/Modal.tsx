@@ -1,8 +1,10 @@
 import {FC, ReactNode} from 'react'
-import {Box, Dialog, DialogTitle, useMediaQuery} from "@mui/material";
+import {Box, Dialog, DialogTitle, IconButton} from "@mui/material";
 import styled from "@emotion/styled";
 import {useTheme} from "@emotion/react";
 import {transientOptions} from "@utils";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import CloseIcon from '@mui/icons-material/Close'
 
 type ModalProps = {
   open: boolean
@@ -11,6 +13,7 @@ type ModalProps = {
   title: string
   width: number
   height: number
+  showCloseIcon?: boolean
 }
 type ModalContainerProps = {
   $width: number
@@ -27,21 +30,41 @@ const ModalContainer = styled(Dialog, transientOptions)<ModalContainerProps>`
   .MuiDialogTitle-root {
     text-align: center;
   }
+
+`
+const ButtonWrapper = styled(IconButton)`
+  position: absolute;
+  right: 20px;
+  top: 33px;
+  width: ${({theme: {spacing}}) => spacing(4)};
 `
 const ContentContainer = styled(Box)`
   padding: 0 40px;
   margin-top: 20px;
   margin-bottom: 36px;
   height: 100%;
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    padding: 0 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
 `
-export const Modal: FC<ModalProps> = ({onClose, open, children, title, width, height}) => {
+const ModalTitle = styled(DialogTitle)`
+  margin-top: 20px;
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    margin-top: 0px;
+  }
+`
+export const Modal: FC<ModalProps> = ({onClose, open, children, title, width, height, showCloseIcon}) => {
   const theme = useTheme()
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
-    <ModalContainer open={open} onClose={onClose} fullScreen={fullScreen} $width={width} $height={height}>
-      <DialogTitle sx={{marginTop: '20px'}}>
+    <ModalContainer open={open} onClose={onClose} $width={width} $height={height}>
+      {showCloseIcon ? <ButtonWrapper onClick={onClose}>
+        <CloseIcon htmlColor={theme.palette.text.primary}/>
+      </ButtonWrapper> : null}
+      <ModalTitle>
         {title}
-      </DialogTitle>
+      </ModalTitle>
       <ContentContainer>
         {children}
       </ContentContainer>

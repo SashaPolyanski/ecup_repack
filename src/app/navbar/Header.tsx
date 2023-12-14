@@ -1,18 +1,34 @@
-import {useMemo} from 'react'
-import {AuthButton} from "@shared";
-import {useTranslation} from "react-i18next";
+import {Box, Typography} from "@mui/material";
+import EcupLogo from "@assets/ecupLogo.svg";
+import {LanguageSwitcher, ThemeSwitcher} from "@shared";
+import {IsAuthHeader} from "@/app/navbar/isAuthHeader.tsx";
+import {NoAuthHeader} from "@/app/navbar/NoAuthHeader.tsx";
+import {useIsAuthStore} from "@/Zustand/isAuthStore.ts";
+import styled from "@emotion/styled";
 
-type ButtonType = {
-  id: number
-  action: 'signin' | 'signup'
-  title: string
-}
+const NavbarContainer = styled(Box)`
+  background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
+  height: 50px;
+  display: flex;
+  padding: 0 40px 0 23px;
+  justify-content: space-between;
+  align-items: center;
+`
+
 
 export const Header = () => {
-  const {t} = useTranslation('common')
-  const buttons: ButtonType[] = useMemo(() => [
-    {id: 1, action: 'signin', title: t('login')},
-    {id: 2, action: 'signup', title: t('registration')},
-  ], [t])
-  return buttons.map(({id, action, title}) => <AuthButton key={id} action={action} title={title}/>)
+  const {isAuth} = useIsAuthStore()
+  return (
+    <NavbarContainer>
+      <Box display={'flex'} alignItems={'center'}>
+        <EcupLogo/>
+        <Typography fontSize={20} ml={2.5}>Ecup eSport</Typography>
+      </Box>
+      <Box display={'flex'} alignItems={'center'}>
+        <LanguageSwitcher/>
+        <ThemeSwitcher/>
+        {isAuth ? <IsAuthHeader/> : <NoAuthHeader/>}
+      </Box>
+    </NavbarContainer>
+  );
 };

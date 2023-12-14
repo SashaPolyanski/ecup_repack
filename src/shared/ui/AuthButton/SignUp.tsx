@@ -1,6 +1,6 @@
 import {FC, useCallback} from 'react'
 import {FormField} from "@/shared/ui/Forms";
-import {Box, Typography} from "@mui/material";
+import {Box, Typography, useMediaQuery} from "@mui/material";
 import {Link} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
 import styled from "@emotion/styled";
@@ -16,6 +16,7 @@ import {getError} from "@utils";
 import {LoadingButton} from "@mui/lab";
 import {useTranslation} from "react-i18next";
 import {TFunction} from "i18next";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 type SignUpProps = {
   changeModalComponent: (type: AuthButtonProps['action']) => void
@@ -52,14 +53,15 @@ type FormsType = {
   label: string
   password?: boolean
 }
-const forms = (t: TFunction): FormsType[] => [
-  {id: 1, name: 'username', marginBottom: 35, label: t('userName')},
-  {id: 2, name: 'email', marginBottom: 35, label: t('email')},
-  {id: 3, name: 'password1', marginBottom: 35, label: t('password'), password: true},
-  {id: 4, name: 'password2', marginBottom: 45, label: t('confirmPassword'), password: true},
+const forms = (t: TFunction, isSmallScreen: boolean): FormsType[] => [
+  {id: 1, name: 'username', marginBottom: isSmallScreen ? 27 : 35, label: t('userName')},
+  {id: 2, name: 'email', marginBottom: isSmallScreen ? 27 : 35, label: t('email')},
+  {id: 3, name: 'password1', marginBottom: isSmallScreen ? 27 : 35, label: t('password'), password: true},
+  {id: 4, name: 'password2', marginBottom: isSmallScreen ? 27 : 45, label: t('confirmPassword'), password: true},
 ]
 export const SignUp: FC<SignUpProps> = ({changeModalComponent}) => {
   const {t} = useTranslation('common')
+  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const cookies = Cookie()
   const {setUser} = useUserStore()
   const {setIsAuth} = useIsAuthStore()
@@ -98,7 +100,7 @@ export const SignUp: FC<SignUpProps> = ({changeModalComponent}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ContentModal>
-        {forms(t).map(({id, name, marginBottom, label, password}) => <FormField
+        {forms(t, isSmallScreen).map(({id, name, marginBottom, label, password}) => <FormField
           key={id}
           type={'string'}
           control={control}

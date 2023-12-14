@@ -1,5 +1,5 @@
-export const about = {
-  aboutRoot: '/about',
+export const games = {
+  game: '/game/:gameId',
 } as const
 
 export const main = {
