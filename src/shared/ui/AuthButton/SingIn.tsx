@@ -15,7 +15,7 @@ import {notification} from "@shared";
 import {LoadingButton} from "@mui/lab";
 import {useTranslation} from "react-i18next";
 import {TFunction} from "i18next";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 
 type SingInProps = {
   changeModalComponent: (type: AuthButtonProps['action']) => void

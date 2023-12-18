@@ -7,7 +7,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {transientOptions} from "@utils";
 import {useTheme} from "@emotion/react";
 import {NavigateFunction, useNavigate} from "react-router-dom";
-import {games} from "@/constants/pagePath.tsx";
+import {games} from "@/constants/pagePath";
 
 type SidebarItemsProps = {
   collapsed: boolean

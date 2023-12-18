@@ -16,6 +16,7 @@ const TournamentCardContainer = styled(Box, transientOptions)<{ $backgroundImage
   background-position: center;
   background-size: cover;
   border-radius: 20px;
+  width: 300px;
   height: 300px;
 `
 const TournamentCardContent = styled(Box)`
@@ -26,10 +27,10 @@ const TournamentCardContent = styled(Box)`
 `
 
 export const TournamentCard: FC<TournamentCardProps> = ({tournament}) => {
-  const {avatar, id, name, teams, max_teams, start_at, type, description, real_money} = tournament
-
+  const {avatar, id, name, teams, max_teams, start_at, type, description, real_money, game} = tournament
+  // TODO потом сделать нормальную карточку
   return (
-    <TournamentCardContainer $backgroundImage={avatar.file} sx={{width: '100%'}} display={'flex'}
+    <TournamentCardContainer $backgroundImage={game.banner.file} sx={{width: '100%'}} display={'flex'}
                              justifyContent={'end'}>
       <TournamentCardContent>
         <TournamentEnd start_at={start_at}/>

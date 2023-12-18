@@ -1,6 +1,6 @@
 import {FC, ReactNode, useMemo, useState} from "react";
 import {PaletteMode, ThemeProvider} from "@mui/material";
-import {ThemeCtxProvider, ThemeCtxType} from "./types.ts";
+import {ThemeCtxProvider, ThemeCtxType} from "./types";
 import {dark, light} from '../mods';
 
 export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {

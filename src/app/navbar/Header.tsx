@@ -1,9 +1,9 @@
 import {Box, Typography} from "@mui/material";
 import EcupLogo from "@assets/ecupLogo.svg";
 import {LanguageSwitcher, ThemeSwitcher} from "@shared";
-import {IsAuthHeader} from "@/app/navbar/isAuthHeader.tsx";
-import {NoAuthHeader} from "@/app/navbar/NoAuthHeader.tsx";
-import {useIsAuthStore} from "@/Zustand/isAuthStore.ts";
+import {IsAuthHeader} from "@/app/navbar/isAuthHeader";
+import {NoAuthHeader} from "@/app/navbar/NoAuthHeader";
+import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import styled from "@emotion/styled";
 
 const NavbarContainer = styled(Box)`

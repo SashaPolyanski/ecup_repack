@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import {TextField} from "@mui/material";
-import {FormFieldString} from "@/shared/ui/Forms/types.ts";
+import {FormFieldString} from "@/shared/ui/Forms/types";
 
 
 export const SelectField: FC<FormFieldString> = ({name, label, value, onChange}) => {

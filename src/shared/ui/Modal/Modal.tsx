@@ -3,7 +3,7 @@ import {Box, Dialog, DialogTitle, IconButton} from "@mui/material";
 import styled from "@emotion/styled";
 import {useTheme} from "@emotion/react";
 import {transientOptions} from "@utils";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import CloseIcon from '@mui/icons-material/Close'
 
 type ModalProps = {

@@ -1,6 +1,6 @@
 import {FC, useCallback, useState} from 'react'
 import {useTheme} from "@emotion/react";
-import {useQuery} from "@/api/hooks/useQuery.ts";
+import {useQuery} from "@/api/hooks/useQuery";
 import {GameReadOnly, PaginatedGameReadOnlyList} from "@/api/types";
 import {Box, Collapse, Drawer, IconButton, Skeleton, Typography} from "@mui/material";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -8,6 +8,8 @@ import {transientOptions} from "@utils";
 import styled from "@emotion/styled";
 import {useTranslation} from "react-i18next";
 import EcupLogo from "@assets/ecupLogo.svg";
+import {games} from "@constants";
+import {NavigateFunction, useNavigate} from "react-router-dom";
 
 type MobileHeaderContentProps = {
   onClose: () => void
@@ -40,9 +42,13 @@ const MobileMenuItemWrapper = styled(Box, transientOptions)<{ $collapsed?: boole
   }
 
 `
-const renderMobileMenuItems = (items?: GameReadOnly[], collapsed?: boolean) => {
+const renderMobileMenuItems = (items?: GameReadOnly[], collapsed?: boolean, navigate?: NavigateFunction, onClose?: () => void) => {
+  const navigateToGameHandler = (gameId: string) => () => {
+    navigate && navigate(games.game.replace(':gameId', gameId))
+    onClose && onClose()
+  }
   return items ? items?.map(({avatar, id, name}) => (
-    <MobileMenuItemWrapper key={id} $collapsed={collapsed}>
+    <MobileMenuItemWrapper key={id} $collapsed={collapsed} onClick={navigateToGameHandler(id.toString())}>
       <img src={avatar.file} alt="asd" width="35px" height="35px"/>
       <Typography fontSize={19} ml={1}>
         {name}
@@ -52,6 +58,7 @@ const renderMobileMenuItems = (items?: GameReadOnly[], collapsed?: boolean) => {
 };
 export const MobileHeaderContent: FC<MobileHeaderContentProps> = ({onClose, open}) => {
   const theme = useTheme()
+  const navigate = useNavigate()
   const {t} = useTranslation()
   const {data} = useQuery<PaginatedGameReadOnlyList>({path: '/games'})
   const [collapsedItems, setCollapsedItems] = useState(false)
@@ -74,9 +81,9 @@ export const MobileHeaderContent: FC<MobileHeaderContentProps> = ({onClose, open
           <Typography>{t('menuGames')}</Typography>
         </Box>
         <Box>
-          {renderMobileMenuItems(modifyData?.visibleItems, collapsedItems)}
+          {renderMobileMenuItems(modifyData?.visibleItems, collapsedItems, navigate, onClose)}
           <Collapse in={collapsedItems}>
-            {renderMobileMenuItems(modifyData?.collapsedItems, collapsedItems)}
+            {renderMobileMenuItems(modifyData?.collapsedItems, collapsedItems, navigate, onClose)}
           </Collapse>
           <Box sx={{width: '100%'}} display={'flex'} justifyContent={'center'}>
             <IconButton onClick={toggleNavbarItems}>

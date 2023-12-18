@@ -5,7 +5,7 @@ import {SignUp} from "./SignUp";
 import {Modal} from "@shared";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 
 export type AuthButtonProps = {
   action: 'signin' | 'signup'

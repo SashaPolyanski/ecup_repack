@@ -8,7 +8,6 @@ const Container = styled(Box)`
   width: 100%;
   height: 500px;
   position: relative;
-  overflow: hidden;
   border-radius: 30px;
 `
 const ImageContainer = styled(Box)`
@@ -20,15 +19,16 @@ const ImageContainer = styled(Box)`
   box-shadow: inset 100px -20px 200px 0px rgb(23, 28, 38);
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     height: 350px;
+    margin-left: 8px;
   }
 `
 const ImageContentContainer = styled(Box)`
   width: 90%;
   margin: 0 auto;
-  padding-top: 140px;
+  padding-top: 10%;
+  padding-bottom: 20px;
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     width: 80%;
-    padding-top: 45px;
   }
 `
 const Title = styled(Typography)`

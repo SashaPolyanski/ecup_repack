@@ -1,7 +1,7 @@
 import {MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {LanguageEnum, PatchedUser, User} from "@/api/types";
 import {useMutation} from "@/api/hooks/useMutation";
-import {useIsAuthStore} from "@/Zustand/isAuthStore.ts";
+import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import {useState} from "react";
 import i18next from "i18next";
 
@@ -17,7 +17,7 @@ export const LanguageSwitcher = () => {
   const {mutate: updateUser} = useMutation<PatchedUser, User>({
     path: '/auth/user',
     method: 'PATCH',
-    token: true,
+    token: true, queryKeyRefetch: ['/auth/user']
   })
 
   const handleChange = (e: SelectChangeEvent) => {

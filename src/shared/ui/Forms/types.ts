@@ -1,6 +1,6 @@
-import {StringField} from "@/shared/ui/Forms/StringField.tsx";
+import {StringField} from "@/shared/ui/Forms/StringField";
 import {ComponentType, CSSProperties, ReactNode} from "react";
-import {BooleanField} from "@/shared/ui/Forms/BooleanField.tsx";
+import {BooleanField} from "@/shared/ui/Forms/BooleanField";
 import {TextFieldProps} from "@mui/material";
 
 export type FormFieldCommon = {

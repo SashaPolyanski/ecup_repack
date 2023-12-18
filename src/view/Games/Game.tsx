@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {GameReadOnly, PaginatedTournamentReadOnlyList} from "@/api/types";
 import {Box} from "@mui/material";
 import styled from "@emotion/styled";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import {transientOptions} from "@utils";
 import {TournamentCard} from "@view/Games/TournamentCard";
 
@@ -22,7 +22,6 @@ export const Game = () => {
   const {gameId} = useParams()
   const {data} = useQuery<PaginatedTournamentReadOnlyList>({path: `/games/${gameId}/tournaments`, skip: !!gameId})
   const {data: gameData} = useQuery<GameReadOnly>({path: `/games/${gameId}`, skip: !!gameId})
-  console.log(gameData?.header?.file)
   return (
     <Box sx={{width: '100%'}}>
       <ImageContainer $backgroundImage={gameData?.header?.file}/>

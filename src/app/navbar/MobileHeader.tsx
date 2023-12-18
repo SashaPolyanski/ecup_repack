@@ -4,12 +4,12 @@ import EcupLogo from "@assets/ecupLogo.svg";
 import MenuIcon from '@mui/icons-material/Menu';
 import {useTheme} from "@emotion/react";
 import {useCallback, useState} from "react";
-import {MobileHeaderContent} from "@/app/navbar/MobileHeaderContent.tsx";
-import {NoAuthHeader} from "@/app/navbar/NoAuthHeader.tsx";
+import {MobileHeaderContent} from "@/app/navbar/MobileHeaderContent";
+import {NoAuthHeader} from "@/app/navbar/NoAuthHeader";
 import {LanguageSwitcher, ThemeSwitcher} from "@shared";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
-import {useIsAuthStore} from "@/Zustand/isAuthStore.ts";
-import {IsAuthHeader} from "@/app/navbar/isAuthHeader.tsx";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
+import {useIsAuthStore} from "@/Zustand/isAuthStore";
+import {IsAuthHeader} from "@/app/navbar/isAuthHeader";
 
 const NavbarContainer = styled(Box)`
   background-color: ${({theme}) => theme.backgrounds.sidebarBackground};

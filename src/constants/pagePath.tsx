@@ -5,3 +5,7 @@ export const games = {
 export const main = {
   mainRoot: '/'
 } as const
+
+export const userSettings = {
+  userSettingsRoot: '/userSettings'
+} as const

@@ -8,15 +8,15 @@ import {AuthButtonProps} from "./AuthButton";
 import {useMutation} from "@/api/hooks/useMutation";
 import {JWT, Register} from "@/api/types";
 import Cookie from "cookie-universal";
-import {useUserStore} from "@/Zustand/userStore.ts";
-import {useIsAuthStore} from "@/Zustand/isAuthStore.ts";
-import {signUpResolver} from "@/shared/ui/AuthButton/Schemas.ts";
+import {useUserStore} from "@/Zustand/userStore";
+import {useIsAuthStore} from "@/Zustand/isAuthStore";
+import {signUpResolver} from "@/shared/ui/AuthButton/Schemas";
 import {notification} from "@shared";
 import {getError} from "@utils";
 import {LoadingButton} from "@mui/lab";
 import {useTranslation} from "react-i18next";
 import {TFunction} from "i18next";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 
 type SignUpProps = {
   changeModalComponent: (type: AuthButtonProps['action']) => void

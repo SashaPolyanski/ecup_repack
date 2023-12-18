@@ -1,4 +1,4 @@
-import {components} from "@/api/schema/schema.ts";
+import {components} from "@/api/schema/schema";
 
 export type PaginatedGameReadOnlyList = components['schemas']['PaginatedGameReadOnlyList'];
 export type GameReadOnly = components['schemas']['GameReadOnly'];
@@ -10,3 +10,4 @@ export type PatchedUser = components['schemas']['PatchedUser'];
 export type LanguageEnum = components['schemas']['LanguageEnum'];
 export type PaginatedTournamentReadOnlyList = components['schemas']['PaginatedTournamentReadOnlyList'];
 export type TournamentReadOnly = components['schemas']['TournamentReadOnly'];
+export type AttachmentCreate = components['schemas']['AttachmentCreate'];

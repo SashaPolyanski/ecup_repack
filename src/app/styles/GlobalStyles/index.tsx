@@ -22,7 +22,8 @@ export const GlobalStyles: React.FC = () => {
         }
 
         img {
-
+          margin: 0;
+          padding: 0;
         }
 
         body {
@@ -31,6 +32,8 @@ export const GlobalStyles: React.FC = () => {
           padding: 0;
           color: ${theme.palette.text.primary};
         }
+
+        box-sizing: border-box;
 
         a {
           text-decoration: none;

@@ -1,5 +1,5 @@
 import {FC, useCallback, useState} from 'react'
-import {FormFieldString} from "./types.ts";
+import {FormFieldString} from "./types";
 import {IconButton, TextField as TextFieldMui} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {useTheme} from "@emotion/react";

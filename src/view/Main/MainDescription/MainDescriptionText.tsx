@@ -7,8 +7,18 @@ type MainDescriptionTextProps = {
   desc: string
   id: number
 }
+const MainDescriptionTextContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+
+  &:last-of-type {
+    padding-bottom: 40px;
+  }
+`
 const MainDescriptionTitle = styled(Typography)`
   font-size: 35px;
+  margin-bottom: 20px;
   background: linear-gradient(266deg, #293DFF 0.48%, #45A7D8 39.23%, #45A7D8 61.82%, #293DFF 102.2%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -16,15 +26,15 @@ const MainDescriptionTitle = styled(Typography)`
 const MainDescriptionDesc = styled(Typography)`
   font-size: 18px;
 `
-export const MainDescriptionText: FC<MainDescriptionTextProps> = ({desc, title, id}) => {
+export const MainDescriptionText: FC<MainDescriptionTextProps> = ({desc, title}) => {
   return (
-    <Box mb={6}>
+    <MainDescriptionTextContainer>
       <MainDescriptionTitle>
         {title}
       </MainDescriptionTitle>
       <MainDescriptionDesc>
         {desc}
       </MainDescriptionDesc>
-    </Box>
+    </MainDescriptionTextContainer>
   );
 };

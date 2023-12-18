@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import {Box, Button} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 
 type TournamentRegistrationButtonProps = {
   real_money: number[]
@@ -10,9 +10,9 @@ export const TournamentRegistrationButton: FC<TournamentRegistrationButtonProps>
     return acc + cur
   }, 0)
   return (
-    <Box>
-      <Button>Регистрация в турнире</Button>
-      {prizePool}
+    <Box display={'flex'} alignItems={'center'} mt={2}>
+      <Button variant={'outlined'}>Регистрация в турнире</Button>
+      <Typography ml={2}>{prizePool}</Typography>
     </Box>
   );
 };

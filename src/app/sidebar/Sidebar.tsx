@@ -7,7 +7,7 @@ import {SidebarContacts} from "@/app/sidebar/SidebarContacts";
 import {useGlobalPreloader} from "@/Zustand/globalPreloaderStore";
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import {useTheme} from "@emotion/react";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 
 const NavbarContainer = styled(Box, transientOptions)<{ $collapsed: boolean }>`
   width: ${({$collapsed}) => ($collapsed ? '80px' : '300px')};
