@@ -35,9 +35,6 @@ dependencies:
   i18next:
     specifier: ^23.7.7
     version: 23.7.7
-  i18next-browser-languagedetector:
-    specifier: ^7.2.0
-    version: 7.2.0
   i18next-http-backend:
     specifier: ^2.4.2
     version: 2.4.2
@@ -2258,12 +2255,6 @@ packages:
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /i18next-browser-languagedetector@7.2.0:
-    resolution: {integrity: sha512-U00DbDtFIYD3wkWsr2aVGfXGAj2TgnELzOX9qv8bT0aJtvPV9CRO77h+vgmHFBMe7LAxdwvT/7VkCWGya6L3tA==}
-    dependencies:
-      '@babel/runtime': 7.23.4
     dev: false
 
   /i18next-http-backend@2.4.2:
