@@ -30,7 +30,7 @@ const TournamentCardContent = styled(Box)`
 `
 
 export const TournamentCard: FC<TournamentCardProps> = ({tournament}) => {
-  const {name, teams, max_teams, start_at, type, description, real_money, game} = tournament
+  const {name, teams, max_teams, start_at, type, description, real_money, game, id} = tournament
   const navigate = useNavigate()
   const {gameId} = useParams()
   const navigateToTournament = () => {
