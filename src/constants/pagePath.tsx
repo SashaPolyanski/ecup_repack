@@ -1,5 +1,6 @@
 export const games = {
   game: '/game/:gameId',
+  tournament: '/game/:gameId/tournament/:id',
 } as const
 
 export const main = {

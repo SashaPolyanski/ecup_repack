@@ -5,5 +5,6 @@ import {Notification, notification} from "./Notification";
 import {LanguageSwitcher} from "./LanguageSwitcher";
 import {ThemeSwitcher} from "./ThemeSwitcher";
 import {Menu} from "./Menu";
+import {Banner} from "./Banner";
 
-export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher, Menu}
+export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher, Menu, Banner}

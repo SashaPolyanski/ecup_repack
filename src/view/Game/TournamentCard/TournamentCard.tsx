@@ -7,6 +7,8 @@ import {TournamentEnd} from "./TournamentEnd";
 import {TournamentTitle} from "./TournamentTitle";
 import {TournamentRegistrationProgress} from "./TournamentRegistrationProgress";
 import {TournamentRegistrationButton} from "./TournamentRegistrationButton";
+import {useNavigate, useParams} from "react-router-dom";
+import {games} from "@constants";
 
 type TournamentCardProps = {
   tournament: TournamentReadOnly
@@ -18,6 +20,7 @@ const TournamentCardContainer = styled(Box, transientOptions)<{ $backgroundImage
   border-radius: 20px;
   width: 300px;
   height: 300px;
+  cursor: pointer;
 `
 const TournamentCardContent = styled(Box)`
   display: flex;
@@ -27,11 +30,18 @@ const TournamentCardContent = styled(Box)`
 `
 
 export const TournamentCard: FC<TournamentCardProps> = ({tournament}) => {
-  const {avatar, id, name, teams, max_teams, start_at, type, description, real_money, game} = tournament
+  const {name, teams, max_teams, start_at, type, description, real_money, game} = tournament
+  const navigate = useNavigate()
+  const {gameId} = useParams()
+  const navigateToTournament = () => {
+    if (gameId) {
+      navigate(games.tournament.replace(':gameId', gameId).replace(':id', id.toString()))
+    }
+  }
   // TODO потом сделать нормальную карточку
   return (
     <TournamentCardContainer $backgroundImage={game.banner.file} sx={{width: '100%'}} display={'flex'}
-                             justifyContent={'end'}>
+                             justifyContent={'end'} onClick={navigateToTournament}>
       <TournamentCardContent>
         <TournamentEnd start_at={start_at}/>
         <TournamentTitle name={name} type={type} description={description}/>
