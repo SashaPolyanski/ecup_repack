@@ -43,7 +43,7 @@
     "WEEKLY_TOURNAMENTS": "Tournois hebdomadaires",
     "DAILY_TOURNAMENTS": "Tournois quotidiens",
     "HI": "Bonjour",
-    "userInfo": "Загрузка..."
+    "userInfo": "Informations personnelles"
   },
   "common": {
     "hi": "Bonjour",
@@ -65,9 +65,9 @@
     "menuGames": "Nos jeux",
     "amateurESport": "Amateur E-Sports",
     "league": "Ligue",
-    "weWillEsport": "Nous allons faire passer l'e-sport pour les amateurs au niveau supérieur.",
+    "weWillEsport": "Nous allons prendre des sports pour les amateurs au niveau supérieur.",
     "inYourFreeTime": "Rivaliser dans votre temps libre",
-    "inYourFreeTimeDesc": "Nous avons un grand nombre de tournois et vous pouvez vous amoser un moment de la fin pour vous-même.",
+    "inYourFreeTimeDesc": "Nous avons un grand nombre de tournois et vous pouvez vous amoser un moment de pacon pour vous-même.",
     "getPrizes": "Obtenir des prix",
     "getPrizesDesc": "Dans absolument tous les tournois, nous donnons des prix aux gagnants et aux participants.",
     "winAndStronger": "Gagner et devenir plus fort",
@@ -84,6 +84,14 @@
     "balance": "Équilibre",
     "rubles": "Roubles",
     "coins": "E-coins",
-    "withdrawMoney": "Retirer de l'argent"
+    "withdrawMoney": "Retirer de l'argent",
+    "review": "Revoir",
+    "participants": "Participants",
+    "streamTournament": "Boadcast du tournoi",
+    "TournamentGrid": "Grille de tournoi",
+    "TournamenRegistration": "Inscription dans le tournoi",
+    "TournamenRegistrationDesc": "L'inscription est ouverte. Vous pouvez rejoindre le tournoi",
+    "tournamenRegistrationBtn": "Inscription",
+    "tournamenParticipants": "Participants"
   }
 }

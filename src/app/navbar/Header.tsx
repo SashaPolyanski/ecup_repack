@@ -5,6 +5,8 @@ import {IsAuthHeader} from "@/app/navbar/isAuthHeader";
 import {NoAuthHeader} from "@/app/navbar/NoAuthHeader";
 import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import styled from "@emotion/styled";
+import {useNavigate} from "react-router-dom";
+import {main} from "@constants";
 
 const NavbarContainer = styled(Box)`
   background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
@@ -14,16 +16,24 @@ const NavbarContainer = styled(Box)`
   justify-content: space-between;
   align-items: center;
 `
-
+const EcupLogoCOntainer = styled(Box)`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`
 
 export const Header = () => {
   const {isAuth} = useIsAuthStore()
+  const navigate = useNavigate()
+  const navigateToHomePage = () => {
+    navigate(main.mainRoot)
+  }
   return (
     <NavbarContainer>
-      <Box display={'flex'} alignItems={'center'}>
+      <EcupLogoCOntainer onClick={navigateToHomePage}>
         <EcupLogo/>
         <Typography fontSize={20} ml={2.5}>Ecup eSport</Typography>
-      </Box>
+      </EcupLogoCOntainer>
       <Box display={'flex'} alignItems={'center'}>
         <LanguageSwitcher/>
         <ThemeSwitcher/>

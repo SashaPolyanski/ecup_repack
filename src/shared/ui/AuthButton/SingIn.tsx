@@ -11,8 +11,7 @@ import {useUserStore} from "@/Zustand/userStore";
 import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import {signInResolver} from "./Schemas";
 import {getError} from "@utils";
-import {notification} from "@shared";
-import {LoadingButton} from "@mui/lab";
+import {Button, notification} from "@shared";
 import {useTranslation} from "react-i18next";
 import {TFunction} from "i18next";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
@@ -98,7 +97,7 @@ export const SingIn: FC<SingInProps> = ({changeModalComponent}) => {
           marginBottom={marginBottom}
         />)}
         <ButtonContainer>
-          <LoadingButton loading={loading} type={'submit'} variant={'contained'}>{t('login')}</LoadingButton>
+          <Button loading={loading} type={'submit'} variant={'contained'}>{t('login')}</Button>
           <Typography fontSize={12} mb={1} mt={2}>{t('forgotPassword')}</Typography>
           <Typography fontSize={12}>{t('dontHaveAccount')}</Typography>
           <SignUpLink mt={1}

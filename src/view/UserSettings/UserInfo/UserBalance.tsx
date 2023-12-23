@@ -3,8 +3,8 @@ import {Box, Typography} from "@mui/material";
 import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
 import PaidIcon from '@mui/icons-material/Paid';
 import styled from "@emotion/styled";
-import {LoadingButton} from "@mui/lab";
 import {useTranslation} from "react-i18next";
+import {Button} from "@shared";
 
 const UserBalanceContainer = styled(Box)`
   display: flex;
@@ -16,7 +16,7 @@ const CurrencyContainer = styled(Box)`
   display: flex;
   align-items: center;
 `;
-const Button = styled(LoadingButton)`
+const UserBalanceButton = styled(Button)`
   margin: 20px 0px`
 export const UserBalance = ({}) => {
   const {user} = useUserStore()
@@ -38,7 +38,7 @@ export const UserBalance = ({}) => {
           </Typography>
         </CurrencyContainer>
       </Box>
-      <Button variant={'outlined'}>{t('withdrawMoney')}</Button>
+      <UserBalanceButton variant={'outlined'}>{t('withdrawMoney')}</UserBalanceButton>
     </UserBalanceContainer>
   );
 };

@@ -11,9 +11,8 @@ import Cookie from "cookie-universal";
 import {useUserStore} from "@/Zustand/userStore";
 import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import {signUpResolver} from "@/shared/ui/AuthButton/Schemas";
-import {notification} from "@shared";
+import {Button, notification} from "@shared";
 import {getError} from "@utils";
-import {LoadingButton} from "@mui/lab";
 import {useTranslation} from "react-i18next";
 import {TFunction} from "i18next";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
@@ -111,9 +110,9 @@ export const SignUp: FC<SignUpProps> = ({changeModalComponent}) => {
           password={password}
         />)}
         <ButtonContainer>
-          <LoadingButton type={'submit'} variant={'contained'}
-                         loading={loading || loadingVerify}>{t('registration')}
-          </LoadingButton>
+          <Button type={'submit'} variant={'contained'}
+                  loading={loading || loadingVerify}>{t('registration')}
+          </Button>
           <Typography fontSize={12} mb={1} mt={3}>{t('clickToagree')}</Typography>
           <Typography fontSize={12} mb={1}> <Link
             to={'/'}>{t('privatePolicy')}</Link></Typography>

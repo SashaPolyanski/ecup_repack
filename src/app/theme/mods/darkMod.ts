@@ -59,6 +59,23 @@ export const dark = createTheme({
         },
       },
     },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          backgroundColor: 'rgb(68,210,215)'
+        }
+      }
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: 'rgb(255, 255, 255)',
+          '&.Mui-selected': {
+            color: 'rgb(68,210,215)',
+          },
+        },
+      }
+    },
     MuiSelect: {
       styleOverrides: {
         select: {

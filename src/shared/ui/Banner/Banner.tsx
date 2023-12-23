@@ -13,7 +13,7 @@ const BannerContainer = styled(Box, transientOptions)<{ $backgroundImage?: strin
   background-image: ${({$backgroundImage}) => $backgroundImage && `url(${$backgroundImage})`};
   background-position: center;
   background-size: cover;
-  box-shadow: inset 100px -20px 200px 0px rgb(23, 28, 38);
+  box-shadow: inset 100px -100px 200px 0px rgb(23, 28, 38);
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     height: 350px;
   }

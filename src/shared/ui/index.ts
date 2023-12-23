@@ -6,5 +6,19 @@ import {LanguageSwitcher} from "./LanguageSwitcher";
 import {ThemeSwitcher} from "./ThemeSwitcher";
 import {Menu} from "./Menu";
 import {Banner} from "./Banner";
+import {Button} from "./Button";
+import {Tabs} from "./Tabs";
 
-export {Modal, AuthButton, Preloader, Notification, notification, LanguageSwitcher, ThemeSwitcher, Menu, Banner}
+export {
+  Modal,
+  AuthButton,
+  Preloader,
+  Notification,
+  notification,
+  LanguageSwitcher,
+  ThemeSwitcher,
+  Menu,
+  Banner,
+  Button,
+  Tabs
+}

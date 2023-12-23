@@ -1,8 +1,8 @@
 import {FC, useCallback, useState} from 'react'
-import {Button, useMediaQuery} from "@mui/material";
+import {useMediaQuery} from "@mui/material";
 import {SingIn} from "./SingIn";
 import {SignUp} from "./SignUp";
-import {Modal} from "@shared";
+import {Button, Modal} from "@shared";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";

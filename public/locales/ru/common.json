@@ -37,5 +37,13 @@
   "balance": "Баланс",
   "rubles": "Рублей",
   "coins": "Монеты",
-  "withdrawMoney": "Вывести деньги"
+  "withdrawMoney": "Вывести деньги",
+  "review": "Обзор",
+  "participants": "Участники",
+  "streamTournament": "Трансляция турнира",
+  "TournamentGrid": "Турнирная сетка",
+  "TournamenRegistration": "Регистрация в турнире",
+  "TournamenRegistrationDesc": "Регистрация открыта. Вы можете вступить в турнир",
+  "tournamenRegistrationBtn": "Регистрация",
+  "tournamenParticipants": "Участников"
 }

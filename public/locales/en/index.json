@@ -84,6 +84,14 @@
     "balance": "Balance",
     "rubles": "Rubles",
     "coins": "E-Coins",
-    "withdrawMoney": "Withdraw money"
+    "withdrawMoney": "Withdraw money",
+    "review": "Review",
+    "participants": "Participants",
+    "streamTournament": "Broadcast of the tournament",
+    "TournamentGrid": "Tournament grid",
+    "TournamenRegistration": "Registration in the tournament",
+    "TournamenRegistrationDesc": "Registration is open. You can join the tournament",
+    "tournamenRegistrationBtn": "Registration",
+    "tournamenParticipants": "Participants"
   }
 }

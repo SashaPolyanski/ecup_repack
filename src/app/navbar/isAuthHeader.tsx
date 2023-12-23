@@ -1,9 +1,9 @@
-import {Avatar as MuiAvatar, Button} from "@mui/material";
+import {Avatar as MuiAvatar} from "@mui/material";
 import {useMutation} from "@/api/hooks/useMutation";
 import {useCallback} from "react";
 import Cookie from "cookie-universal";
 import {useIsAuthStore} from "@/Zustand/isAuthStore";
-import {notification} from "@/shared/ui";
+import {Button, notification} from "@/shared";
 import {useUserStore} from "@/Zustand/userStore";
 import {useTranslation} from "react-i18next";
 import styled from "@emotion/styled";
