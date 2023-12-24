@@ -6,15 +6,15 @@ import {TournamentReadOnly} from "@/api/types";
 import {Typography} from "@mui/material";
 import {TournamentTabs} from "./TournamentTabs";
 import {TournamentsInfo} from "./TournamentInfo";
+import {TournamentStream} from "./TournamentStream";
 
 type TournamentProps = {}
-const tournamentsComponents = [TournamentsInfo, TournamentsInfo, TournamentsInfo, TournamentsInfo]
+const tournamentsComponents = [TournamentsInfo, TournamentsInfo, TournamentStream, TournamentsInfo]
 export const Tournament: FC<TournamentProps> = ({}) => {
   const [tabValue, setTabValue] = useState(0)
   const {gameId, id} = useParams()
   const {data} = useQuery<TournamentReadOnly>({path: `/games/${gameId}/tournaments/${id}`})
   const TournamentComponent = tournamentsComponents[tabValue]
-  console.log(data)
   return (
     !data ? <Preloader/> : <>
       <Banner bannerImane={data?.avatar?.file}/>

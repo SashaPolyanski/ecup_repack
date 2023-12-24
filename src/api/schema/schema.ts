@@ -148,16 +148,21 @@ export interface paths {
     get: operations["api_games_tournaments_retrieve"];
   };
   "/api/games/{game_pk}/tournaments/{id}/finish/": {
-    get: operations["api_games_tournaments_finish_retrieve"];
+    post: operations["api_games_tournaments_finish_create"];
+  };
+  "/api/games/{game_pk}/tournaments/{id}/scores/": {
+    /** @description Returns scores for tournament */
+    get: operations["api_games_tournaments_scores_retrieve"];
   };
   "/api/games/{game_pk}/tournaments/{id}/start/": {
-    get: operations["api_games_tournaments_start_retrieve"];
+    post: operations["api_games_tournaments_start_create"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/": {
     get: operations["api_games_tournaments_matches_periods_list"];
   };
-  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/{period_pk}/scores/": {
-    post: operations["api_games_tournaments_matches_periods_scores_create"];
+  "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/{period_pk}/scores/{id}/": {
+    put: operations["api_games_tournaments_matches_periods_scores_update"];
+    patch: operations["api_games_tournaments_matches_periods_scores_partial_update"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{match_pk}/periods/{id}/": {
     get: operations["api_games_tournaments_matches_periods_retrieve"];
@@ -166,7 +171,7 @@ export interface paths {
     get: operations["api_games_tournaments_matches_retrieve"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/matches/{id}/finish/": {
-    get: operations["api_games_tournaments_matches_finish_retrieve"];
+    post: operations["api_games_tournaments_matches_finish_create"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/": {
     get: operations["api_games_tournaments_stages_list"];
@@ -175,17 +180,20 @@ export interface paths {
     get: operations["api_games_tournaments_stages_retrieve"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/{id}/finish/": {
-    get: operations["api_games_tournaments_stages_finish_retrieve"];
+    post: operations["api_games_tournaments_stages_finish_create"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/stages/{id}/start/": {
-    get: operations["api_games_tournaments_stages_start_retrieve"];
+    post: operations["api_games_tournaments_stages_start_create"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/teams/": {
     get: operations["api_games_tournaments_teams_list"];
     post: operations["api_games_tournaments_teams_create"];
   };
   "/api/games/{game_pk}/tournaments/{tournament_pk}/teams/{id}/": {
+    get: operations["api_games_tournaments_teams_retrieve"];
+    put: operations["api_games_tournaments_teams_update"];
     delete: operations["api_games_tournaments_teams_destroy"];
+    patch: operations["api_games_tournaments_teams_partial_update"];
   };
   "/api/games/{id}/": {
     get: operations["api_games_retrieve"];
@@ -359,14 +367,6 @@ export interface components {
     };
     /** @enum {string} */
     CountryEnum: "AF" | "AX" | "AL" | "DZ" | "AS" | "AD" | "AO" | "AI" | "AQ" | "AG" | "AR" | "AM" | "AW" | "AU" | "AT" | "AZ" | "BS" | "BH" | "BD" | "BB" | "BY" | "BE" | "BZ" | "BJ" | "BM" | "BT" | "BO" | "BQ" | "BA" | "BW" | "BV" | "BR" | "IO" | "BN" | "BG" | "BF" | "BI" | "CV" | "KH" | "CM" | "CA" | "KY" | "CF" | "TD" | "CL" | "CN" | "CX" | "CC" | "CO" | "KM" | "CG" | "CD" | "CK" | "CR" | "CI" | "HR" | "CU" | "CW" | "CY" | "CZ" | "DK" | "DJ" | "DM" | "DO" | "EC" | "EG" | "SV" | "GQ" | "ER" | "EE" | "SZ" | "ET" | "FK" | "FO" | "FJ" | "FI" | "FR" | "GF" | "PF" | "TF" | "GA" | "GM" | "GE" | "DE" | "GH" | "GI" | "GR" | "GL" | "GD" | "GP" | "GU" | "GT" | "GG" | "GN" | "GW" | "GY" | "HT" | "HM" | "VA" | "HN" | "HK" | "HU" | "IS" | "IN" | "ID" | "IR" | "IQ" | "IE" | "IM" | "IL" | "IT" | "JM" | "JP" | "JE" | "JO" | "KZ" | "KE" | "KI" | "KW" | "KG" | "LA" | "LV" | "LB" | "LS" | "LR" | "LY" | "LI" | "LT" | "LU" | "MO" | "MG" | "MW" | "MY" | "MV" | "ML" | "MT" | "MH" | "MQ" | "MR" | "MU" | "YT" | "MX" | "FM" | "MD" | "MC" | "MN" | "ME" | "MS" | "MA" | "MZ" | "MM" | "NA" | "NR" | "NP" | "NL" | "NC" | "NZ" | "NI" | "NE" | "NG" | "NU" | "NF" | "KP" | "MK" | "MP" | "NO" | "OM" | "PK" | "PW" | "PS" | "PA" | "PG" | "PY" | "PE" | "PH" | "PN" | "PL" | "PT" | "PR" | "QA" | "RE" | "RO" | "RU" | "RW" | "BL" | "SH" | "KN" | "LC" | "MF" | "PM" | "VC" | "WS" | "SM" | "ST" | "SA" | "SN" | "RS" | "SC" | "SL" | "SG" | "SX" | "SK" | "SI" | "SB" | "SO" | "ZA" | "GS" | "KR" | "SS" | "ES" | "LK" | "SD" | "SR" | "SJ" | "SE" | "CH" | "SY" | "TW" | "TJ" | "TZ" | "TH" | "TL" | "TG" | "TK" | "TO" | "TT" | "TN" | "TR" | "TM" | "TC" | "TV" | "UG" | "UA" | "AE" | "GB" | "UM" | "US" | "UY" | "UZ" | "VU" | "VE" | "VN" | "VG" | "VI" | "WF" | "EH" | "YE" | "ZM" | "ZW";
-    /** @description Serializer for Currency */
-    CurrencyReadOnly: {
-      type: components["schemas"]["CurrencyReadOnlyTypeEnum"];
-      name: string;
-      icon: components["schemas"]["AttachmentReadOnly"];
-    };
-    /** @enum {string} */
-    CurrencyReadOnlyTypeEnum: "CASH" | "VIRTUAL";
     GameReadOnly: {
       id: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
@@ -394,7 +394,7 @@ export interface components {
     MatchReadOnly: {
       id: number;
       status: components["schemas"]["StatusEnum"];
-      teams: components["schemas"]["TeamReadOnly"][];
+      scores: components["schemas"]["ScoreMatch"][];
       periods: components["schemas"]["PeriodReadOnly"][];
     };
     /** @enum {string} */
@@ -446,7 +446,7 @@ export interface components {
       previous?: string | null;
       results?: components["schemas"]["GameReadOnly"][];
     };
-    PaginatedPeriodList: {
+    PaginatedPeriodReadOnlyList: {
       /** @example 123 */
       count?: number;
       /**
@@ -459,7 +459,7 @@ export interface components {
        * @example http://api.example.org/accounts/?offset=200&limit=100
        */
       previous?: string | null;
-      results?: components["schemas"]["Period"][];
+      results?: components["schemas"]["PeriodReadOnly"][];
     };
     PaginatedTeamReadOnlyList: {
       /** @example 123 */
@@ -545,6 +545,15 @@ export interface components {
       /** Format: date-time */
       created?: string;
     };
+    PatchedTeamScore: {
+      team?: number;
+      /** Format: double */
+      value?: number;
+      period?: number;
+    };
+    PatchedTournamentTeamUpdate: {
+      is_confirmed?: boolean;
+    };
     PatchedUser: {
       id?: number;
       /**
@@ -554,6 +563,11 @@ export interface components {
       email?: string;
       first_name?: string;
       country?: components["schemas"]["CountryEnum"];
+      /**
+       * Staff status
+       * @description Designates whether the user can log into this admin site.
+       */
+      is_staff?: boolean;
       last_name?: string;
       /** Format: date */
       birth_day?: string | null;
@@ -561,22 +575,15 @@ export interface components {
       avatar?: components["schemas"]["AttachmentReadOnly"] | null;
       avatar_id?: number | null;
       language?: components["schemas"]["LanguageEnum"];
-      currencies?: components["schemas"]["UserCurrencyReadOnly"][];
       /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
       username?: string;
       real_currency?: number;
       virtual_currency?: number;
       battle_tag?: string | null;
     };
-    Period: {
-      id: number;
-      winners: components["schemas"]["TeamReadOnly"][];
-      scores: components["schemas"]["TeamScoreReadOnly"][];
-    };
     PeriodReadOnly: {
       id: number;
-      winners: components["schemas"]["TeamReadOnly"][];
-      scores: components["schemas"]["TeamReadOnly"][];
+      team_scores: components["schemas"]["TeamScoreReadOnly"][];
     };
     Register: {
       username: string;
@@ -592,6 +599,12 @@ export interface components {
     RestAuthDetail: {
       detail: string;
     };
+    ScoreMatch: {
+      team_id: number;
+      team_name: string;
+      /** Format: double */
+      sum: number;
+    };
     /** @enum {string} */
     StatusEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
     TeamReadOnly: {
@@ -602,13 +615,16 @@ export interface components {
     };
     TeamScore: {
       team: number;
+      /** Format: double */
       value: number;
       period: number;
     };
     TeamScoreReadOnly: {
       id: number;
       team: components["schemas"]["TeamReadOnly"];
+      /** Format: double */
       value: number;
+      period: number;
     };
     TokenRefresh: {
       access: string;
@@ -632,7 +648,15 @@ export interface components {
       /** Format: date-time */
       start_at: string;
       max_teams: number;
+      min_teams: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
+      stage_schedule: string[];
+      stage_schedule_names: string[];
+      schedule: string[];
+      schedule_names: string[];
+      stage_formats: number[];
+      teams_by_place: components["schemas"]["ScoreMatch"][];
+      stream_url: string | null;
     };
     /** @enum {string} */
     TournamentReadOnlyTypeEnum: "BO1";
@@ -649,6 +673,10 @@ export interface components {
       id: number;
       team: components["schemas"]["TeamReadOnly"];
       place: number | null;
+      is_confirmed: boolean;
+    };
+    TournamentTeamUpdate: {
+      is_confirmed?: boolean;
     };
     User: {
       id: number;
@@ -659,6 +687,11 @@ export interface components {
       email?: string;
       first_name?: string;
       country: components["schemas"]["CountryEnum"];
+      /**
+       * Staff status
+       * @description Designates whether the user can log into this admin site.
+       */
+      is_staff?: boolean;
       last_name?: string;
       /** Format: date */
       birth_day?: string | null;
@@ -666,17 +699,11 @@ export interface components {
       avatar: components["schemas"]["AttachmentReadOnly"] | null;
       avatar_id: number | null;
       language?: components["schemas"]["LanguageEnum"];
-      currencies: components["schemas"]["UserCurrencyReadOnly"][];
       /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
       username: string;
       real_currency?: number;
       virtual_currency?: number;
       battle_tag?: string | null;
-    };
-    UserCurrencyReadOnly: {
-      id: number;
-      currency: components["schemas"]["CurrencyReadOnly"];
-      value: number;
     };
     VerifyEmail: {
       key: string;
@@ -1198,7 +1225,30 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_finish_retrieve: {
+  api_games_tournaments_finish_create: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TournamentReadOnly"];
+        "application/x-www-form-urlencoded": components["schemas"]["TournamentReadOnly"];
+        "multipart/form-data": components["schemas"]["TournamentReadOnly"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentReadOnly"];
+        };
+      };
+    };
+  };
+  /** @description Returns scores for tournament */
+  api_games_tournaments_scores_retrieve: {
     parameters: {
       path: {
         game_pk: string;
@@ -1213,11 +1263,18 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_start_retrieve: {
+  api_games_tournaments_start_create: {
     parameters: {
       path: {
         game_pk: string;
         id: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TournamentReadOnly"];
+        "application/x-www-form-urlencoded": components["schemas"]["TournamentReadOnly"];
+        "multipart/form-data": components["schemas"]["TournamentReadOnly"];
       };
     };
     responses: {
@@ -1245,15 +1302,16 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["PaginatedPeriodList"];
+          "application/json": components["schemas"]["PaginatedPeriodReadOnlyList"];
         };
       };
     };
   };
-  api_games_tournaments_matches_periods_scores_create: {
+  api_games_tournaments_matches_periods_scores_update: {
     parameters: {
       path: {
         game_pk: string;
+        id: string;
         match_pk: string;
         period_pk: string;
         tournament_pk: string;
@@ -1267,7 +1325,32 @@ export interface operations {
       };
     };
     responses: {
-      201: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TeamScore"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_matches_periods_scores_partial_update: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+        match_pk: string;
+        period_pk: string;
+        tournament_pk: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedTeamScore"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedTeamScore"];
+        "multipart/form-data": components["schemas"]["PatchedTeamScore"];
+      };
+    };
+    responses: {
+      200: {
         content: {
           "application/json": components["schemas"]["TeamScore"];
         };
@@ -1286,7 +1369,7 @@ export interface operations {
     responses: {
       200: {
         content: {
-          "application/json": components["schemas"]["Period"];
+          "application/json": components["schemas"]["PeriodReadOnly"];
         };
       };
     };
@@ -1308,13 +1391,20 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_matches_finish_retrieve: {
+  api_games_tournaments_matches_finish_create: {
     parameters: {
       path: {
         game_pk: string;
         /** @description A unique integer value identifying this match. */
         id: number;
         tournament_pk: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["MatchReadOnly"];
+        "application/x-www-form-urlencoded": components["schemas"]["MatchReadOnly"];
+        "multipart/form-data": components["schemas"]["MatchReadOnly"];
       };
     };
     responses: {
@@ -1362,12 +1452,19 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_stages_finish_retrieve: {
+  api_games_tournaments_stages_finish_create: {
     parameters: {
       path: {
         game_pk: string;
         id: string;
         tournament_pk: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["TournamentStageReadOnly"];
+        "application/x-www-form-urlencoded": components["schemas"]["TournamentStageReadOnly"];
+        "multipart/form-data": components["schemas"]["TournamentStageReadOnly"];
       };
     };
     responses: {
@@ -1378,12 +1475,19 @@ export interface operations {
       };
     };
   };
-  api_games_tournaments_stages_start_retrieve: {
+  api_games_tournaments_stages_start_create: {
     parameters: {
       path: {
         game_pk: string;
         id: string;
         tournament_pk: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["TournamentStageReadOnly"];
+        "application/x-www-form-urlencoded": components["schemas"]["TournamentStageReadOnly"];
+        "multipart/form-data": components["schemas"]["TournamentStageReadOnly"];
       };
     };
     responses: {
@@ -1437,6 +1541,45 @@ export interface operations {
       };
     };
   };
+  api_games_tournaments_teams_retrieve: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+        tournament_pk: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentTeamReadOnly"];
+        };
+      };
+    };
+  };
+  api_games_tournaments_teams_update: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+        tournament_pk: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["TournamentTeamUpdate"];
+        "application/x-www-form-urlencoded": components["schemas"]["TournamentTeamUpdate"];
+        "multipart/form-data": components["schemas"]["TournamentTeamUpdate"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentTeamUpdate"];
+        };
+      };
+    };
+  };
   api_games_tournaments_teams_destroy: {
     parameters: {
       path: {
@@ -1449,6 +1592,29 @@ export interface operations {
       /** @description No response body */
       204: {
         content: never;
+      };
+    };
+  };
+  api_games_tournaments_teams_partial_update: {
+    parameters: {
+      path: {
+        game_pk: string;
+        id: string;
+        tournament_pk: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedTournamentTeamUpdate"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedTournamentTeamUpdate"];
+        "multipart/form-data": components["schemas"]["PatchedTournamentTeamUpdate"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["TournamentTeamUpdate"];
+        };
       };
     };
   };
@@ -1470,8 +1636,6 @@ export interface operations {
   api_teams_list: {
     parameters: {
       query?: {
-        /** @description Multiple values may be separated by commas. */
-        favourite_games__in?: string[];
         id?: number;
         id__in?: number[];
         /** @description Number of results to return per page. */

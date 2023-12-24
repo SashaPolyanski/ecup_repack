@@ -6,7 +6,7 @@ import {TournamentRegistrationProgress} from "./TournamentRegistrationProgress";
 import {useQuery} from "@/api/hooks/useQuery.ts";
 import {TournamentReadOnly} from "@/api/types";
 import {useParams} from "react-router-dom";
-import {Button} from "@shared";
+import {TournamentRegistrationButton} from "./TournamentRegistrationButton";
 
 type TournamentRegistrationCardProps = {}
 const RegistrationCardContainer = styled(Box)`
@@ -19,13 +19,12 @@ export const TournamentRegistrationCard: FC<TournamentRegistrationCardProps> = (
   const {t} = useTranslation('common')
   const {gameId, id} = useParams()
   const {data} = useQuery<TournamentReadOnly>({path: `/games/${gameId}/tournaments/${id}`})
-  console.log(data)
   return (
     <RegistrationCardContainer>
       <Typography fontSize={24}>{t('TournamenRegistration')}</Typography>
       <Typography fontSize={18}>{t('TournamenRegistrationDesc')}</Typography>
       <TournamentRegistrationProgress teams={data?.teams.length} max_teams={data?.max_teams}/>
-      <Button variant={'outlined'}>{t('tournamenRegistrationBtn')}</Button>
+      <TournamentRegistrationButton/>
     </RegistrationCardContainer>
   );
 };
