@@ -1,6 +1,6 @@
 import {FC, useMemo} from 'react'
 import {useTranslation} from "react-i18next";
-import descImage from '@assets/homeImage.png'
+import descImage from '@assets/homeImage.webp'
 import styled from "@emotion/styled";
 import {MainDescriptionText} from "./MainDescriptionText";
 import {Box} from "@mui/material";
