@@ -19,7 +19,6 @@ const ImageContainer = styled(Box)`
   box-shadow: inset 100px -20px 200px 0px rgb(23, 28, 38);
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     height: 350px;
-    margin-left: 8px;
   }
 `
 const ImageContentContainer = styled(Box)`

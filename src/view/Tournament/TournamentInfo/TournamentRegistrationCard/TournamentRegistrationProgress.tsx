@@ -26,6 +26,7 @@ const TournamentRegistrationProgressContainer = styled(Box)`
     margin-left: 0;
     margin-top: 20px;
     flex-direction: column-reverse;
+    width: 100%;
   }`
 const TournamentRegistrationProgressTeams = styled(Typography)`
   margin-left: 16px;
