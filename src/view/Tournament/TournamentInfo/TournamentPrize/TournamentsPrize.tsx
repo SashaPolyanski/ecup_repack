@@ -29,7 +29,7 @@ const ItemContainer = styled(Box)`
 `;
 const TournamentsPrizeContainer = styled(Box)`
   display: flex;
-  justify-content: center;
+  justify-content: end;
   width: 50%;
   flex-wrap: wrap;
   @media (max-width: ${MEDIA_QUERY_XL}px) {

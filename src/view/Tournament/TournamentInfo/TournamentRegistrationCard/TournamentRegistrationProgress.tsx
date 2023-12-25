@@ -29,6 +29,7 @@ const TournamentRegistrationProgressContainer = styled(Box)`
     width: 100%;
   }`
 const TournamentRegistrationProgressTeams = styled(Typography)`
+  display: flex;
   margin-left: 16px;
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     margin-bottom: 16px;
@@ -42,7 +43,12 @@ export const TournamentRegistrationProgress: FC<TournamentRegistrationProgressPr
         <ParticipantsProgress variant="determinate" value={Math.max((100 / max_teams) * teams, 0.001)}/>
       )}
       <TournamentRegistrationProgressTeams>
-        {`${teams || 0}/${max_teams}`} {t('tournamenParticipants')}
+        <Typography>
+          {`${teams || 0}/${max_teams}`}
+        </Typography>
+        <Typography ml={1}>
+          {t('tournamenParticipants')}
+        </Typography>
       </TournamentRegistrationProgressTeams>
     </TournamentRegistrationProgressContainer>
   );

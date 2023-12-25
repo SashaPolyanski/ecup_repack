@@ -39,6 +39,7 @@ export const TournamentStepper: FC<TournamentStepperProps> = ({schedule}) => {
       },
     ];
   }, [] as StepType[]) || [];
+  console.log(steps)
 
   return (
     <WrapperBoxSteps>
