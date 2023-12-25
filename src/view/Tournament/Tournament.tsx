@@ -9,15 +9,14 @@ import {TournamentStream} from "./TournamentStream";
 import {withTournamentPk, withTournamentPkProps} from "@/hocs/withTournamentPk";
 import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
 import styled from "@emotion/styled";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
+import {TournamentRules} from "@view/Tournament/TournamentRules";
 
 type TournamentProps = WithGamePkProps & withTournamentPkProps
 const TournamentName = styled(Typography)`
-  @media (max-width: ${MEDIA_QUERY_SM}px) {
-    text-align: center;
-  }`
+  text-align: center;
+`
 
-const tournamentsComponents = [TournamentsInfo, TournamentsInfo, TournamentStream, TournamentsInfo]
+const tournamentsComponents = [TournamentsInfo, TournamentsInfo, TournamentStream, TournamentsInfo, TournamentRules]
 export const TournamentComponent: FC<TournamentProps> = ({tournamentPk, gamePk}) => {
   const [tabValue, setTabValue] = useState(0)
   const {data} = useQuery<TournamentReadOnly>({
@@ -27,7 +26,7 @@ export const TournamentComponent: FC<TournamentProps> = ({tournamentPk, gamePk})
   return (
     !data ? <Preloader/> : <>
       <Banner bannerImage={data?.avatar?.file}/>
-      <Box px={1}>
+      <Box px={1} pb={5}>
         <TournamentName fontSize={30} my={2}>
           {data?.name}
         </TournamentName>

@@ -51,7 +51,7 @@
     "registration": "S'inscrire",
     "forgotPassword": "Mot de passe oublié?",
     "dontHaveAccount": "Vous n'avez pas de compte?",
-    "goToRegistration": "Aller à l'inscription",
+    "goToRegistration": "Aller à l'enregistrement",
     "email": "E-mail",
     "password": "Mot de passe",
     "userName": "Nom d'utilisateur",
@@ -92,6 +92,16 @@
     "TournamenRegistration": "Inscription dans le tournoi",
     "TournamenRegistrationDesc": "L'inscription est ouverte. Vous pouvez rejoindre le tournoi",
     "tournamenRegistrationBtn": "Inscription",
-    "tournamenParticipants": "Participants"
+    "tournamenParticipants": "Participants",
+    "rules": "Règles",
+    "infoTab": "Une formation",
+    "prizeTab": "Prix",
+    "contactsTab": "Contacts",
+    "desc": "Description",
+    "dateAndTime": "Date et l'heure",
+    "format": "Format",
+    "generalInfo": "Informations générales sur le tournoi",
+    "prizeInfo": "Le (s) prix (s) qui peut être les Belieers est limité au forfait de travail pour un\n                  Gagnant. Les prix ne sont pas soumis à la transmission et ne peuvent pas être remplacés par d'autres prix. Quand\n                  L'absence de prix abordable, à leur discrétion, les sponsors se réservent le droit de remplacer\n                  Prix ​​égal / plus élevé. Toutes les taxes, conseils et dépenses non garanties sont exceptionnelles\n                  Responsabilité du gagnant. Les gagnants sont tous bénéficiaires de l'utilisation de leurs prix.",
+    "sendMessage": "Si vous avez des questions ou des arer confrontés à des problèmes, écrivez\r\nnous:"
   }
 }

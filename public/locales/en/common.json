@@ -45,5 +45,15 @@
   "TournamenRegistration": "Registration in the tournament",
   "TournamenRegistrationDesc": "Registration is open. You can join the tournament",
   "tournamenRegistrationBtn": "Registration",
-  "tournamenParticipants": "Participants"
+  "tournamenParticipants": "Participants",
+  "rules": "Rules",
+  "infoTab": "A formation",
+  "prizeTab": "Prizes",
+  "contactsTab": "Contacts",
+  "desc": "Description",
+  "dateAndTime": "Date and time",
+  "format": "Format",
+  "generalInfo": "General information on the tournament",
+  "prizeInfo": "Prize (s) that can be handed to the winners are limited to one prize package per one\n                  winner. Prizes are not subject to transmission and cannot be replaced by other prizes. When\n                  lack of an affordable prize, at their discretion, sponsors reserve the right to replace\n                  Prize equal/larger cost. All taxes, tips and unsecured expenses are exceptional\n                  responsibility of the winner. Winners are all responsible for using their prizes.",
+  "sendMessage": "If you have questions or you are faced with problems, write\r\nus:"
 }
