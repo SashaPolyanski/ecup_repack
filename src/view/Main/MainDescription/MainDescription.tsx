@@ -1,4 +1,4 @@
-import {FC, useMemo} from 'react'
+import {useMemo} from 'react'
 import {useTranslation} from "react-i18next";
 import descImage from '@assets/homeImage.webp'
 import styled from "@emotion/styled";
@@ -6,7 +6,6 @@ import {MainDescriptionText} from "./MainDescriptionText";
 import {Box} from "@mui/material";
 import {MEDIA_QUERY_LG} from "@/constants/breackpoints";
 
-type MainDescriptionProps = {}
 const ImageContainer = styled(Box)`
   height: 100%;
   width: 100%;
@@ -35,7 +34,7 @@ const MainDescriptionContainer = styled(Box)`
   align-items: center;
   margin-top: 50px;
 `
-export const MainDescription: FC<MainDescriptionProps> = ({}) => {
+export const MainDescription = () => {
   const {t} = useTranslation('common')
   const descriptionItems = useMemo(() => {
     return [

@@ -5,7 +5,7 @@ import {transientOptions} from "@utils";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 type BannerProps = {
-  bannerImane?: string
+  bannerImage?: string
 }
 const BannerContainer = styled(Box, transientOptions)<{ $backgroundImage?: string }>`
   width: 100%;
@@ -18,6 +18,6 @@ const BannerContainer = styled(Box, transientOptions)<{ $backgroundImage?: strin
     height: 350px;
   }
 `
-export const Banner: FC<BannerProps> = ({bannerImane}) => {
-  return <BannerContainer $backgroundImage={bannerImane}/>
+export const Banner: FC<BannerProps> = ({bannerImage}) => {
+  return <BannerContainer $backgroundImage={bannerImage}/>
 };

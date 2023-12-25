@@ -1,23 +1,26 @@
 import {useQuery} from "@/api/hooks/useQuery";
-import {useParams} from "react-router-dom";
 import {GameReadOnly, PaginatedTournamentReadOnlyList} from "@/api/types";
 import {Box} from "@mui/material";
 import {TournamentCard} from "@view/Game/TournamentCard";
 import {Banner} from "@shared";
 import styled from "@emotion/styled";
+import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk.tsx";
+import {FC} from "react";
 
 const GameContainer = styled(Box)`
   width: 100%;`
-export const Game = () => {
-  const {gameId} = useParams()
-  const {data} = useQuery<PaginatedTournamentReadOnlyList>({path: `/games/${gameId}/tournaments`, skip: !!gameId})
-  const {data: gameData} = useQuery<GameReadOnly>({path: `/games/${gameId}`, skip: !!gameId})
+export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
+  const {data} = useQuery<PaginatedTournamentReadOnlyList>({path: `/games/${gamePk}/tournaments/`, skip: !!gamePk})
+  const {data: gameData} = useQuery<GameReadOnly>({path: `/games/${gamePk}/`, skip: !!gamePk})
   return (
     <GameContainer>
-      <Banner bannerImane={gameData?.header?.file}/>
+      <Banner bannerImage={gameData?.header?.file}/>
       <Box>
         {data?.results?.map(m => <TournamentCard tournament={m}/>)}
       </Box>
     </GameContainer>
   );
 };
+
+
+export const Game = withGamePk()(GameComponent)

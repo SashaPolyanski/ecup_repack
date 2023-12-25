@@ -60,7 +60,7 @@ export const MobileHeaderContent: FC<MobileHeaderContentProps> = ({onClose, open
   const theme = useTheme()
   const navigate = useNavigate()
   const {t} = useTranslation()
-  const {data} = useQuery<PaginatedGameReadOnlyList>({path: '/games'})
+  const {data} = useQuery<PaginatedGameReadOnlyList>({path: '/games/'})
   const [collapsedItems, setCollapsedItems] = useState(false)
   const modifyData = data?.results?.reduce((acc, cur, i) => {
     if (i < 1) {

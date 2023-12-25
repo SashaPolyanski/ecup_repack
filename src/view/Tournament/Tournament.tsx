@@ -1,23 +1,26 @@
 import {FC, useState} from 'react'
 import {useQuery} from "@/api/hooks/useQuery";
-import {useParams} from "react-router-dom";
 import {Banner, Preloader} from "@shared";
 import {TournamentReadOnly} from "@/api/types";
 import {Typography} from "@mui/material";
 import {TournamentTabs} from "./TournamentTabs";
 import {TournamentsInfo} from "./TournamentInfo";
 import {TournamentStream} from "./TournamentStream";
+import {withTournamentPk, withTournamentPkProps} from "@/hocs/withTournamentPk";
+import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
 
-type TournamentProps = {}
+type TournamentProps = WithGamePkProps & withTournamentPkProps
+
 const tournamentsComponents = [TournamentsInfo, TournamentsInfo, TournamentStream, TournamentsInfo]
-export const Tournament: FC<TournamentProps> = ({}) => {
+export const TournamentComponent: FC<TournamentProps> = ({tournamentPk, gamePk}) => {
   const [tabValue, setTabValue] = useState(0)
-  const {gameId, id} = useParams()
-  const {data} = useQuery<TournamentReadOnly>({path: `/games/${gameId}/tournaments/${id}`})
+  const {data} = useQuery<TournamentReadOnly>({
+    path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
+  })
   const TournamentComponent = tournamentsComponents[tabValue]
   return (
     !data ? <Preloader/> : <>
-      <Banner bannerImane={data?.avatar?.file}/>
+      <Banner bannerImage={data?.avatar?.file}/>
       <Typography fontSize={30} my={2}>
         {data?.name}
       </Typography>
@@ -26,3 +29,4 @@ export const Tournament: FC<TournamentProps> = ({}) => {
     </>
   );
 };
+export const Tournament = withTournamentPk()(withGamePk()(TournamentComponent))

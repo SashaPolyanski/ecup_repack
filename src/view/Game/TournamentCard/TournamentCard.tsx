@@ -7,8 +7,9 @@ import {TournamentEnd} from "./TournamentEnd";
 import {TournamentTitle} from "./TournamentTitle";
 import {TournamentRegistrationProgress} from "./TournamentRegistrationProgress";
 import {TournamentRegistrationButton} from "./TournamentRegistrationButton";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {games} from "@constants";
+import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk.tsx";
 
 type TournamentCardProps = {
   tournament: TournamentReadOnly
@@ -29,14 +30,11 @@ const TournamentCardContent = styled(Box)`
   justify-content: center;
 `
 
-export const TournamentCard: FC<TournamentCardProps> = ({tournament}) => {
-  const {name, teams, max_teams, start_at, type, description, real_money, game, id} = tournament
+export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> = ({tournament, gamePk}) => {
+  const {name, teams, max_teams, start_at, type, description, prizes, game, id} = tournament
   const navigate = useNavigate()
-  const {gameId} = useParams()
   const navigateToTournament = () => {
-    if (gameId) {
-      navigate(games.tournament.replace(':gameId', gameId).replace(':id', id.toString()))
-    }
+    navigate(games.tournament.replace(':gameId', gamePk.toString()).replace(':id', id.toString()))
   }
   // TODO потом сделать нормальную карточку
   return (
@@ -46,8 +44,10 @@ export const TournamentCard: FC<TournamentCardProps> = ({tournament}) => {
         <TournamentEnd start_at={start_at}/>
         <TournamentTitle name={name} type={type} description={description}/>
         <TournamentRegistrationProgress teams={teams.length} max_teams={max_teams}/>
-        <TournamentRegistrationButton real_money={real_money}/>
+        <TournamentRegistrationButton prizes={prizes}/>
       </TournamentCardContent>
     </TournamentCardContainer>
   );
 };
+
+export const TournamentCard = withGamePk()(TournamentCardComponent)

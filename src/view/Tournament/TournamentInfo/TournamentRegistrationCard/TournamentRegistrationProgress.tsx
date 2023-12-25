@@ -20,9 +20,11 @@ export const TournamentRegistrationProgress: FC<TournamentRegistrationProgressPr
   const {t} = useTranslation('common')
   return (
     <Box sx={{width: '90%'}} display={'flex'} alignItems={'center'} mt={1} mb={3}>
-      {max_teams && teams && <ParticipantsProgress variant="determinate" value={(100 / max_teams) * teams}/>}
+      {max_teams && teams !== undefined && (
+        <ParticipantsProgress variant="determinate" value={Math.max((100 / max_teams) * teams, 0.001)}/>
+      )}
       <Typography ml={2}>
-        {`${teams}/${max_teams}`} {t('tournamenParticipants')}
+        {`${teams || 0}/${max_teams}`} {t('tournamenParticipants')}
       </Typography>
     </Box>
   );

@@ -1,27 +1,41 @@
 import {FC} from 'react'
-import {Button} from "@shared";
-import {useTranslation} from "react-i18next";
 import {useIsAuthStore} from "@/Zustand/isAuthStore";
-import {useParams} from "react-router-dom";
 import {useQuery} from "@/api/hooks/useQuery";
-import {TournamentReadOnly} from "@/api/types";
+import {PaginatedTournamentTeamReadOnlyList, TournamentReadOnly} from "@/api/types";
+import {withTournamentPk, withTournamentPkProps} from "@/hocs/withTournamentPk";
+import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
+import {TournamentButton} from "./TournamentButton";
+import {useUserStore} from "@/Zustand/userStore.ts";
 
-type TournamentRegistrationButtonProps = {}
-
-export const TournamentRegistrationButton: FC<TournamentRegistrationButtonProps> = ({}) => {
-  const {t} = useTranslation('common')
+type TournamentRegistrationButtonProps = WithGamePkProps & withTournamentPkProps
+export type Conditions = {
+  isAuth: boolean
+  confirm: boolean
+  start: boolean
+  inTournament: boolean
+} | undefined
+export const TournamentRegistrationButtonComponents: FC<TournamentRegistrationButtonProps> = ({
+                                                                                                tournamentPk,
+                                                                                                gamePk
+                                                                                              }) => {
   const {isAuth} = useIsAuthStore()
-  const {gameId, id} = useParams()
-  const {data} = useQuery<TournamentReadOnly>({path: `/games/${gameId}/tournaments/${id}`})
+  const {user} = useUserStore()
+  const {data} = useQuery<TournamentReadOnly>({
+    path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
+  })
+  const {data: userInTournament} = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`})
   const date = new Date()
-  if (data) {
-    const conditions = [isAuth, date > new Date(data?.schedule[1]) && date < new Date(data?.schedule[2])]
-    console.log(conditions)
+  const conditions: Conditions = data && {
+    isAuth,
+
+    inTournament: !!userInTournament?.results?.length
   }
 
   return (
     <div>
-      <Button variant={'outlined'}>{t('tournamenRegistrationBtn')}</Button>
+      <TournamentButton conditions={conditions}/>
     </div>
   );
 };
+
+export const TournamentRegistrationButton = withTournamentPk()(withGamePk()(TournamentRegistrationButtonComponents))

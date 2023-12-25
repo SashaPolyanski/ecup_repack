@@ -11,3 +11,6 @@ export type LanguageEnum = components['schemas']['LanguageEnum'];
 export type PaginatedTournamentReadOnlyList = components['schemas']['PaginatedTournamentReadOnlyList'];
 export type TournamentReadOnly = components['schemas']['TournamentReadOnly'];
 export type AttachmentCreate = components['schemas']['AttachmentCreate'];
+export type PaginatedTournamentTeamReadOnlyList = components['schemas']['PaginatedTournamentTeamReadOnlyList'];
+export type TournamentTeamCreate = components['schemas']['TournamentTeamCreate'];
+export type PaginatedTeamReadOnlyList = components['schemas']['PaginatedTeamReadOnlyList'];

@@ -53,7 +53,7 @@ const renderNavbarItems = (items?: GameReadOnly[], collapsed?: boolean, navigate
 export const SidebarItems: FC<SidebarItemsProps> = ({collapsed}) => {
   const theme = useTheme()
   const navigate = useNavigate()
-  const {data} = useQuery<PaginatedGameReadOnlyList>({path: '/games'})
+  const {data} = useQuery<PaginatedGameReadOnlyList>({path: '/games/'})
   const location = useLocation()
   const match = location.pathname.match(/\/game\/\d+/);
   const gameId = match && match[0].split('/').pop();

@@ -1,10 +1,11 @@
-import {useParams} from "react-router-dom";
 import {useQuery} from "@/api/hooks/useQuery";
 import {TournamentReadOnly} from "@/api/types";
+import {withTournamentPk, withTournamentPkProps} from "@/hocs/withTournamentPk";
+import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
+import {FC} from "react";
 
-export const TournamentStream = () => {
-  const {gameId, id} = useParams()
-  const {data} = useQuery<TournamentReadOnly>({path: `/games/${gameId}/tournaments/${id}`})
+export const TournamentStreamComponent: FC<withTournamentPkProps & WithGamePkProps> = ({tournamentPk, gamePk}) => {
+  const {data} = useQuery<TournamentReadOnly>({path: `/games/${gamePk}/tournaments/${tournamentPk}/`})
   return (
     <iframe
       allowFullScreen
@@ -15,3 +16,4 @@ export const TournamentStream = () => {
     />
   );
 };
+export const TournamentStream = withTournamentPk()(withGamePk()(TournamentStreamComponent))

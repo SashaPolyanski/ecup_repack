@@ -16,7 +16,7 @@ type GetQueryType = {
 const baseUrl = import.meta.env.VITE_PUBLIC_API_PATH
 export const getQuery = async <T, >({path, token}: GetQueryType) => {
 
-  const endpoint = `${baseUrl}${path}/`;
+  const endpoint = `${baseUrl}${path}`;
   const res = await fetch(endpoint, {
     headers: token ? getHeaders() : undefined,
   });

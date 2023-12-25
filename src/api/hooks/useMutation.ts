@@ -40,12 +40,11 @@ export const useMutation = <T, D>(config: MutationType) => {
     mutateAsync: mutate, isPending: loading, data, error, status,
   } = useReactQuery({
     mutationFn: (args: T) => fetcher<T>({path, method, args, token}),
-    mutationKey: [queryKeyRefetch],
     onError: (error) => {
       console.log(error)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: queryKeyRefetch});
+      queryKeyRefetch?.forEach(f => queryClient.invalidateQueries({queryKey: [f]}))
     },
   });
   return {

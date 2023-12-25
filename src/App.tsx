@@ -20,7 +20,7 @@ export const App = () => {
 
   const {mutate: verify} = useMutation({path: '/auth/token/verify', method: 'POST'})
   const {mutate: refresh} = useMutation({path: '/auth/token/refresh', method: 'POST'})
-  const {data} = useQuery<User>({path: '/auth/user', skip: isAuth, token: true})
+  const {data} = useQuery<User>({path: '/auth/user/', skip: isAuth, token: true})
   useEffect(() => {
     if (data) {
       data && setUser(data)

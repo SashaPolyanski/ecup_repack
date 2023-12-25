@@ -398,7 +398,7 @@ export interface components {
       periods: components["schemas"]["PeriodReadOnly"][];
     };
     /** @enum {string} */
-    MimeTypeEnum: "image/png" | "image/svg+xml" | "image/jpg" | "image/jpeg";
+    MimeTypeEnum: "image/png" | "image/svg+xml" | "image/jpg" | "image/jpeg" | "image/webp";
     /** @enum {unknown} */
     NullEnum: "";
     PaginatedAttachmentGroupReadOnlyList: {
@@ -641,8 +641,9 @@ export interface components {
       type: components["schemas"]["TournamentReadOnlyTypeEnum"];
       teams_in_match: number;
       winners_in_match_count: number;
-      real_money: number[];
-      virtual_money: number[];
+      prizes: {
+        [key: string]: unknown;
+      };
       description: string | null;
       rules: string | null;
       /** Format: date-time */
@@ -650,10 +651,12 @@ export interface components {
       max_teams: number;
       min_teams: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
-      stage_schedule: string[];
-      stage_schedule_names: string[];
-      schedule: string[];
-      schedule_names: string[];
+      stage_schedule: {
+          [key: string]: unknown;
+        }[];
+      schedule: {
+          [key: string]: unknown;
+        }[];
       stage_formats: number[];
       teams_by_place: components["schemas"]["ScoreMatch"][];
       stream_url: string | null;
