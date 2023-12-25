@@ -17,7 +17,7 @@ const TournamentTabInfoPrizeComponentContainer = styled(Box)`
   border: 1px solid #4A5568;
   border-top: none;
   padding-left: 20px;
-  width: 72.2%;
+  width: 100%;
   margin-bottom: 40px;
   padding-bottom: 30px;
 `
@@ -50,6 +50,9 @@ const ItemContainer = styled(Box)`
   padding-bottom: 20px;
   @media (max-width: ${MEDIA_QUERY_XL}px) {
     width: calc(33.33% - 16px);
+  }
+  @media (max-width: ${MEDIA_QUERY_MD}px) {
+    width: calc(50% - 16px);
   }
 `;
 export const OverviewTabPrizesDescr = styled(Typography)`

@@ -1,16 +1,18 @@
 import {FC, useState} from 'react'
-import {Box, Tab, Tabs} from "@mui/material";
+import {Box, Tab, Tabs, useMediaQuery} from "@mui/material";
 import styled from "@emotion/styled";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
-import {MEDIA_QUERY_LG, MEDIA_QUERY_MD, MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import {TournamentTabInfo} from "./TournamentTabInfo";
 import {TournamentInfoRules} from "./TournamentInfoRules";
 import {TournamentInfoPrize} from "./TournamentInfoPrize";
 import {TournamentInfoContact} from "./TournamentInfoContact";
+import {MEDIA_QUERY_LG} from "@/constants/breackpoints.ts";
 
 type TournamentRulesProps = {}
 export const OverviewDetailsTab = styled(Tabs)`
+  width: 100% !important;;
+
   .MuiTab-root {
     text-transform: capitalize;
     font-size: 18px;
@@ -18,18 +20,7 @@ export const OverviewDetailsTab = styled(Tabs)`
     line-height: 27px;
     color: #fff;
     border-bottom: 1px solid #4A5568;
-    width: 250px;
-    @media (max-width: ${MEDIA_QUERY_LG}px) {
-      width: 151px;
-    }
-    @media (max-width: ${MEDIA_QUERY_MD}px) {
-      width: 113px;
-      font-size: 16px;
-    }
-    @media (max-width: ${MEDIA_QUERY_SM}px) {
-      width: 90px;
-      font-size: 14px;
-    }
+
   }
 
   .Mui-selected {
@@ -50,21 +41,23 @@ const tabContent = [TournamentTabInfo, TournamentInfoRules, TournamentInfoPrize,
 export const TournamentRules: FC<TournamentRulesProps> = ({}) => {
   const {t} = useTranslation('common')
   const [tabValue, setTabValue] = useState(0)
+  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_LG}px)`)
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
   const Component = tabContent[tabValue]
   return (
     <Box mt={2} display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}
+         sx={{width: '100%'}}
     >
       <OverviewDetailsTab value={tabValue}
+                          variant={isSmallScreen ? 'scrollable' : "fullWidth"}
                           TabIndicatorProps={{
                             style: {
                               backgroundColor: '#171C26',
                             },
                           }}
                           onChange={handleChange}
-                          variant="scrollable"
                           scrollButtons="auto">
         {tabs(t).map(({value, label, id}) => <Tab label={label} key={id} value={value}/>)}
       </OverviewDetailsTab>

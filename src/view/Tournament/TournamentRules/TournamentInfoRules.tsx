@@ -13,7 +13,7 @@ const TournamentTabInfoRulesComponentContainer = styled(Box)`
   border: 1px solid #4A5568;
   border-top: none;
   padding-left: 20px;
-  width: 72.2%;
+  width: 100%;
   margin-bottom: 40px;
   padding-bottom: 30px;
 `

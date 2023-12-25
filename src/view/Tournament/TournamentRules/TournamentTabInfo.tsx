@@ -17,7 +17,7 @@ const TournamentTabInfoComponentContainer = styled(Box)`
   border: 1px solid #4A5568;
   border-top: none;
   padding-left: 20px;
-  width: 72.2%;
+  width: 100%;
 `
 export const TournamentTabInfoComponent: FC<TournamentTabInfoProps> = ({tournamentPk, gamePk}) => {
   const {data} = useQuery<TournamentReadOnly>({

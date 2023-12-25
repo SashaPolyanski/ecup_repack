@@ -9,7 +9,7 @@ const TournamentTabInfoPrizeComponentContainer = styled(Box)`
   border: 1px solid #4A5568;
   border-top: none;
   padding-left: 20px;
-  width: 72.2%;
+  width: 100%;
   margin-bottom: 40px;
   padding-bottom: 30px;
 `
@@ -31,11 +31,9 @@ export const OverviewTabContactButton = styled(Link)`
   @media (max-width: ${MEDIA_QUERY_MD}px) {
     font-size: 14px;
     height: 40px;
-    padding: 0px 20px;
   }
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     height: 35px;
-    padding: 0px 15px;
   }
 `;
 export const TournamentInfoContact = () => {
