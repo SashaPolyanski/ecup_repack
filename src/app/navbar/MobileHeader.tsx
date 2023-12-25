@@ -10,6 +10,8 @@ import {LanguageSwitcher, ThemeSwitcher} from "@shared";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import {useIsAuthStore} from "@/Zustand/isAuthStore";
 import {IsAuthHeader} from "@/app/navbar/isAuthHeader";
+import {main} from "@constants";
+import {useNavigate} from "react-router-dom";
 
 const NavbarContainer = styled(Box)`
   background-color: ${({theme}) => theme.backgrounds.sidebarBackground};
@@ -29,13 +31,17 @@ const NavbarContent = styled(Stack)`
 export const MobileHeader = () => {
   const theme = useTheme()
   const {isAuth} = useIsAuthStore()
+  const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false)
   const showCollapsedGames = useCallback(() => {
     setCollapsed((p) => !p)
   }, [])
+  const navigateToHomePage = () => {
+    navigate(main.mainRoot)
+  }
   return (
     <NavbarContainer>
-      <Box><EcupLogo/></Box>
+      <Box><EcupLogo onClick={navigateToHomePage}/></Box>
       <NavbarContent>
         <Box display={'flex'} alignItems={'center'}>
           {isAuth ? <IsAuthHeader/> : <NoAuthHeader/>}
