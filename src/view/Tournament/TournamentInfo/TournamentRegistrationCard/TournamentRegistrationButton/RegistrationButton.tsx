@@ -28,6 +28,7 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({tournamentPk, game
 
   }
 
-  return <Button loading={loading} onClick={registerInTournamentHandler}>{t('tournamenRegistrationBtn')}</Button>
+  return <Button loading={loading} variant={'outlined'}
+                 onClick={registerInTournamentHandler}>{t('tournamenRegistrationBtn')}</Button>
 }
 export const RegistrationButton = withTournamentPk()(withGamePk()(RegistrationButtonComponent))

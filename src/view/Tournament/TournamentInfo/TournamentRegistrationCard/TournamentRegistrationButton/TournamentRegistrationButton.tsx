@@ -32,9 +32,7 @@ export const TournamentRegistrationButtonComponents: FC<TournamentRegistrationBu
   }
 
   return (
-    <div>
-      <TournamentButton conditions={conditions}/>
-    </div>
+    <TournamentButton conditions={conditions}/>
   );
 };
 

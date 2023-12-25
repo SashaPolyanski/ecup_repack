@@ -16,7 +16,7 @@ export const TournamentPrizeItem: FC<TournamentPrizeItemProps> = ({icon, place, 
       <Box my={1}>{place}</Box>
       <Box>{icon}</Box>
       <Box my={!icon ? 3 : 1}>{`${t('rubles')} ${moneys ? moneys : 0}`}</Box>
-      <Box>{`${t('coins')} ${coins}`}</Box>
+      <Box>{`${t('coins')} ${coins ? coins : 0}`}</Box>
     </>
   );
 };

@@ -13,6 +13,10 @@ export const GlobalStyles: React.FC = () => {
           background: transparent;
         }
 
+        * {
+          box-sizing: border-box;
+        }
+
         ::-webkit-scrollbar-thumb {
           border-radius: 5px;
         }
@@ -33,7 +37,6 @@ export const GlobalStyles: React.FC = () => {
           color: ${theme.palette.text.primary};
         }
 
-        box-sizing: border-box;
 
         a {
           text-decoration: none;

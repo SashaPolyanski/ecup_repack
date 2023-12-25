@@ -9,12 +9,13 @@ import {TournamentReadOnly} from "@/api/types";
 import {withTournamentPk, withTournamentPkProps} from "@/hocs/withTournamentPk";
 import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
 import {TournamentPrizeItem} from "./TournamentPrizeItem";
+import {MEDIA_QUERY_XL} from "@/constants/breackpoints.ts";
 
 type TournamentsPrizeProps = WithGamePkProps & withTournamentPkProps;
 
 const ItemContainer = styled(Box)`
   width: calc(33.33% - 40px);
-  height: 120px;
+  height: 130px;
   background-color: #252a40;
   border-radius: 16px;
   margin: 8px;
@@ -22,8 +23,20 @@ const ItemContainer = styled(Box)`
   flex-direction: column;
   align-items: center;
   padding-bottom: 20px;
+  @media (max-width: ${MEDIA_QUERY_XL}px) {
+    width: calc(33.33% - 16px);
+  }
 `;
-
+const TournamentsPrizeContainer = styled(Box)`
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  flex-wrap: wrap;
+  @media (max-width: ${MEDIA_QUERY_XL}px) {
+    width: 100%;
+    margin-top: 30px;
+  }
+`
 export const TournamentsPrizeComponent: FC<TournamentsPrizeProps> = ({tournamentPk, gamePk}) => {
   const {data} = useQuery<TournamentReadOnly>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
@@ -40,13 +53,13 @@ export const TournamentsPrizeComponent: FC<TournamentsPrizeProps> = ({tournament
   ];
 
   return (
-    <Box justifyContent={'center'} sx={{width: '50%'}} display={'flex'} flexWrap={'wrap'}>
+    <TournamentsPrizeContainer>
       {prizeItems.map(({place, coins, moneys, icon, id}) => (
         <ItemContainer key={id}>
           <TournamentPrizeItem icon={icon} place={place} moneys={moneys} coins={coins}/>
         </ItemContainer>
       ))}
-    </Box>
+    </TournamentsPrizeContainer>
   );
 };
 

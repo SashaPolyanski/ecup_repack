@@ -2,6 +2,7 @@ import {FC} from 'react'
 import {Box, LinearProgress, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import {useTranslation} from "react-i18next";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 type TournamentRegistrationProgressProps = {
   max_teams?: number
@@ -16,16 +17,32 @@ const ParticipantsProgress = styled(LinearProgress)`
     background-color: #50d8d7
   }
 `;
+const TournamentRegistrationProgressContainer = styled(Box)`
+  width: 90%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    margin-left: 0;
+    margin-top: 20px;
+    flex-direction: column-reverse;
+  }`
+const TournamentRegistrationProgressTeams = styled(Typography)`
+  margin-left: 16px;
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    margin-bottom: 16px;
+  }
+`
 export const TournamentRegistrationProgress: FC<TournamentRegistrationProgressProps> = ({max_teams, teams}) => {
   const {t} = useTranslation('common')
   return (
-    <Box sx={{width: '90%'}} display={'flex'} alignItems={'center'} mt={1} mb={3}>
+    <TournamentRegistrationProgressContainer>
       {max_teams && teams !== undefined && (
         <ParticipantsProgress variant="determinate" value={Math.max((100 / max_teams) * teams, 0.001)}/>
       )}
-      <Typography ml={2}>
+      <TournamentRegistrationProgressTeams>
         {`${teams || 0}/${max_teams}`} {t('tournamenParticipants')}
-      </Typography>
-    </Box>
+      </TournamentRegistrationProgressTeams>
+    </TournamentRegistrationProgressContainer>
   );
 };

@@ -9,12 +9,12 @@ export const WrapperBoxSteps = styled(Box)`
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   position: relative;
   width: 100%;
-  @media (max-width: ${MEDIA_QUERY_SM}) {
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;
     padding-left: 20px;
   }
-  @media (max-width: ${MEDIA_QUERY_LG}) {
+  @media (max-width: ${MEDIA_QUERY_LG}px) {
     padding-right: 0px;
   }
 `;
@@ -47,11 +47,11 @@ export const StepsBox = styled(Box, transientOptions)<{ $completed?: boolean; }>
     border-bottom: ${({$completed}) => ($completed ? '3px solid #69b6d5' : '3px solid #718096')};
   }
 
-  @media (max-width: ${MEDIA_QUERY_MD}) {
+  @media (max-width: ${MEDIA_QUERY_MD}px) {
     margin-right: 15px;
     justify-content: flex-start;
   }
-  @media (max-width: ${MEDIA_QUERY_SM}) {
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
     margin-right: 0px;
     min-height: 100px;
     &:before {
@@ -75,7 +75,7 @@ export const StepsDescrTitle = styled(Typography, transientOptions)<{ $completed
   line-height: 27px;
   font-weight: 500;
   color: ${({$completed}) => ($completed ? '#F5F5F5' : '#718096')};
-  @media (max-width: ${MEDIA_QUERY_MD}) {
+  @media (max-width: ${MEDIA_QUERY_MD}px) {
     font-size: 14px;
   }
 `;
@@ -85,11 +85,11 @@ export const StepsDescrSubTitle = styled(Typography, transientOptions)<{ $comple
   line-height: 24px;
   color: ${({$completed}) => ($completed ? '#CBD5E0' : '#718096')};
   margin-bottom: 25px;
-  @media (max-width: ${MEDIA_QUERY_MD}) {
+  @media (max-width: ${MEDIA_QUERY_MD}px) {
     font-size: 14px;
 
   }
-  @media (max-width: ${MEDIA_QUERY_SM}) {
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
     margin-bottom: 0px;
   }
 `;
