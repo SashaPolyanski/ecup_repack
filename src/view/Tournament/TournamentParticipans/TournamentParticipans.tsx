@@ -110,7 +110,7 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
       </ParticipantsTableRow>
     ))
 
-  }, [data, page, rowsPerPage, isLoading]);
+  }, [data, rowsPerPage, isLoading]);
 
   return (
     <ParticipantsTableContainer>
