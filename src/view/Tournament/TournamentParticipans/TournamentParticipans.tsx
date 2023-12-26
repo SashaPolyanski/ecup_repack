@@ -22,6 +22,7 @@ import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import {useTranslation} from "react-i18next";
 import ClearIcon from '@mui/icons-material/Clear';
 import DoneIcon from '@mui/icons-material/Done';
+import {Preloader} from "@shared";
 
 type TournamentParticipantsProps = WithGamePkProps & withTournamentPkProps;
 type HeaderType = {
@@ -66,7 +67,7 @@ const ParticipantsTableCella = styled(TableCell)`
 const columnNames: HeaderType[] = [{value: 'Players', placement: 'left'}, {value: 'hui', placement: 'right'}];
 
 export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = ({tournamentPk, gamePk}) => {
-  const {data} = useQuery<PaginatedTournamentTeamReadOnlyList>({
+  const {data, isLoading} = useQuery<PaginatedTournamentTeamReadOnlyList>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?limit=1000`,
   });
   const {t} = useTranslation('common')
@@ -87,22 +88,25 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
     const startIndex = page * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
 
-    return (
-      data?.results?.slice(startIndex, endIndex).map((rowData, rowIndex) => (
-        <ParticipantsTableRow key={rowIndex} hover>
-          <ParticipantsTableCell align="left" key={`id-${rowIndex}`}>
-            <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
-          </ParticipantsTableCell>
-          <ParticipantsTableCell align="left" key={`name-${rowIndex}`}>
-            {rowData.team.name}
-          </ParticipantsTableCell>
-          <ParticipantsTableCell align="right" key={`name-${rowIndex}`}>
-            {rowData.is_confirmed ? <DoneIcon htmlColor={'#3aaf3c'}/> : <ClearIcon htmlColor={'red'}/>}
-          </ParticipantsTableCell>
-        </ParticipantsTableRow>
-      ))
-    );
-  }, [data, page, rowsPerPage]);
+    return isLoading ? <Box
+      sx={{
+        height: '801px',
+        border: '1px solid #4a5568'
+      }}><Preloader/></Box> : data?.results?.slice(startIndex, endIndex).map((rowData, rowIndex) => (
+      <ParticipantsTableRow key={rowIndex} hover>
+        <ParticipantsTableCell align="left" key={`id-${rowIndex}`}>
+          <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
+        </ParticipantsTableCell>
+        <ParticipantsTableCell align="left" key={`name-${rowIndex}`}>
+          {rowData.team.name}
+        </ParticipantsTableCell>
+        <ParticipantsTableCell align="right" key={`name-${rowIndex}`}>
+          {rowData.is_confirmed ? <DoneIcon htmlColor={'#3aaf3c'}/> : <ClearIcon htmlColor={'red'}/>}
+        </ParticipantsTableCell>
+      </ParticipantsTableRow>
+    ))
+
+  }, [data, page, rowsPerPage, isLoading]);
 
   return (
     <ParticipantsTableContainer>
@@ -124,7 +128,6 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
       <Box>
         <Table style={{tableLayout: 'fixed'}} size="small">
           <TableBody>{columnValues}</TableBody>
-
         </Table>
         <Table style={{tableLayout: 'fixed'}} sx={{borderBottom: 'none'}}>
           <TableFooter sx={{borderBottom: 'none'}}>
@@ -137,6 +140,7 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 labelRowsPerPage={!isSmallScreen ? t('perPage') : t('quantity')}
+
                 sx={{
                   borderBottom: 'none',
                   '& .MuiButtonBase-root, & .MuiTablePagination-input, & .MuiSelect-root': {
