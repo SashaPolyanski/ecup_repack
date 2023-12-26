@@ -1,4 +1,4 @@
-import {FC, useMemo, useState} from 'react';
+import {FC, useMemo, useRef, useState} from 'react';
 import {withTournamentPk, withTournamentPkProps} from '@/hocs/withTournamentPk';
 import {withGamePk, WithGamePkProps} from '@/hocs/withGamePk';
 import {useQuery} from '@/api/hooks/useQuery';
@@ -67,8 +67,9 @@ const ParticipantsTableCella = styled(TableCell)`
 const columnNames: HeaderType[] = [{value: 'Players', placement: 'left'}, {value: 'hui', placement: 'right'}];
 
 export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = ({tournamentPk, gamePk}) => {
+  const [offset, setOffset] = useState(0)
   const {data, isLoading} = useQuery<PaginatedTournamentTeamReadOnlyList>({
-    path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?limit=1000`,
+    path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?limit=10&offset=${offset}`,
   });
   const {t} = useTranslation('common')
 
@@ -76,8 +77,13 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    if (data && data.count) {
+      countRef.current = data.count;
+    }
     setPage(newPage);
+    setOffset(() => newPage * rowsPerPage);
   };
+  const countRef = useRef(0);
 
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
@@ -85,14 +91,12 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
   };
   const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const columnValues = useMemo(() => {
-    const startIndex = page * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
 
     return isLoading ? <Box
       sx={{
-        height: '801px',
+        height: rowsPerPage === 10 ? '801px' : '401px',
         border: '1px solid #4a5568'
-      }}><Preloader/></Box> : data?.results?.slice(startIndex, endIndex).map((rowData, rowIndex) => (
+      }}><Preloader/></Box> : data?.results?.slice(0, rowsPerPage).map((rowData, rowIndex) => (
       <ParticipantsTableRow key={rowIndex} hover>
         <ParticipantsTableCell align="left" key={`id-${rowIndex}`}>
           <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
@@ -133,7 +137,7 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
           <TableFooter sx={{borderBottom: 'none'}}>
             <ParticipantsTableRow>
               <TablePagination
-                count={data?.results?.length || 0}
+                count={data?.count || countRef.current}
                 rowsPerPageOptions={[5, 10]}
                 rowsPerPage={rowsPerPage}
                 page={page}
