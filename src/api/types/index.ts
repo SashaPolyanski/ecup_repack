@@ -14,3 +14,4 @@ export type AttachmentCreate = components['schemas']['AttachmentCreate'];
 export type PaginatedTournamentTeamReadOnlyList = components['schemas']['PaginatedTournamentTeamReadOnlyList'];
 export type TournamentTeamCreate = components['schemas']['TournamentTeamCreate'];
 export type PaginatedTeamReadOnlyList = components['schemas']['PaginatedTeamReadOnlyList'];
+export type TeamReadOnly = components['schemas']['TeamReadOnly'];

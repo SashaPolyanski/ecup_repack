@@ -51,7 +51,7 @@
     "registration": "S'inscrire",
     "forgotPassword": "Mot de passe oublié?",
     "dontHaveAccount": "Vous n'avez pas de compte?",
-    "goToRegistration": "Aller à l'enregistrement",
+    "goToRegistration": "Aller à l'inscription",
     "email": "E-mail",
     "password": "Mot de passe",
     "userName": "Nom d'utilisateur",
@@ -65,9 +65,9 @@
     "menuGames": "Nos jeux",
     "amateurESport": "Amateur E-Sports",
     "league": "Ligue",
-    "weWillEsport": "Nous allons prendre des sports pour les amateurs au niveau supérieur.",
+    "weWillEsport": "Nous allons faire passer l'e-sport pour les amateurs au niveau supérieur.",
     "inYourFreeTime": "Rivaliser dans votre temps libre",
-    "inYourFreeTimeDesc": "Nous avons un grand nombre de tournois et vous pouvez vous amoser un moment de pacon pour vous-même.",
+    "inYourFreeTimeDesc": "Nous avons un grand nombre de tournois et vous pouvez vous amoser un moment de la fin pour vous-même.",
     "getPrizes": "Obtenir des prix",
     "getPrizesDesc": "Dans absolument tous les tournois, nous donnons des prix aux gagnants et aux participants.",
     "winAndStronger": "Gagner et devenir plus fort",
@@ -89,7 +89,7 @@
     "participants": "Participants",
     "streamTournament": "Boadcast du tournoi",
     "TournamentGrid": "Grille de tournoi",
-    "TournamenRegistration": "Inscription dans le tournoi",
+    "TournamenRegistration": "Enregistrement dans le tournoi",
     "TournamenRegistrationDesc": "L'inscription est ouverte. Vous pouvez rejoindre le tournoi",
     "tournamenRegistrationBtn": "Inscription",
     "tournamenParticipants": "Participants",
@@ -102,6 +102,8 @@
     "format": "Format",
     "generalInfo": "Informations générales sur le tournoi",
     "prizeInfo": "Le (s) prix (s) qui peut être les Belieers est limité au forfait de travail pour un\n                  Gagnant. Les prix ne sont pas soumis à la transmission et ne peuvent pas être remplacés par d'autres prix. Quand\n                  L'absence de prix abordable, à leur discrétion, les sponsors se réservent le droit de remplacer\n                  Prix ​​égal / plus élevé. Toutes les taxes, conseils et dépenses non garanties sont exceptionnelles\n                  Responsabilité du gagnant. Les gagnants sont tous bénéficiaires de l'utilisation de leurs prix.",
-    "sendMessage": "Si vous avez des questions ou des arer confrontés à des problèmes, écrivez\r\nnous:"
+    "sendMessage": "Si vous avez des questions ou des arer confrontés à des problèmes, écrivez\r\nnous:",
+    "quantity": "Quantité",
+    "perPage": "Lignes par page"
   }
 }
