@@ -71,11 +71,10 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
   const {data, isLoading} = useQuery<PaginatedTournamentTeamReadOnlyList>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?limit=10&offset=${offset}`,
   });
+  const countRef = useRef(0);
   const {t} = useTranslation('common')
-
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
   const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     if (data && data.count) {
       countRef.current = data.count;
@@ -83,28 +82,25 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
     setPage(newPage);
     setOffset(() => newPage * rowsPerPage);
   };
-  const countRef = useRef(0);
-
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
   const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const columnValues = useMemo(() => {
-
     return isLoading ? <Box
       sx={{
         height: rowsPerPage === 10 ? '801px' : '401px',
         border: '1px solid #4a5568'
-      }}><Preloader/></Box> : data?.results?.slice(0, rowsPerPage).map((rowData, rowIndex) => (
-      <ParticipantsTableRow key={rowIndex} hover>
-        <ParticipantsTableCell align="left" key={`id-${rowIndex}`}>
+      }}><Preloader/></Box> : data?.results?.slice(0, rowsPerPage).map((rowData) => (
+      <ParticipantsTableRow key={rowData.id} hover>
+        <ParticipantsTableCell align="left">
           <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
         </ParticipantsTableCell>
-        <ParticipantsTableCell align="left" key={`name-${rowIndex}`}>
+        <ParticipantsTableCell align="left">
           {rowData.team.name}
         </ParticipantsTableCell>
-        <ParticipantsTableCell align="right" key={`name-${rowIndex}`}>
+        <ParticipantsTableCell align="right">
           {rowData.is_confirmed ? <DoneIcon htmlColor={'#3aaf3c'}/> : <ClearIcon htmlColor={'red'}/>}
         </ParticipantsTableCell>
       </ParticipantsTableRow>
@@ -121,8 +117,8 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
               <PlayerIcon style={{marginTop: '10px'}}/>
             </ParticipantsTableCell>
             {columnNames &&
-              columnNames.map((column, index) => (
-                <ParticipantsTableCella key={index} align={column.placement}>
+              columnNames.map((column) => (
+                <ParticipantsTableCella key={column.value} align={column.placement}>
                   {column.value}
                 </ParticipantsTableCella>
               ))}
