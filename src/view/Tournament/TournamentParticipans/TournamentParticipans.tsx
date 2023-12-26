@@ -2,7 +2,7 @@ import {FC, useMemo, useState} from 'react';
 import {withTournamentPk, withTournamentPkProps} from '@/hocs/withTournamentPk';
 import {withGamePk, WithGamePkProps} from '@/hocs/withGamePk';
 import {useQuery} from '@/api/hooks/useQuery';
-import {TournamentReadOnly} from '@/api/types';
+import {PaginatedTournamentTeamReadOnlyList} from '@/api/types';
 import styled from '@emotion/styled';
 import PlayerIcon from '@assets/playerIcon.svg'
 import {
@@ -20,9 +20,14 @@ import {
 } from '@mui/material';
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import {useTranslation} from "react-i18next";
+import ClearIcon from '@mui/icons-material/Clear';
+import DoneIcon from '@mui/icons-material/Done';
 
 type TournamentParticipantsProps = WithGamePkProps & withTournamentPkProps;
-
+type HeaderType = {
+  value: string
+  placement: "left" | "right" | "center" | "inherit" | "justify" | undefined
+}
 const ParticipantsTableContainer = styled(TableContainer)`
   width: 100%;
   overflow: hidden;
@@ -42,19 +47,32 @@ const ParticipantsTableCell = styled(TableCell)`
     width: 70px;
   }
 
+
+`;
+const ParticipantsTableCella = styled(TableCell)`
+  border-bottom: none;
+
+  &:first-of-type {
+    width: 70px;
+  }
+
+  &:last-of-type {
+    width: 70px;
+  }
+
 `;
 
 
-const columnNames = [{value: 'Players'}];
+const columnNames: HeaderType[] = [{value: 'Players', placement: 'left'}, {value: 'hui', placement: 'right'}];
 
 export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = ({tournamentPk, gamePk}) => {
-  const {data} = useQuery<TournamentReadOnly>({
-    path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
+  const {data} = useQuery<PaginatedTournamentTeamReadOnlyList>({
+    path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?limit=1000`,
   });
   const {t} = useTranslation('common')
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
@@ -70,13 +88,16 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
     const endIndex = startIndex + rowsPerPage;
 
     return (
-      data?.teams.slice(startIndex, endIndex).map((rowData, rowIndex) => (
+      data?.results?.slice(startIndex, endIndex).map((rowData, rowIndex) => (
         <ParticipantsTableRow key={rowIndex} hover>
           <ParticipantsTableCell align="left" key={`id-${rowIndex}`}>
-            <Avatar sx={{marginRight: '20px'}} src={rowData?.avatar?.file}/>
+            <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
           </ParticipantsTableCell>
           <ParticipantsTableCell align="left" key={`name-${rowIndex}`}>
-            {rowData.name}
+            {rowData.team.name}
+          </ParticipantsTableCell>
+          <ParticipantsTableCell align="right" key={`name-${rowIndex}`}>
+            {rowData.is_confirmed ? <DoneIcon htmlColor={'#3aaf3c'}/> : <ClearIcon htmlColor={'red'}/>}
           </ParticipantsTableCell>
         </ParticipantsTableRow>
       ))
@@ -93,9 +114,9 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
             </ParticipantsTableCell>
             {columnNames &&
               columnNames.map((column, index) => (
-                <ParticipantsTableCell key={index} align="left">
+                <ParticipantsTableCella key={index} align={column.placement}>
                   {column.value}
-                </ParticipantsTableCell>
+                </ParticipantsTableCella>
               ))}
           </ParticipantsTableRow>
         </TableHead>
@@ -108,9 +129,8 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
         <Table style={{tableLayout: 'fixed'}} sx={{borderBottom: 'none'}}>
           <TableFooter sx={{borderBottom: 'none'}}>
             <ParticipantsTableRow>
-
               <TablePagination
-                count={data?.teams.length || 0}
+                count={data?.results?.length || 0}
                 rowsPerPageOptions={[5, 10]}
                 rowsPerPage={rowsPerPage}
                 page={page}

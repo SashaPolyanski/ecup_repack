@@ -31,14 +31,14 @@ const TournamentCardContent = styled(Box)`
 `
 
 export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> = ({tournament, gamePk}) => {
-  const {name, teams, max_teams, start_at, type, description, prizes, game, id} = tournament
+  const {name, teams, max_teams, start_at, type, description, prizes, game, id, avatar} = tournament
   const navigate = useNavigate()
   const navigateToTournament = () => {
     navigate(games.tournament.replace(':gameId', gamePk.toString()).replace(':id', id.toString()))
   }
   // TODO потом сделать нормальную карточку
   return (
-    <TournamentCardContainer $backgroundImage={game.banner.file} sx={{width: '100%'}} display={'flex'}
+    <TournamentCardContainer $backgroundImage={avatar.file} sx={{width: '100%'}} display={'flex'}
                              justifyContent={'end'} onClick={navigateToTournament}>
       <TournamentCardContent>
         <TournamentEnd start_at={start_at}/>

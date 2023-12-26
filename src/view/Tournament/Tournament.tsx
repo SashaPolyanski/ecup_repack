@@ -27,7 +27,7 @@ export const TournamentComponent: FC<TournamentProps> = ({tournamentPk, gamePk})
   return (
     !data ? <Preloader/> : <
       >
-      <Banner bannerImage={data?.avatar?.file}/>
+      <Banner bannerImage={data?.game?.header.file}/>
       <Box px={1} pb={5}>
         <TournamentName fontSize={30} my={2}>
           {data?.name}
