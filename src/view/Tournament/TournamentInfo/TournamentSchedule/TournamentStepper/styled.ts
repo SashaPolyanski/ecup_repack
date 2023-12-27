@@ -3,7 +3,7 @@ import {Box, Typography} from "@mui/material";
 import {MEDIA_QUERY_LG, MEDIA_QUERY_MD, MEDIA_QUERY_SM} from "@/constants/breackpoints";
 import {transientOptions} from "@utils";
 
-export const WrapperBoxSteps = styled(Box, transientOptions)<{ $steps: number }>`
+export const WrapperBoxSteps = styled(Box, transientOptions)`
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));

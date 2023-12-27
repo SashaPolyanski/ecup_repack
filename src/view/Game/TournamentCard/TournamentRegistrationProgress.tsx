@@ -17,7 +17,7 @@ const ParticipantsProgress = styled(LinearProgress)`
 `;
 export const TournamentRegistrationProgress: FC<TournamentRegistrationProgressProps> = ({max_teams, teams}) => {
   return (
-    <Box sx={{width: '50%'}} display={'flex'} alignItems={'center'} mt={1}>
+    <Box display={'flex'} alignItems={'center'} mt={1} px={2}>
       <ParticipantsProgress variant="determinate" value={(100 / max_teams) * teams}/>
       <Typography ml={2}>
         {`${teams}/${max_teams}`}

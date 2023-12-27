@@ -17,15 +17,13 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({tournamentPk, game
     path: `/games/${gamePk}/tournaments/${tournamentPk}/teams`,
     method: 'POST',
     token: true,
-    queryKeyRefetch: [`/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`, `/games/${gamePk}/tournaments/${tournamentPk}/`]
-
+    queryKeyRefetch: [`/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`, `/games/${gamePk}/tournaments/${tournamentPk}/`, `/games/${gamePk}/tournaments/`]
   })
   const registerInTournamentHandler = () => {
     if (data?.results) {
       registerInTournament({tournament: tournamentPk, team: data.results[0].id}).then(() => {
       })
     }
-
   }
 
   return <Button loading={loading} variant={'outlined'}

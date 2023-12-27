@@ -6,6 +6,7 @@ type MainDescriptionTextProps = {
   title: string
   desc: string
   id: number
+  gradient: string
 }
 const MainDescriptionTextContainer = styled(Box)`
   display: flex;
@@ -16,20 +17,20 @@ const MainDescriptionTextContainer = styled(Box)`
     padding-bottom: 40px;
   }
 `
-const MainDescriptionTitle = styled(Typography)`
+const MainDescriptionTitle = styled(Typography)<{ $gradient: string }>`
   font-size: 35px;
   margin-bottom: 20px;
-  background: linear-gradient(266deg, #293DFF 0.48%, #45A7D8 39.23%, #45A7D8 61.82%, #293DFF 102.2%);
+  background: linear-gradient(${({$gradient}) => ($gradient)});
   background-clip: text;
   -webkit-text-fill-color: transparent;
 `
 const MainDescriptionDesc = styled(Typography)`
   font-size: 18px;
 `
-export const MainDescriptionText: FC<MainDescriptionTextProps> = ({desc, title}) => {
+export const MainDescriptionText: FC<MainDescriptionTextProps> = ({desc, title, gradient}) => {
   return (
     <MainDescriptionTextContainer>
-      <MainDescriptionTitle>
+      <MainDescriptionTitle $gradient={gradient}>
         {title}
       </MainDescriptionTitle>
       <MainDescriptionDesc>

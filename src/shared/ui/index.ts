@@ -8,6 +8,7 @@ import {Menu} from "./Menu";
 import {Banner} from "./Banner";
 import {Button} from "./Button";
 import {Tabs} from "./Tabs";
+import {Tooltip} from "./Tooltip";
 
 export {
   Modal,
@@ -20,5 +21,6 @@ export {
   Menu,
   Banner,
   Button,
-  Tabs
+  Tabs,
+  Tooltip
 }

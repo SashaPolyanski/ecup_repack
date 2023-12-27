@@ -1,28 +1,32 @@
-import {FC} from 'react'
-import {Box, Chip} from "@mui/material";
-import styled from "@emotion/styled";
+import {FC} from 'react';
+import {Box} from '@mui/material';
+import styled from '@emotion/styled';
+import {Tooltip} from "@shared";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 type TournamentTitleProps = {
-  name: string
-  description: string | null
-  type: string
-}
+  name: string;
+};
+
 const TournamentName = styled(Box)`
   margin-bottom: 10px;
-`
-const TournamentDescription = styled(Box)`
-  opacity: 0.7;
-`
-export const TournamentTitle: FC<TournamentTitleProps> = ({description, type, name}) => {
+  font-size: 28px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+`;
+
+export const TournamentTitle: FC<TournamentTitleProps> = ({name}) => {
   return (
-    <>
-      <TournamentName fontSize={28}>
+    <Tooltip placement={'top'} title={name}>
+      <TournamentName px={2}>
         {name}
-        <Chip sx={{marginLeft: '10px'}} label={type}/>
       </TournamentName>
-      <TournamentDescription>
-        {description}
-      </TournamentDescription>
-    </>
+    </Tooltip>
   );
 };

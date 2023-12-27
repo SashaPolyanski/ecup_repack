@@ -12,10 +12,11 @@ const GameContainer = styled(Box)`
 export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
   const {data} = useQuery<PaginatedTournamentReadOnlyList>({path: `/games/${gamePk}/tournaments/`, skip: !!gamePk})
   const {data: gameData} = useQuery<GameReadOnly>({path: `/games/${gamePk}/`, skip: !!gamePk})
+  console.log(data)
   return (
-    <GameContainer>
+    <GameContainer pb={3}>
       <Banner bannerImage={gameData?.header?.file}/>
-      <Box>
+      <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'} gap={5}>
         {data?.results?.map(m => <TournamentCard tournament={m}/>)}
       </Box>
     </GameContainer>

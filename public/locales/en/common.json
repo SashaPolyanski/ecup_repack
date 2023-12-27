@@ -27,7 +27,7 @@
   "winAndStrongerDesc": "The more you participate in tournaments, the more experience you will get back and the stronger you will become.",
   "joinCommunity": "Join our community",
   "joinCommunityDesc": "Join forces and invest in our shared vision for an unforgettable gaming experience.",
-  "endTournament": "End in {{day}} days",
+  "startTournament": "Start {{day}}",
   "userInfo": "Personal information",
   "downloadAvatar": "Download avatar",
   "downloadAvatarFail": "When loading the avatar, an error occurred, try again",
@@ -57,5 +57,7 @@
   "prizeInfo": "Prize (s) that can be handed to the winners are limited to one prize package per one\n                  winner. Prizes are not subject to transmission and cannot be replaced by other prizes. When\n                  lack of an affordable prize, at their discretion, sponsors reserve the right to replace\n                  Prize equal/larger cost. All taxes, tips and unsecured expenses are exceptional\n                  responsibility of the winner. Winners are all responsible for using their prizes.",
   "sendMessage": "If you have questions or you are faced with problems, write\r\nus:",
   "quantity": "Quantity",
-  "perPage": "Rows per page"
+  "perPage": "Rows per page",
+  "tournamentFinished": "The tournament was completed",
+  "youParticipate": "You will participate"
 }

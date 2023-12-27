@@ -393,10 +393,12 @@ export interface components {
     };
     MatchReadOnly: {
       id: number;
-      status: components["schemas"]["StatusEnum"];
+      status: components["schemas"]["MatchReadOnlyStatusEnum"];
       scores: components["schemas"]["ScoreMatch"][];
       periods: components["schemas"]["PeriodReadOnly"][];
     };
+    /** @enum {string} */
+    MatchReadOnlyStatusEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
     /** @enum {string} */
     MimeTypeEnum: "image/png" | "image/svg+xml" | "image/jpg" | "image/jpeg" | "image/webp";
     /** @enum {unknown} */
@@ -605,8 +607,6 @@ export interface components {
       /** Format: double */
       sum: number;
     };
-    /** @enum {string} */
-    StatusEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
     TeamReadOnly: {
       id: number;
       name: string;
@@ -660,7 +660,10 @@ export interface components {
       stage_formats: number[];
       teams_by_place: components["schemas"]["ScoreMatch"][];
       stream_url: string | null;
+      status: components["schemas"]["TournamentReadOnlyStatusEnum"];
     };
+    /** @enum {string} */
+    TournamentReadOnlyStatusEnum: "NOT_STARTED" | "STARTED" | "FINISHED";
     /** @enum {string} */
     TournamentReadOnlyTypeEnum: "BO1";
     TournamentStageReadOnly: {
@@ -1200,6 +1203,8 @@ export interface operations {
         limit?: number;
         /** @description The initial index from which to return the results. */
         offset?: number;
+        /** @description Which field to use when ordering the results. */
+        ordering?: string;
       };
       path: {
         game_pk: string;

@@ -42,6 +42,12 @@ export const dark = createTheme({
           },
         }
       }
+    }, MuiTooltip: {
+      styleOverrides: {
+        tooltipArrow: {
+          maxWidth: '500px'
+        }
+      }
     },
     MuiOutlinedInput: {
       styleOverrides: {

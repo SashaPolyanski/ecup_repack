@@ -38,10 +38,30 @@ export const MainDescription = () => {
   const {t} = useTranslation('common')
   const descriptionItems = useMemo(() => {
     return [
-      {id: 1, title: t('inYourFreeTime'), desc: t('inYourFreeTimeDesc')},
-      {id: 2, title: t('getPrizes'), desc: t('getPrizesDesc')},
-      {id: 3, title: t('winAndStronger'), desc: t('winAndStrongerDesc')},
-      {id: 4, title: t('joinCommunity'), desc: t('joinCommunityDesc')},
+      {
+        id: 1,
+        title: t('inYourFreeTime'),
+        desc: t('inYourFreeTimeDesc'),
+        gradient: '45deg, #293DFF 0%, #45a7d8 50%, #293DFF 100%'
+      },
+      {
+        id: 2,
+        title: t('getPrizes'),
+        desc: t('getPrizesDesc'),
+        gradient: '90deg, #f9dd4d 0%, #E75656 100%'
+      },
+      {
+        id: 3,
+        title: t('winAndStronger'),
+        desc: t('winAndStrongerDesc'),
+        gradient: '90deg, #f45a76 0%, #e756de 100%'
+      },
+      {
+        id: 4,
+        title: t('joinCommunity'),
+        desc: t('joinCommunityDesc'),
+        gradient: '90deg, #fff 100%, #e756de 100%'
+      },
     ]
   }, [t])
   return (
@@ -51,9 +71,10 @@ export const MainDescription = () => {
       </ImageContainer>
       <DescriptionContainer>
         <Box sx={{maxWidth: '700px'}}>
-          {descriptionItems.map(({desc, title, id}) => <MainDescriptionText
+          {descriptionItems.map(({desc, title, id, gradient}) => <MainDescriptionText
             key={id}
             title={title}
+            gradient={gradient}
             desc={desc}
             id={id}/>)}
         </Box>

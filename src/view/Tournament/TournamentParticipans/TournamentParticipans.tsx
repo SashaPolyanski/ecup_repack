@@ -92,19 +92,22 @@ export const TournamentParticipantsComponent: FC<TournamentParticipantsProps> = 
       sx={{
         height: rowsPerPage === 10 ? '801px' : '401px',
         border: '1px solid #4a5568'
-      }}><Preloader/></Box> : data?.results?.slice(0, rowsPerPage).map((rowData) => (
-      <ParticipantsTableRow key={rowData.id} hover>
-        <ParticipantsTableCell align="left">
-          <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
-        </ParticipantsTableCell>
-        <ParticipantsTableCell align="left">
-          {rowData.team.name}
-        </ParticipantsTableCell>
-        <ParticipantsTableCell align="right">
-          {rowData.is_confirmed ? <DoneIcon htmlColor={'#3aaf3c'}/> : <ClearIcon htmlColor={'red'}/>}
-        </ParticipantsTableCell>
-      </ParticipantsTableRow>
-    ))
+      }}><Preloader/></Box> : data?.results?.slice(0, rowsPerPage).map((rowData) => {
+
+      return (
+        <ParticipantsTableRow key={rowData.id} hover>
+          <ParticipantsTableCell align="left">
+            <Avatar sx={{marginRight: '20px'}} src={rowData?.team?.avatar ? rowData?.team?.avatar.file : ''}/>
+          </ParticipantsTableCell>
+          <ParticipantsTableCell align="left">
+            {rowData.team.name}
+          </ParticipantsTableCell>
+          <ParticipantsTableCell align="right">
+            {rowData.is_confirmed ? <DoneIcon htmlColor={'#3aaf3c'}/> : <ClearIcon htmlColor={'red'}/>}
+          </ParticipantsTableCell>
+        </ParticipantsTableRow>
+      )
+    })
 
   }, [data, rowsPerPage, isLoading]);
 

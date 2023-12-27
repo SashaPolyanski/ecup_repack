@@ -1,24 +1,36 @@
 import {FC} from 'react'
-import {Typography} from "@mui/material";
+import {Box, Chip, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import styled from "@emotion/styled";
 
 type TournamentEndProps = {
   start_at: string
+  type: string
+  format: string
 }
 const TournamentEndContent = styled(Typography)`
   text-transform: uppercase;
   opacity: 0.7;
   margin-bottom: 10px;
 `
-const remainDay = (start_at: string) => {
-  return Math.floor((new Date(start_at).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
-}
-export const TournamentEnd: FC<TournamentEndProps> = ({start_at}) => {
+
+export const TournamentFormatInfo: FC<TournamentEndProps> = ({start_at, type, format}) => {
   const {t} = useTranslation('common')
+  const format_date = new Date(start_at)?.toLocaleString('ru-RU', {
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    hour12: false,
+  }).slice(0, 17);
   return (
-    <TournamentEndContent fontSize={23}>
-      {t('endTournament', {day: remainDay(start_at)})}
-    </TournamentEndContent>
+    <Box display={'flex'} justifyContent={'space-between'} px={2} py={1}>
+      <Box>
+        <Chip label={type}/>
+        <Chip sx={{marginLeft: '10px'}} label={format}/>
+      </Box>
+      <Box>
+        <TournamentEndContent fontSize={15}>
+          {t('startTournament', {day: format_date})}
+        </TournamentEndContent>
+      </Box>
+    </Box>
   );
 };

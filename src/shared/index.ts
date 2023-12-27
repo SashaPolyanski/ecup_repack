@@ -9,7 +9,8 @@ import {
   Notification,
   Preloader,
   Tabs,
-  ThemeSwitcher
+  ThemeSwitcher,
+  Tooltip
 } from "./ui";
 
 export {
@@ -23,5 +24,6 @@ export {
   Menu,
   Banner,
   Button,
-  Tabs
+  Tabs,
+  Tooltip
 }
