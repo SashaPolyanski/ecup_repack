@@ -45,7 +45,9 @@ export const TournamentRegistrationButtonComponent: FC<TournamentRegistrationBut
 
   })
 
-  const {data: userTeam} = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentId}/teams/?team__users=${user?.id}`})
+  const {
+    data: userTeam,
+  } = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentId}/teams/?team__users=${user?.id}`})
   const {mutate: unRegistered} = useMutation({
     path: `/games/${gamePk}/tournaments/${tournamentId}/teams/${userTeam?.results && userTeam?.results[0]?.id}`,
     method: 'DELETE',

@@ -32,21 +32,24 @@ const TournamentCardContent = styled(Box)`
   flex-direction: column;
   justify-content: center;
 `
-
+const TournamentCardImageContainer = styled(Box)`
+  height: 60%;
+  width: 100%;
+`
+const TournamentCardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+`
 export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> = ({tournament, gamePk}) => {
-  const {name, teams, max_teams, start_at, type, description, prizes, id, avatar, status} = tournament
+  const {name, teams, max_teams, start_at, type, id, avatar, status} = tournament
   const navigate = useNavigate()
   const navigateToTournament = () => {
     navigate(games.tournament.replace(':gameId', gamePk.toString()).replace(':id', id.toString()))
   }
-  // TODO потом сделать нормальную карточку
   return (
     <TournamentCardContainer onClick={navigateToTournament}>
-      <Box sx={{height: '60%', width: '100%'}}><img src={avatar.file} style={{
-        width: '100%',
-        height: '100%',
-        borderRadius: '20px 20px 0 0'
-      }}/></Box>
+      <TournamentCardImageContainer><TournamentCardImage src={avatar.file}/></TournamentCardImageContainer>
       <TournamentCardContent>
         <TournamentFormatInfo start_at={start_at} type={type} format={'1x7'}/>
         <TournamentTitle name={name}/>
@@ -57,4 +60,4 @@ export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> 
   );
 };
 
-export const TournamentCard = withGamePk()(TournamentCardComponent)
+export const TournamentCard: FC<TournamentCardProps> = withGamePk()(TournamentCardComponent)
