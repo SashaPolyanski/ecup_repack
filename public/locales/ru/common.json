@@ -59,5 +59,8 @@
   "quantity": "Количество",
   "perPage": "Показать по",
   "tournamentFinished": "Турнир был завершен",
-  "youParticipate": "Вы учавствуете"
+  "youParticipate": "Вы учавствуете",
+  "upcoming": "Предстоящие турниры",
+  "current": "Текущие турниры",
+  "past": "Прошедшие турниры"
 }

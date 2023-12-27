@@ -59,5 +59,8 @@
   "quantity": "Quantity",
   "perPage": "Rows per page",
   "tournamentFinished": "The tournament was completed",
-  "youParticipate": "You will participate"
+  "youParticipate": "You will participate",
+  "upcoming": "The upcoming tournaments",
+  "current": "Current tournaments",
+  "past": "Past tournaments"
 }

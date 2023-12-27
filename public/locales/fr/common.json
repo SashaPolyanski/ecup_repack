@@ -59,5 +59,8 @@
   "quantity": "Quantité",
   "perPage": "Lignes par page",
   "tournamentFinished": "Le tournoi a été achevé",
-  "youParticipate": "Vous participerez"
+  "youParticipate": "Vous participerez",
+  "upcoming": "Les tournois à venir",
+  "current": "Tournois actuels",
+  "past": "Tournois passés"
 }

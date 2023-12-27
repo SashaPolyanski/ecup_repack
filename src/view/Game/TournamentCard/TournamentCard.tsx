@@ -40,6 +40,7 @@ const TournamentCardImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 20px 20px 0 0;
+
 `
 export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> = ({tournament, gamePk}) => {
   const {name, teams, max_teams, start_at, type, id, avatar, status} = tournament
