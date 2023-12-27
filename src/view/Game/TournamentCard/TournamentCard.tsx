@@ -2,7 +2,7 @@ import {FC} from 'react'
 import {TournamentReadOnly} from "@/api/types";
 import {Box} from "@mui/material";
 import styled from "@emotion/styled";
-import {TournamentFormatInfo} from "./TournamentEnd";
+import {TournamentFormatInfo} from "./TournamentStart";
 import {TournamentTitle} from "./TournamentTitle";
 import {TournamentRegistrationProgress} from "./TournamentRegistrationProgress";
 import {TournamentRegistrationButton} from "./TournamentRegistrationButton";

@@ -11,7 +11,6 @@ type TournamentEndProps = {
 const TournamentEndContent = styled(Typography)`
   text-transform: uppercase;
   opacity: 0.7;
-  margin-bottom: 10px;
 `
 
 export const TournamentFormatInfo: FC<TournamentEndProps> = ({start_at, type, format}) => {
@@ -21,7 +20,7 @@ export const TournamentFormatInfo: FC<TournamentEndProps> = ({start_at, type, fo
     hour12: false,
   }).slice(0, 17);
   return (
-    <Box display={'flex'} justifyContent={'space-between'} px={2} py={1}>
+    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} px={2} py={1}>
       <Box>
         <Chip label={type}/>
         <Chip sx={{marginLeft: '10px'}} label={format}/>
