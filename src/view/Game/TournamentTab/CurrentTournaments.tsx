@@ -1,11 +1,14 @@
 import {FC} from 'react'
 import {TournamentReadOnly} from "@/api/types";
-import {TournamentCard} from "@view/Game/TournamentCard";
+import {tournamentCard} from "./TournamentCard";
 
 type CurrentTournamentsProps = {
   tournaments: TournamentReadOnly[]
 }
 
 export const CurrentTournaments: FC<CurrentTournamentsProps> = ({tournaments}) => {
-  return tournaments.map(m => <TournamentCard tournament={m} key={m.id}/>)
+  return tournaments.map(m => {
+    const Component = tournamentCard[m.type]
+    return <Component tournament={m} key={m.id}/>
+  })
 };

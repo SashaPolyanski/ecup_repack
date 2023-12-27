@@ -16,4 +16,5 @@ export type TournamentTeamCreate = components['schemas']['TournamentTeamCreate']
 export type PaginatedTeamReadOnlyList = components['schemas']['PaginatedTeamReadOnlyList'];
 export type TeamReadOnly = components['schemas']['TeamReadOnly'];
 export type TournamentReadOnlyStatusEnum = components['schemas']['TournamentReadOnlyStatusEnum'];
+export type TournamentReadOnlyTypeEnum = components['schemas']['TournamentReadOnlyTypeEnum'];
 

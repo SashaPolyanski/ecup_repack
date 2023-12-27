@@ -393,12 +393,10 @@ export interface components {
     };
     MatchReadOnly: {
       id: number;
-      status: components["schemas"]["MatchReadOnlyStatusEnum"];
+      status: components["schemas"]["Status1fcEnum"];
       scores: components["schemas"]["ScoreMatch"][];
       periods: components["schemas"]["PeriodReadOnly"][];
     };
-    /** @enum {string} */
-    MatchReadOnlyStatusEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
     /** @enum {string} */
     MimeTypeEnum: "image/png" | "image/svg+xml" | "image/jpg" | "image/jpeg" | "image/webp";
     /** @enum {unknown} */
@@ -582,6 +580,7 @@ export interface components {
       real_currency?: number;
       virtual_currency?: number;
       battle_tag?: string | null;
+      team?: number | null;
     };
     PeriodReadOnly: {
       id: number;
@@ -607,6 +606,8 @@ export interface components {
       /** Format: double */
       sum: number;
     };
+    /** @enum {string} */
+    Status1fcEnum: "BYE" | "NOT_STARTED" | "STARTED" | "FINISHED";
     TeamReadOnly: {
       id: number;
       name: string;
@@ -665,11 +666,16 @@ export interface components {
     /** @enum {string} */
     TournamentReadOnlyStatusEnum: "NOT_STARTED" | "STARTED" | "FINISHED";
     /** @enum {string} */
-    TournamentReadOnlyTypeEnum: "BO1";
+    TournamentReadOnlyTypeEnum: "BASIC" | "RECOMMENDED";
+    TournamentStageMatches: {
+      id: number;
+      status?: components["schemas"]["Status1fcEnum"];
+      teams?: number[];
+    };
     TournamentStageReadOnly: {
       id: number;
       order: number;
-      matches: readonly number[];
+      matches: components["schemas"]["TournamentStageMatches"][];
     };
     TournamentTeamCreate: {
       tournament: number;
@@ -710,6 +716,7 @@ export interface components {
       real_currency?: number;
       virtual_currency?: number;
       battle_tag?: string | null;
+      team: number | null;
     };
     VerifyEmail: {
       key: string;
@@ -1468,7 +1475,7 @@ export interface operations {
         tournament_pk: string;
       };
     };
-    requestBody?: {
+    requestBody: {
       content: {
         "application/json": components["schemas"]["TournamentStageReadOnly"];
         "application/x-www-form-urlencoded": components["schemas"]["TournamentStageReadOnly"];
@@ -1491,7 +1498,7 @@ export interface operations {
         tournament_pk: string;
       };
     };
-    requestBody?: {
+    requestBody: {
       content: {
         "application/json": components["schemas"]["TournamentStageReadOnly"];
         "application/x-www-form-urlencoded": components["schemas"]["TournamentStageReadOnly"];

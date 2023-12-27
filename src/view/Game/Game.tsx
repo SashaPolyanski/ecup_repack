@@ -7,9 +7,7 @@ import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
 import {FC, useMemo, useState} from "react";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
-import {UpcomingTournaments} from "./TournamentTab/UpcomingTournaments";
-import {CurrentTournaments} from "./TournamentTab/CurrentTournaments";
-import {PastTournaments} from "./TournamentTab/PastTournaments";
+import {CurrentTournaments, PastTournaments, UpcomingTournaments} from "@view/Game/TournamentTab";
 
 const GameContainer = styled(Box)`
   width: 100%;
@@ -69,7 +67,6 @@ export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
             <Component tournaments={tournaments} key={id}/>
           ))}
         </Box></>}
-
     </GameContainer>
   );
 };
