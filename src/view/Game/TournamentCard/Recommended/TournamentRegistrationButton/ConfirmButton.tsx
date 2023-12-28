@@ -28,7 +28,7 @@ export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({tournamentPk, ga
     path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/${data?.results && data?.results[0].id}`,
     method: 'DELETE',
     token: true,
-    queryKeyRefetch: [`/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`, `/games/${gamePk}/tournaments/${tournamentPk}/`]
+    queryKeyRefetch: [`/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`, `/games/${gamePk}/tournaments/?limit=1000`]
   })
   const unRegisteredHandler = (e: SyntheticEvent) => {
     e.stopPropagation()
