@@ -7,6 +7,7 @@ import {
   Modal,
   notification,
   Notification,
+  ParticipantsProgress,
   Preloader,
   Tabs,
   ThemeSwitcher,
@@ -25,5 +26,6 @@ export {
   Banner,
   Button,
   Tabs,
-  Tooltip
+  Tooltip,
+  ParticipantsProgress
 }

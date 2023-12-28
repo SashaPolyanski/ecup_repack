@@ -1,5 +1,3 @@
-import {CurrentTournaments} from "./CurrentTournaments";
-import {PastTournaments} from "./PastTournaments";
-import {UpcomingTournaments} from "./UpcomingTournaments";
+import {TournamentsComponent} from "./TournamentsComponent";
 
-export {CurrentTournaments, UpcomingTournaments, PastTournaments}
+export {TournamentsComponent}

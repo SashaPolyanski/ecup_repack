@@ -41,7 +41,7 @@ export const RecommendedTournamentCardComponent: FC<TournamentCardProps & WithGa
     navigate(games.tournament.replace(':gameId', gamePk.toString()).replace(':id', id.toString()))
   }
   return (
-    <TournamentCardContainer onClick={navigateToTournament}>
+    <TournamentCardContainer onClick={navigateToTournament} pr={2}>
       <TournamentCardImageContainer>
         <TournamentCardImage src={avatar.file}/>
       </TournamentCardImageContainer>

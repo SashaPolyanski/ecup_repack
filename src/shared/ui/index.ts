@@ -9,6 +9,7 @@ import {Banner} from "./Banner";
 import {Button} from "./Button";
 import {Tabs} from "./Tabs";
 import {Tooltip} from "./Tooltip";
+import {ParticipantsProgress} from "./ParticipantsProgress";
 
 export {
   Modal,
@@ -22,5 +23,6 @@ export {
   Banner,
   Button,
   Tabs,
-  Tooltip
+  Tooltip,
+  ParticipantsProgress
 }

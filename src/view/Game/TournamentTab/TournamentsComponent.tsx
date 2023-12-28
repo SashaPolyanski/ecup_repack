@@ -1,12 +1,14 @@
 import {FC} from 'react'
 import {TournamentReadOnly} from "@/api/types";
 import {tournamentCard} from "./TournamentCard";
+import {useMediaQuery} from "@mui/material";
 
-type UpcomingTournamentsProps = {
+type TournamentsComponentProps = {
   tournaments: TournamentReadOnly[]
 }
 
-export const UpcomingTournaments: FC<UpcomingTournamentsProps> = ({tournaments}) => {
+export const TournamentsComponent: FC<TournamentsComponentProps> = ({tournaments}) => {
+  const isSmallScreen = useMediaQuery(`(max-width: 716px)`)
   const compareTournaments = (a: TournamentReadOnly, b: TournamentReadOnly) => {
     const order = {
       RECOMMENDED: 1,
@@ -18,7 +20,7 @@ export const UpcomingTournaments: FC<UpcomingTournamentsProps> = ({tournaments})
 
   const sortedTournament = tournaments.slice().sort(compareTournaments);
   return sortedTournament.map(m => {
-    const Component = tournamentCard[m.type]
+    const Component = tournamentCard[isSmallScreen ? 'BASIC' : m.type]
     return <Component tournament={m} key={m.id}/>
   })
 };

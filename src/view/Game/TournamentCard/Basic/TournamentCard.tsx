@@ -4,12 +4,12 @@ import {Box} from "@mui/material";
 import styled from "@emotion/styled";
 import {TournamentFormatInfo} from "./TournamentStart";
 import {TournamentTitle} from "./TournamentTitle";
-import {TournamentRegistrationProgress} from "./TournamentRegistrationProgress";
 import {TournamentRegistrationButton} from "./TournamentRegistrationButton";
 import {useNavigate} from "react-router-dom";
 import {games} from "@constants";
-import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk.tsx";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
+import {ParticipantsProgress} from "@shared";
 
 type TournamentCardProps = {
   tournament: TournamentReadOnly
@@ -54,7 +54,9 @@ export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> 
       <TournamentCardContent>
         <TournamentFormatInfo startAt={schedule[schedule.length - 1]} type={type} format={'1x7'}/>
         <TournamentTitle name={name}/>
-        <TournamentRegistrationProgress teams={teams.length} max_teams={max_teams}/>
+        <Box px={2}>
+          <ParticipantsProgress teams={teams.length} maxTeams={max_teams}/>
+        </Box>
         <TournamentRegistrationButton tournamentId={id} status={status}/>
       </TournamentCardContent>
     </TournamentCardContainer>

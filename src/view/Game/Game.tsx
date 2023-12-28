@@ -7,7 +7,7 @@ import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
 import {FC, useMemo, useState} from "react";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
-import {CurrentTournaments, PastTournaments, UpcomingTournaments} from "@view/Game/TournamentTab";
+import {TournamentsComponent} from "@view/Game/TournamentTab";
 
 const GameContainer = styled(Box)`
   width: 100%;
@@ -34,7 +34,7 @@ type TabComponents = {
 export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
   const {t} = useTranslation('common')
   const {data, isLoading} = useQuery<PaginatedTournamentReadOnlyList>({
-    path: `/games/${gamePk}/tournaments/`,
+    path: `/games/${gamePk}/tournaments/?limit=1000`,
     skip: !!gamePk
   })
   const {data: gameData} = useQuery<GameReadOnly>({path: `/games/${gamePk}/`, skip: !!gamePk})
@@ -51,9 +51,9 @@ export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
   }, {upcoming: [], current: [], past: []} as TournamentsType);
   const components = useMemo(() => {
     return {
-      0: [{Component: UpcomingTournaments, tournaments: tournaments?.upcoming, id: 1}],
-      1: [{Component: CurrentTournaments, tournaments: tournaments?.current, id: 2}],
-      2: [{Component: PastTournaments, tournaments: tournaments?.past, id: 3}],
+      0: [{Component: TournamentsComponent, tournaments: tournaments?.upcoming, id: 1}],
+      1: [{Component: TournamentsComponent, tournaments: tournaments?.current, id: 2}],
+      2: [{Component: TournamentsComponent, tournaments: tournaments?.past, id: 3}],
     } as TabComponents;
   }, [tournaments]);
   const tabComponents = components[tabValue.toString()];
@@ -62,7 +62,7 @@ export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
       {isLoading ? <Preloader/> : <>
         <Banner bannerImage={gameData?.header?.file}/>
         <Tabs tabs={tabs(t)} value={tabValue} setTabValue={setTabValue}/>
-        <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'} gap={5} pb={2} mt={2}>
+        <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'} gap={5} pb={2} mt={2} px={2}>
           {tabComponents.map(({Component, tournaments, id}) => (
             <Component tournaments={tournaments} key={id}/>
           ))}
