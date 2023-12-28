@@ -63,9 +63,10 @@
   "upcoming": "The upcoming tournaments",
   "current": "Current tournaments",
   "past": "Past tournaments",
-  "registerTournament": "Submit participation",
+  "registerTournament": "Confirm participation",
   "unRegisterTournament": "Cancel participation",
   "cancelRegistration": "Cancel registration",
   "smallScreenConfirm": "Confirm",
-  "smallScreenCancel": "Cancel"
+  "smallScreenCancel": "Cancel",
+  "regAccount": "Register an account"
 }

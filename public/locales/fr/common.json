@@ -63,9 +63,10 @@
   "upcoming": "Les tournois à venir",
   "current": "Tournois actuels",
   "past": "Tournois passés",
-  "registerTournament": "Soumettre la participation",
+  "registerTournament": "Confirmer la participation",
   "unRegisterTournament": "Annuler la participation",
   "cancelRegistration": "Annuler l'inscription",
   "smallScreenConfirm": "Confirmer",
-  "smallScreenCancel": "Annuler"
+  "smallScreenCancel": "Annuler",
+  "regAccount": "Enregistrer un compte"
 }

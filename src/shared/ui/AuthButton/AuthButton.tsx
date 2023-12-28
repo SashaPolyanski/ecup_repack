@@ -1,4 +1,4 @@
-import {FC, useCallback, useState} from 'react'
+import {FC, SyntheticEvent, useCallback, useState} from 'react'
 import {useMediaQuery} from "@mui/material";
 import {SingIn} from "./SingIn";
 import {SignUp} from "./SignUp";
@@ -6,10 +6,12 @@ import {Button, Modal} from "@shared";
 import {TFunction} from "i18next";
 import {useTranslation} from "react-i18next";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
+import {LoadingButtonProps} from "@mui/lab";
 
 export type AuthButtonProps = {
   action: 'signin' | 'signup'
   title: string
+  variant?: LoadingButtonProps['variant']
 }
 type Components = {
   [K in AuthButtonProps['action']]: FC<{
@@ -40,14 +42,15 @@ const componentConfig = (t: TFunction, isSmallScreen: boolean): ComponentConfig 
     }
   };
 };
-export const AuthButton: FC<AuthButtonProps> = ({action, title}) => {
+export const AuthButton: FC<AuthButtonProps> = ({action, title, variant}) => {
   const {t} = useTranslation('common')
   const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const [formType, setFormType] = useState<AuthButtonProps['action'] | null>(null)
   const Component = formType && components[formType]
   const {desc, height} = componentConfig(t, isSmallScreen)
   const [modalHeight, setModalHeight] = useState<number>(height[action])
-  const openModalFormHandler = useCallback(() => {
+  const openModalFormHandler = useCallback((e: SyntheticEvent) => {
+    e.stopPropagation()
     setFormType(action)
     setModalHeight(height[action])
   }, [height, action])
@@ -60,7 +63,7 @@ export const AuthButton: FC<AuthButtonProps> = ({action, title}) => {
   }, [])
   return (
     <>
-      <Button onClick={openModalFormHandler}>
+      <Button onClick={openModalFormHandler} variant={variant}>
         {title}
       </Button>
       <Modal open={!!formType} onClose={closeModalHandler} title={formType ? desc[formType] : ''} height={modalHeight}

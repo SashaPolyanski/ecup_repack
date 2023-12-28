@@ -63,9 +63,10 @@
   "upcoming": "Предстоящие турниры",
   "current": "Текущие турниры",
   "past": "Прошедшие турниры",
-  "registerTournament": "Подтверить участие",
+  "registerTournament": "Подтвердить участие",
   "unRegisterTournament": "Отменить участие",
   "cancelRegistration": "Отменить регистрацию",
   "smallScreenConfirm": "Подтвердить",
-  "smallScreenCancel": "Отменить"
+  "smallScreenCancel": "Отменить",
+  "regAccount": "Зарегистрировать аккаунт"
 }

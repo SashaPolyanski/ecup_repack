@@ -1,4 +1,4 @@
-import {FC, ReactNode} from 'react'
+import {FC, ReactNode, SyntheticEvent} from 'react'
 import {Box, Dialog, DialogTitle, IconButton} from "@mui/material";
 import styled from "@emotion/styled";
 import {useTheme} from "@emotion/react";
@@ -57,8 +57,12 @@ const ModalTitle = styled(DialogTitle)`
 `
 export const Modal: FC<ModalProps> = ({onClose, open, children, title, width, height, showCloseIcon}) => {
   const theme = useTheme()
+  const onCloseHandler = (e: SyntheticEvent) => {
+    e.stopPropagation()
+    onClose()
+  }
   return (
-    <ModalContainer open={open} onClose={onClose} $width={width} $height={height}>
+    <ModalContainer open={open} onClose={onCloseHandler} $width={width} $height={height}>
       {showCloseIcon ? <ButtonWrapper onClick={onClose}>
         <CloseIcon htmlColor={theme.palette.text.primary}/>
       </ButtonWrapper> : null}
