@@ -29,4 +29,4 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({tournamentPk, game
   return <Button loading={loading} variant={'outlined'}
                  onClick={registerInTournamentHandler}>{t('tournamenRegistrationBtn')}</Button>
 }
-export const RegistrationButton = withTournamentPk()(withGamePk()(RegistrationButtonComponent))
+export const RegistrationButton: FC = withTournamentPk()(withGamePk()(RegistrationButtonComponent))

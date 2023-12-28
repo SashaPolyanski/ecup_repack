@@ -25,12 +25,14 @@ export const TournamentRegistrationButtonComponents: FC<TournamentRegistrationBu
   })
   const {data: userInTournament} = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`})
   const date = new Date()
+  const startDate = data && new Date(Object.values(data?.schedule[1])[0] as string);
+  const endDate = data && new Date(Object.values(data?.schedule[2])[0] as string);
   const conditions: Conditions = data && {
     isAuth,
-
-    inTournament: !!userInTournament?.results?.length
+    inTournament: !!userInTournament?.results?.length,
+    confirm: startDate && endDate ? (date > startDate && date < endDate) : false,
+    start: endDate ? date > endDate : false,
   }
-
   return (
     <TournamentButton conditions={conditions}/>
   );

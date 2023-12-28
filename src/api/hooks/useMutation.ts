@@ -48,6 +48,6 @@ export const useMutation = <T, D>(config: MutationType) => {
     },
   });
   return {
-    mutate, loading, data: data as D, error, status
+    mutate, loading, data, error, status
   };
 };

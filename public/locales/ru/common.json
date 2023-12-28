@@ -62,5 +62,8 @@
   "youParticipate": "Вы учавствуете",
   "upcoming": "Предстоящие турниры",
   "current": "Текущие турниры",
-  "past": "Прошедшие турниры"
+  "past": "Прошедшие турниры",
+  "registerTournament": "Подтверить участие",
+  "unRegisterTournament": "Отменить участие",
+  "cancelRegistration": "Отменить регистрацию"
 }

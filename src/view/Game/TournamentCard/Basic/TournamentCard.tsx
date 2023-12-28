@@ -43,7 +43,7 @@ const TournamentCardImage = styled.img`
 
 `
 export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> = ({tournament, gamePk}) => {
-  const {name, teams, max_teams, start_at, type, id, avatar, status} = tournament
+  const {name, teams, max_teams, type, id, avatar, status, schedule} = tournament
   const navigate = useNavigate()
   const navigateToTournament = () => {
     navigate(games.tournament.replace(':gameId', gamePk.toString()).replace(':id', id.toString()))
@@ -52,7 +52,7 @@ export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> 
     <TournamentCardContainer onClick={navigateToTournament}>
       <TournamentCardImageContainer><TournamentCardImage src={avatar.file}/></TournamentCardImageContainer>
       <TournamentCardContent>
-        <TournamentFormatInfo start_at={start_at} type={type} format={'1x7'}/>
+        <TournamentFormatInfo startAt={schedule[schedule.length - 1]} type={type} format={'1x7'}/>
         <TournamentTitle name={name}/>
         <TournamentRegistrationProgress teams={teams.length} max_teams={max_teams}/>
         <TournamentRegistrationButton tournamentId={id} status={status}/>

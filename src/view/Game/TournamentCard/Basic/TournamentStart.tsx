@@ -3,8 +3,11 @@ import {Box, Chip, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import styled from "@emotion/styled";
 
+type StartAt = {
+  [key: string]: unknown
+}
 type TournamentEndProps = {
-  start_at: string
+  startAt: StartAt
   type: string
   format: string
 }
@@ -13,9 +16,9 @@ const TournamentEndContent = styled(Typography)`
   opacity: 0.7;
 `
 
-export const TournamentFormatInfo: FC<TournamentEndProps> = ({start_at, type, format}) => {
+export const TournamentFormatInfo: FC<TournamentEndProps> = ({startAt, type, format}) => {
   const {t} = useTranslation('common')
-  const format_date = new Date(start_at)?.toLocaleString('ru-RU', {
+  const format_date = new Date(Object.values(startAt)[0] as string)?.toLocaleString('ru-RU', {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     hour12: false,
   }).slice(0, 17);

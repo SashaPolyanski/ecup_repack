@@ -109,6 +109,9 @@
     "youParticipate": "Vous participerez",
     "upcoming": "Les tournois à venir",
     "current": "Tournois actuels",
-    "past": "Tournois passés"
+    "past": "Tournois passés",
+    "registerTournament": "Soumettre la participation",
+    "unRegisterTournament": "Annuler la participation",
+    "cancelRegistration": "Annuler l'inscription"
   }
 }

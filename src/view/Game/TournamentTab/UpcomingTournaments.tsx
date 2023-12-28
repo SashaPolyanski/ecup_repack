@@ -7,7 +7,17 @@ type UpcomingTournamentsProps = {
 }
 
 export const UpcomingTournaments: FC<UpcomingTournamentsProps> = ({tournaments}) => {
-  return tournaments.map(m => {
+  const compareTournaments = (a: TournamentReadOnly, b: TournamentReadOnly) => {
+    const order = {
+      RECOMMENDED: 1,
+      BASIC: 2,
+    };
+
+    return order[a.type] - order[b.type];
+  };
+
+  const sortedTournament = tournaments.slice().sort(compareTournaments);
+  return sortedTournament.map(m => {
     const Component = tournamentCard[m.type]
     return <Component tournament={m} key={m.id}/>
   })

@@ -15,16 +15,16 @@ export const TournamentButton: FC<TournamentButtonProps> = ({conditions}) => {
     if (!isAuth) {
       return <TournamentAuthButton/>
     }
-    if (isAuth && !confirm && !start && !inTournament) {
+    if (isAuth && !start && !inTournament) {
       return <RegistrationButton/>
     }
     if (isAuth && !confirm && !start && inTournament) {
       return <InTournamentButton/>
     }
-    if (isAuth && confirm) {
-      <ConfirmButton/>
+    if (isAuth && confirm && !start) {
+      return <ConfirmButton/>
     }
-    if (isAuth && start) {
+    if ((!isAuth || isAuth) && start) {
       return
     }
   }

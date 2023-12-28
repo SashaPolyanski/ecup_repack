@@ -9,6 +9,7 @@ import {useUserStore} from "@/Zustand/userStore";
 import {useMutation} from "@/api/hooks/useMutation";
 import styled from "@emotion/styled";
 import {MEDIA_QUERY_SM} from "@/constants/breackpoints";
+import {useTranslation} from "react-i18next";
 
 type InTournamentButtonProps = WithGamePkProps & withTournamentPkProps
 const ButtonContainer = styled(Box)`
@@ -30,6 +31,7 @@ const UnregisterButton = styled(Button)`
 
 export const InTournamentButtonComponent: FC<InTournamentButtonProps> = ({tournamentPk, gamePk}) => {
   const {user} = useUserStore()
+  const {t} = useTranslation('common')
   const {data} = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`})
   const {mutate: unRegistered} = useMutation({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/${data?.results && data?.results[0].id}`,
@@ -43,8 +45,8 @@ export const InTournamentButtonComponent: FC<InTournamentButtonProps> = ({tourna
   return (
     <ButtonContainer>
       <Button variant={'contained'}>Вы зарегистрированы</Button>
-      <UnregisterButton variant={'outlined'} onClick={unRegisteredHandler}>Отменить участие</UnregisterButton>
+      <UnregisterButton variant={'outlined'} onClick={unRegisteredHandler}>{t('cancelRegistration')}</UnregisterButton>
     </ButtonContainer>
   );
 };
-export const InTournamentButton = withTournamentPk()(withGamePk()(InTournamentButtonComponent))
+export const InTournamentButton: FC = withTournamentPk()(withGamePk()(InTournamentButtonComponent))

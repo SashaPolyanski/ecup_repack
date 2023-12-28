@@ -109,6 +109,9 @@
     "youParticipate": "You will participate",
     "upcoming": "The upcoming tournaments",
     "current": "Current tournaments",
-    "past": "Past tournaments"
+    "past": "Past tournaments",
+    "registerTournament": "Submit participation",
+    "unRegisterTournament": "Cancel participation",
+    "cancelRegistration": "Cancel registration"
   }
 }
