@@ -112,6 +112,8 @@
     "past": "Tournois passés",
     "registerTournament": "Soumettre la participation",
     "unRegisterTournament": "Annuler la participation",
-    "cancelRegistration": "Annuler l'inscription"
+    "cancelRegistration": "Annuler l'inscription",
+    "smallScreenConfirm": "Confirmer",
+    "smallScreenCancel": "Annuler"
   }
 }

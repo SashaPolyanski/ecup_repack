@@ -65,5 +65,7 @@
   "past": "Прошедшие турниры",
   "registerTournament": "Подтверить участие",
   "unRegisterTournament": "Отменить участие",
-  "cancelRegistration": "Отменить регистрацию"
+  "cancelRegistration": "Отменить регистрацию",
+  "smallScreenConfirm": "Подтвердить",
+  "smallScreenCancel": "Отменить"
 }

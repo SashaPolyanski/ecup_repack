@@ -21,7 +21,7 @@ const CnfrmButton = styled(Button)`
 
 export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({tournamentPk, gamePk}) => {
   const {user} = useUserStore()
-  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
+  const isSmallScreen = useMediaQuery(`(max-width: 931px)`)
   const {t} = useTranslation('common')
   const {data} = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`})
   const {mutate: unRegistered, loading: unRegLoading} = useMutation({
@@ -53,18 +53,18 @@ export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({tournamentPk, ga
     registrationConfirm({is_confirmed: false})
   }
   return !isConfirmed ?
-    <Stack spacing={2} direction={isSmallScreen ? 'column' : 'row'}>
+    <Stack spacing={2} direction={'row'}>
       <Button
         loading={loading}
         variant={'outlined'}
         onClick={registrationConfirmHandler}>
-        {t('registerTournament')}
+        {t(isSmallScreen ? 'smallScreenConfirm' : 'registerTournament')}
       </Button>
       <Button
         variant={'outlined'}
         loading={unRegLoading}
         onClick={unRegisteredHandler}>
-        {t('cancelRegistration')}
+        {t(isSmallScreen ? 'smallScreenCancel' : 'cancelRegistration')}
       </Button>
     </Stack> :
     <CnfrmButton

@@ -112,6 +112,8 @@
     "past": "Past tournaments",
     "registerTournament": "Submit participation",
     "unRegisterTournament": "Cancel participation",
-    "cancelRegistration": "Cancel registration"
+    "cancelRegistration": "Cancel registration",
+    "smallScreenConfirm": "Confirm",
+    "smallScreenCancel": "Cancel"
   }
 }
