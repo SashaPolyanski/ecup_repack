@@ -7,8 +7,15 @@ import {useTranslation} from "react-i18next";
 import {useQuery} from "@/api/hooks/useQuery";
 import {useUserStore} from "@/Zustand/userStore.ts";
 import {PaginatedTeamReadOnlyList, TournamentTeamCreate} from "@/api/types";
+import styled from "@emotion/styled";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
 
 type RegistrationButton = WithGamePkProps & withTournamentPkProps
+const RegButton = styled(Button)`
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    width: 100%;
+  }
+`
 const RegistrationButtonComponent: FC<RegistrationButton> = ({tournamentPk, gamePk}) => {
   const {t} = useTranslation('common')
   const {user} = useUserStore()
@@ -26,7 +33,7 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({tournamentPk, game
     }
   }
 
-  return <Button loading={loading} variant={'outlined'}
-                 onClick={registerInTournamentHandler}>{t('tournamenRegistrationBtn')}</Button>
+  return <RegButton loading={loading} variant={'outlined'}
+                    onClick={registerInTournamentHandler}>{t('tournamenRegistrationBtn')}</RegButton>
 }
 export const RegistrationButton: FC = withTournamentPk()(withGamePk()(RegistrationButtonComponent))

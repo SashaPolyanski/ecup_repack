@@ -7,12 +7,20 @@ import {FC} from "react";
 import {useQuery} from "@/api/hooks/useQuery";
 import {useUserStore} from "@/Zustand/userStore";
 import {useTranslation} from "react-i18next";
-import {Stack} from "@mui/material";
+import {Stack, useMediaQuery} from "@mui/material";
+import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import styled from "@emotion/styled";
 
 type ConfirmButtonProps = WithGamePkProps & withTournamentPkProps;
+const CnfrmButton = styled(Button)`
+  @media (max-width: ${MEDIA_QUERY_SM}px) {
+    width: 100%;
+  }
+`
 
 export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({tournamentPk, gamePk}) => {
   const {user} = useUserStore()
+  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`)
   const {t} = useTranslation('common')
   const {data} = useQuery<PaginatedTournamentTeamReadOnlyList>({path: `/games/${gamePk}/tournaments/${tournamentPk}/teams/?team__users=${user?.id}`})
   const {mutate: unRegistered} = useMutation({
@@ -41,11 +49,11 @@ export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({tournamentPk, ga
     registrationConfirm({is_confirmed: false})
   }
   return !isConfirmed ?
-    <Stack spacing={2} direction={'row'}>
+    <Stack spacing={2} direction={isSmallScreen ? 'column' : 'row'}>
       <Button loading={loading} variant={'outlined'}
               onClick={registrationConfirmHandler}>{t('registerTournament')}</Button><Button
       variant={'outlined'} onClick={unRegisteredHandler}>{t('cancelRegistration')}</Button> </Stack> :
-    <Button variant={'outlined'} onClick={unRegistrationConfirmHandler}>{t('unRegisterTournament')}</Button>
+    <CnfrmButton variant={'outlined'} onClick={unRegistrationConfirmHandler}>{t('unRegisterTournament')}</CnfrmButton>
 }
 export const ConfirmButton: FC = withTournamentPk()(withGamePk()(ConfirmButtonComponent))
 
