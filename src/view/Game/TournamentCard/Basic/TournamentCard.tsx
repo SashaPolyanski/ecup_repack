@@ -52,7 +52,7 @@ export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> 
     <TournamentCardContainer onClick={navigateToTournament}>
       <TournamentCardImageContainer><TournamentCardImage src={avatar.file}/></TournamentCardImageContainer>
       <TournamentCardContent>
-        <TournamentFormatInfo startAt={schedule[schedule.length - 1]} type={type} format={'1x7'}/>
+        <TournamentFormatInfo startAt={schedule[schedule.length - 1]} format={'1x7'}/>
         <TournamentTitle name={name}/>
         <Box px={2}>
           <ParticipantsProgress teams={teams.length} maxTeams={max_teams}/>

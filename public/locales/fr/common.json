@@ -4,7 +4,7 @@
   "registration": "S'inscrire",
   "forgotPassword": "Mot de passe oublié?",
   "dontHaveAccount": "Vous n'avez pas de compte?",
-  "goToRegistration": "Aller à l'enregistrement",
+  "goToRegistration": "Aller à l'inscription",
   "email": "E-mail",
   "password": "Mot de passe",
   "userName": "Nom d'utilisateur",
@@ -68,5 +68,6 @@
   "cancelRegistration": "Annuler l'inscription",
   "smallScreenConfirm": "Confirmer",
   "smallScreenCancel": "Annuler",
-  "regAccount": "Enregistrer un compte"
+  "regAccount": "Enregistrer un compte",
+  "registrationClosed": "L'inscription est fermée, le tournoi est Beguun"
 }

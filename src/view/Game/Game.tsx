@@ -62,7 +62,7 @@ export const GameComponent: FC<WithGamePkProps> = ({gamePk}) => {
       {isLoading ? <Preloader/> : <>
         <Banner bannerImage={gameData?.header?.file}/>
         <Tabs tabs={tabs(t)} value={tabValue} setTabValue={setTabValue}/>
-        <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'} gap={5} pb={2} mt={2} px={2}>
+        <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'} gap={5} pb={2} mt={2}>
           {tabComponents.map(({Component, tournaments, id}) => (
             <Component tournaments={tournaments} key={id}/>
           ))}

@@ -8,7 +8,6 @@ type StartAt = {
 }
 type TournamentEndProps = {
   startAt: StartAt
-  type: string
   format: string
 }
 const TournamentEndContent = styled(Typography)`
@@ -16,16 +15,15 @@ const TournamentEndContent = styled(Typography)`
   opacity: 0.7;
 `
 
-export const TournamentFormatInfo: FC<TournamentEndProps> = ({startAt, type, format}) => {
+export const TournamentFormatInfo: FC<TournamentEndProps> = ({startAt, format}) => {
   const {t} = useTranslation('common')
   const format_date = new Date(Object.values(startAt)[0] as string)?.toLocaleString('ru-RU', {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     hour12: false,
   }).slice(0, 17);
   return (
-    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} px={2} py={1}>
+    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} pr={2} py={1}>
       <Box>
-        <Chip label={type}/>
         <Chip sx={{marginLeft: '10px'}} label={format}/>
       </Box>
       <Box>

@@ -4,6 +4,8 @@ import {TournamentAuthButton} from "./AuthButton";
 import {RegistrationButton} from "./RegistrationButton";
 import {ConfirmButton} from "./ConfirmButton";
 import {InTournamentButton} from "./InTournamentButton";
+import {Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 type TournamentButtonProps = {
   conditions: Conditions
@@ -11,6 +13,7 @@ type TournamentButtonProps = {
 }
 
 export const TournamentButton: FC<TournamentButtonProps> = ({conditions, tournamentPk}) => {
+  const {t} = useTranslation('common')
   if (conditions) {
     const {isAuth, confirm, start, inTournament} = conditions
     if (!isAuth) {
@@ -26,7 +29,7 @@ export const TournamentButton: FC<TournamentButtonProps> = ({conditions, tournam
       return <ConfirmButton tournamentPk={tournamentPk}/>
     }
     if ((!isAuth || isAuth) && start) {
-      return
+      return <Typography>{t('registrationClosed')}</Typography>
     }
   }
 };

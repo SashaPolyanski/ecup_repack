@@ -68,5 +68,6 @@
   "cancelRegistration": "Cancel registration",
   "smallScreenConfirm": "Confirm",
   "smallScreenCancel": "Cancel",
-  "regAccount": "Register an account"
+  "regAccount": "Register an account",
+  "registrationClosed": "Registration is closed, the tournament has begun"
 }

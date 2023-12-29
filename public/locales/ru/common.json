@@ -68,5 +68,6 @@
   "cancelRegistration": "Отменить регистрацию",
   "smallScreenConfirm": "Подтвердить",
   "smallScreenCancel": "Отменить",
-  "regAccount": "Зарегистрировать аккаунт"
+  "regAccount": "Зарегистрировать аккаунт",
+  "registrationClosed": "Регистрация закрыта, турнир начался"
 }
