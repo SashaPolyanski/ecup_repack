@@ -1,12 +1,9 @@
-import {FC} from 'react'
 import {TournamentRegistrationCard} from "./TournamentRegistrationCard";
 import {TournamentGameSchedule, TournamentSchedule} from "./TournamentSchedule";
 import {Box} from "@mui/material";
 
 
-type TournamentsInfoProps = {}
-
-export const TournamentsInfo: FC<TournamentsInfoProps> = ({}) => {
+export const TournamentsInfo = ({}) => {
   return (
     <Box sx={{width: '100%'}}>
       <TournamentSchedule/>

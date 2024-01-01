@@ -43,7 +43,7 @@ const TournamentCardImage = styled.img`
 
 `
 export const TournamentCardComponent: FC<TournamentCardProps & WithGamePkProps> = ({tournament, gamePk}) => {
-  const {name, teams, max_teams, type, id, avatar, status, schedule} = tournament
+  const {name, teams, max_teams, id, avatar, status, schedule} = tournament
   const navigate = useNavigate()
   const navigateToTournament = () => {
     navigate(games.tournament.replace(':gameId', gamePk.toString()).replace(':id', id.toString()))

@@ -11,13 +11,14 @@ import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk";
 import styled from "@emotion/styled";
 import {TournamentRules} from "./TournamentRules";
 import {TournamentParticipants} from "@view/Tournament/TournamentParticipans";
+import {TournamentBracket} from "@view/Tournament/TournamentBracket";
 
 type TournamentProps = WithGamePkProps & withTournamentPkProps
 const TournamentName = styled(Typography)`
   text-align: center;
 `
 
-const tournamentsComponents = [TournamentsInfo, TournamentParticipants, TournamentStream, TournamentsInfo, TournamentRules]
+const tournamentsComponents = [TournamentsInfo, TournamentParticipants, TournamentStream, TournamentBracket, TournamentRules]
 export const TournamentComponent: FC<TournamentProps> = ({tournamentPk, gamePk}) => {
   const [tabValue, setTabValue] = useState(0)
   const {data} = useQuery<TournamentReadOnly>({
