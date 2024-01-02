@@ -27,7 +27,7 @@ export const UpcomingTournamentsComponent: FC<WithGamePkProps> = ({
   };
 
   const sortedTournament = data?.results?.slice().sort(compareTournaments);
-  return !isLoading ? (
+  return isLoading ? (
     <SkeletonLoader />
   ) : (
     sortedTournament?.map((m) => {
