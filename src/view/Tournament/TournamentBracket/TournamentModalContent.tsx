@@ -47,7 +47,6 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
   const tabsComponents: FC<TabsComponents>[] | undefined = dynamicTabs()?.map(
     (tab) => tab.component,
   );
-  console.log(tabsComponents);
   const Component = tabsComponents?.length
     ? tabsComponents[tabValue]
     : TournamentsUsersTable;
