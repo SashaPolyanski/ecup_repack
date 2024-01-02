@@ -23,7 +23,7 @@ export const UpcomingTournamentsComponent: FC<WithGamePkProps> = ({gamePk}) => {
   };
 
   const sortedTournament = data?.results?.slice().sort(compareTournaments);
-  return !isLoading ? <SkeletonLoader/> : sortedTournament?.map(m => {
+  return isLoading ? <SkeletonLoader/> : sortedTournament?.map(m => {
     const Component = tournamentCard[isSmallScreen ? 'BASIC' : m.type]
     return <Component tournament={m} key={m.id}/>
   })
