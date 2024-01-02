@@ -1,31 +1,31 @@
-import {FC} from 'react'
-import {Conditions} from "./TournamentRegistrationButton";
-import {TournamentAuthButton} from "./AuthButton";
-import {RegistrationButton} from "./RegistrationButton";
-import {ConfirmButton} from "./ConfirmButton";
-import {InTournamentButton} from "./InTournamentButton";
+import { FC } from "react";
+import { Conditions } from "./TournamentRegistrationButton";
+import { TournamentAuthButton } from "./AuthButton";
+import { RegistrationButton } from "./RegistrationButton";
+import { ConfirmButton } from "./ConfirmButton";
+import { InTournamentButton } from "./InTournamentButton";
 
 type TournamentButtonProps = {
-  conditions: Conditions
-}
+  conditions: Conditions;
+};
 
-export const TournamentButton: FC<TournamentButtonProps> = ({conditions}) => {
+export const TournamentButton: FC<TournamentButtonProps> = ({ conditions }) => {
   if (conditions) {
-    const {isAuth, confirm, start, inTournament} = conditions
+    const { isAuth, confirm, start, inTournament } = conditions;
     if (!isAuth) {
-      return <TournamentAuthButton/>
+      return <TournamentAuthButton />;
     }
     if (isAuth && !start && !inTournament) {
-      return <RegistrationButton/>
+      return <RegistrationButton />;
     }
     if (isAuth && !confirm && !start && inTournament) {
-      return <InTournamentButton/>
+      return <InTournamentButton />;
     }
     if (isAuth && confirm && !start) {
-      return <ConfirmButton/>
+      return <ConfirmButton />;
     }
     if ((!isAuth || isAuth) && start) {
-      return
+      return;
     }
   }
 };

@@ -1,3 +1,3 @@
-import {ThemeContext, ThemeDefaultValueCtx} from "./ThemeContext";
+import { ThemeContext, ThemeDefaultValueCtx } from "./ThemeContext";
 
-export {ThemeDefaultValueCtx, ThemeContext}
+export { ThemeDefaultValueCtx, ThemeContext };

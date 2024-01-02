@@ -1,2 +1,3 @@
 export const isNumber = (value: unknown): value is number =>
-  Object.prototype.toString.call(value) === '[object Number]' && !Number.isNaN(value)
+  Object.prototype.toString.call(value) === "[object Number]" &&
+  !Number.isNaN(value);

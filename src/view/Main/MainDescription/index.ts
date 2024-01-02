@@ -1,3 +1,3 @@
-import {MainDescription} from "./MainDescription";
+import { MainDescription } from "./MainDescription";
 
-export {MainDescription}
+export { MainDescription };

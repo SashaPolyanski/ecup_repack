@@ -1,10 +1,10 @@
-import {FC, lazy, Suspense} from 'react'
-import {Preloader} from "@shared";
+import { FC, lazy, Suspense } from "react";
+import { Preloader } from "@shared";
 
-const Page = lazy(() => import('./Page'))
+const Page = lazy(() => import("./Page"));
 
 export const Component: FC = (props) => (
-  <Suspense fallback={<Preloader/>}>
+  <Suspense fallback={<Preloader />}>
     <Page {...props} />
   </Suspense>
-)
+);

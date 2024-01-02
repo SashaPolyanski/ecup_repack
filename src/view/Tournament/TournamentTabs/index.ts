@@ -1,3 +1,3 @@
-import {TournamentTabs} from "./TournamentTabs";
+import { TournamentTabs } from "./TournamentTabs";
 
-export {TournamentTabs}
+export { TournamentTabs };

@@ -1,3 +1,3 @@
-import {UserSettings} from "./UserSettings";
+import { UserSettings } from "./UserSettings";
 
-export {UserSettings}
+export { UserSettings };

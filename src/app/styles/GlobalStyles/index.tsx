@@ -1,9 +1,9 @@
-import {css, Global} from "@emotion/react";
-import {useContext} from "react";
-import {ThemeDefaultValueCtx} from "@theme";
+import { css, Global } from "@emotion/react";
+import { useContext } from "react";
+import { ThemeDefaultValueCtx } from "@theme";
 
 export const GlobalStyles: React.FC = () => {
-  const {theme} = useContext(ThemeDefaultValueCtx);
+  const { theme } = useContext(ThemeDefaultValueCtx);
   return (
     <Global
       styles={css`
@@ -37,7 +37,6 @@ export const GlobalStyles: React.FC = () => {
           color: ${theme.palette.text.primary};
         }
 
-
         a {
           text-decoration: none;
 
@@ -47,5 +46,5 @@ export const GlobalStyles: React.FC = () => {
         }
       `}
     />
-  )
-}
+  );
+};

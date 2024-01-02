@@ -1,17 +1,17 @@
-import {access, mkdir, writeFile} from 'node:fs/promises';
-import path from 'node:path';
-import {google} from 'googleapis';
+import { access, mkdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { google } from "googleapis";
 
 const config = {
-  spreadsheetId: '1UWvrgTWW9kz5NZHUM8-CFyhIzWecNT_hJVYLdcpRd6I',
-  key: 'AIzaSyCAO4VtHIuJWL6rAJuJGyf0-s0IDadbxok',
+  spreadsheetId: "1UWvrgTWW9kz5NZHUM8-CFyhIzWecNT_hJVYLdcpRd6I",
+  key: "AIzaSyCAO4VtHIuJWL6rAJuJGyf0-s0IDadbxok",
 };
 
-const localesPath = 'public/locales';
+const localesPath = "public/locales";
 
 const downloadTranslations = async () => {
   const sheet = google.sheets({
-    version: 'v4',
+    version: "v4",
     key: config.key,
   });
 
@@ -20,7 +20,11 @@ const downloadTranslations = async () => {
   const values = await sheet.spreadsheets.values.batchGet({
     ...config,
     ranges: lists.data.sheets
-      .map((sheet) => !sheet.properties.title.startsWith('!') && `${sheet.properties.title}!A:Z`)
+      .map(
+        (sheet) =>
+          !sheet.properties.title.startsWith("!") &&
+          `${sheet.properties.title}!A:Z`,
+      )
       .filter((name) => !!name),
   });
   try {
@@ -45,7 +49,7 @@ const downloadTranslations = async () => {
   );
 
   await Promise.all(
-    values.data.valueRanges.map(({values, range}) =>
+    values.data.valueRanges.map(({ values, range }) =>
       Promise.all(
         langs.map(async (lang, index) => {
           const d = JSON.stringify(
@@ -58,25 +62,30 @@ const downloadTranslations = async () => {
             undefined,
             2,
           );
-          locales[lang][`${range.split('!')[0]}`] = Object.fromEntries(
+          locales[lang][`${range.split("!")[0]}`] = Object.fromEntries(
             values
               .slice(1)
               .map(([key, ...other]) => [key, other[index]])
               .filter(([key]) => key),
           );
 
-          const localePath = path.join(localesPath, lang, `${range.split('!')[0]}.json`);
+          const localePath = path.join(
+            localesPath,
+            lang,
+            `${range.split("!")[0]}.json`,
+          );
           await writeFile(localePath, d);
         }),
-      )),
+      ),
+    ),
   );
   await Promise.all(
     Object.entries(locales).map(async ([lang, data]) => {
-      const localePath = path.join(localesPath, lang, 'index.json');
+      const localePath = path.join(localesPath, lang, "index.json");
       await writeFile(localePath, JSON.stringify(data, undefined, 2));
     }),
   );
-  console.log('✅ locales downloaded successfully.');
+  console.log("✅ locales downloaded successfully.");
 
   return true;
 };

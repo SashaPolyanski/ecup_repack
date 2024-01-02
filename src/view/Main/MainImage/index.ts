@@ -1,3 +1,3 @@
-import {MainImage} from "./MainImage";
+import { MainImage } from "./MainImage";
 
-export {MainImage}
+export { MainImage };

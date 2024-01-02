@@ -1,3 +1,3 @@
-import {TournamentsPrize} from "./TournamentsPrize";
+import { TournamentsPrize } from "./TournamentsPrize";
 
-export {TournamentsPrize}
+export { TournamentsPrize };

@@ -1,12 +1,12 @@
 export const games = {
-  game: '/game/:gameId',
-  tournament: '/game/:gameId/tournament/:id',
-} as const
+  game: "/game/:gameId",
+  tournament: "/game/:gameId/tournament/:id",
+} as const;
 
 export const main = {
-  mainRoot: '/'
-} as const
+  mainRoot: "/",
+} as const;
 
 export const userSettings = {
-  userSettingsRoot: '/userSettings'
-} as const
+  userSettingsRoot: "/userSettings",
+} as const;

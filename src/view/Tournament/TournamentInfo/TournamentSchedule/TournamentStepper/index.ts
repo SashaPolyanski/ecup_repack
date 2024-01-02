@@ -1,3 +1,3 @@
-import {TournamentStepper} from "./TournamentStepper";
+import { TournamentStepper } from "./TournamentStepper";
 
-export {TournamentStepper}
+export { TournamentStepper };

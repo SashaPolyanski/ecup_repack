@@ -116,6 +116,8 @@
     "smallScreenConfirm": "Confirm",
     "smallScreenCancel": "Cancel",
     "regAccount": "Register an account",
-    "registrationClosed": "Registration is closed, the tournament has begun"
+    "registrationClosed": "Registration is closed, the tournament has begun",
+    "registerTournamentNotification": "Congratulations! You registered in the tournament!",
+    "unRegisterTournamentNotification": "You canceled registration in a tournament, we will not have enough of you :("
   }
 }

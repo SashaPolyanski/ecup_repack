@@ -1,3 +1,3 @@
 export const getError = (data: object) => {
-  return Object.values(data).flat().join('')
-}
+  return Object.values(data).flat().join("");
+};

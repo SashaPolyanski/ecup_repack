@@ -1,3 +1,3 @@
-import {useUploadAvatar} from "./uploadAvatar";
+import { useUploadAvatar } from "./uploadAvatar";
 
-export {useUploadAvatar}
+export { useUploadAvatar };

@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
-import {Box, Typography} from "@mui/material";
-import {MEDIA_QUERY_LG, MEDIA_QUERY_MD, MEDIA_QUERY_SM} from "@/constants/breackpoints";
-import {transientOptions} from "@utils";
+import { Box, Typography } from "@mui/material";
+import {
+  MEDIA_QUERY_LG,
+  MEDIA_QUERY_MD,
+  MEDIA_QUERY_SM,
+} from "@/constants/breackpoints";
+import { transientOptions } from "@utils";
 
 export const WrapperBoxSteps = styled(Box, transientOptions)`
   margin-top: 20px;
@@ -18,7 +22,7 @@ export const WrapperBoxSteps = styled(Box, transientOptions)`
     padding-right: 0px;
   }
 `;
-export const StepsBox = styled(Box, transientOptions)<{ $completed?: boolean; }>`
+export const StepsBox = styled(Box, transientOptions)<{ $completed?: boolean }>`
   margin-right: 20px;
   position: relative;
   min-height: 107px;
@@ -34,7 +38,8 @@ export const StepsBox = styled(Box, transientOptions)<{ $completed?: boolean; }>
     height: 15px;
     border-radius: 7.5px;
     bottom: 4px;
-    background-color: ${({$completed}) => ($completed ? '#69b6d5' : '#718096')};
+    background-color: ${({ $completed }) =>
+      $completed ? "#69b6d5" : "#718096"};
   }
 
   &:before {
@@ -44,7 +49,8 @@ export const StepsBox = styled(Box, transientOptions)<{ $completed?: boolean; }>
     position: absolute;
     bottom: 10px;
     right: -18px;
-    border-bottom: ${({$completed}) => ($completed ? '3px solid #69b6d5' : '3px solid #718096')};
+    border-bottom: ${({ $completed }) =>
+      $completed ? "3px solid #69b6d5" : "3px solid #718096"};
   }
 
   @media (max-width: ${MEDIA_QUERY_MD}px) {
@@ -70,24 +76,27 @@ export const StepsBox = styled(Box, transientOptions)<{ $completed?: boolean; }>
   }
 }
 `;
-export const StepsDescrTitle = styled(Typography, transientOptions)<{ $completed?: boolean; }>`
+export const StepsDescrTitle = styled(Typography, transientOptions)<{
+  $completed?: boolean;
+}>`
   font-size: 18px;
   line-height: 27px;
   font-weight: 500;
-  color: ${({$completed}) => ($completed ? '#F5F5F5' : '#718096')};
+  color: ${({ $completed }) => ($completed ? "#F5F5F5" : "#718096")};
   @media (max-width: ${MEDIA_QUERY_MD}px) {
     font-size: 14px;
   }
 `;
-export const StepsDescrSubTitle = styled(Typography, transientOptions)<{ $completed?: boolean; }>`
+export const StepsDescrSubTitle = styled(Typography, transientOptions)<{
+  $completed?: boolean;
+}>`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: ${({$completed}) => ($completed ? '#CBD5E0' : '#718096')};
+  color: ${({ $completed }) => ($completed ? "#CBD5E0" : "#718096")};
   margin-bottom: 25px;
   @media (max-width: ${MEDIA_QUERY_MD}px) {
     font-size: 14px;
-
   }
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     margin-bottom: 0px;

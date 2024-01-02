@@ -1,3 +1,3 @@
-import {Notification, notification} from "./Notification";
+import { Notification, notification } from "./Notification";
 
-export {Notification, notification}
+export { Notification, notification };

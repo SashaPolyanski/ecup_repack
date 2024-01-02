@@ -1,3 +1,3 @@
-import {TournamentRegistrationCard} from "./TournamentRegistrationCard";
+import { TournamentRegistrationCard } from "./TournamentRegistrationCard";
 
-export {TournamentRegistrationCard}
+export { TournamentRegistrationCard };

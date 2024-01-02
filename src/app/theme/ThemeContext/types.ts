@@ -1,17 +1,14 @@
-import {createContext} from 'react'
-import {createTheme, Theme} from "@mui/material";
-
+import { createContext } from "react";
+import { createTheme, Theme } from "@mui/material";
 
 export type ThemeCtxType = {
-  toggleColorMode: () => void
-  theme: Theme
-}
+  toggleColorMode: () => void;
+  theme: Theme;
+};
 
 export const ThemeDefaultValueCtx = createContext<ThemeCtxType>({
-    theme: createTheme(),
-    toggleColorMode: () => {
-    },
-  }
-)
+  theme: createTheme(),
+  toggleColorMode: () => {},
+});
 
-export const ThemeCtxProvider = ThemeDefaultValueCtx.Provider
+export const ThemeCtxProvider = ThemeDefaultValueCtx.Provider;

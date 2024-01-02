@@ -1,3 +1,3 @@
-import {TournamentsComponent} from "./TournamentsComponent";
+import { TournamentsComponent } from "./TournamentsComponent";
 
-export {TournamentsComponent}
+export { TournamentsComponent };

@@ -1,13 +1,13 @@
-import {create} from 'zustand'
+import { create } from "zustand";
 
 type IsAuthType = {
-  isAuth: boolean
-  setIsAuth: (isAuth: boolean) => void
-}
+  isAuth: boolean;
+  setIsAuth: (isAuth: boolean) => void;
+};
 
 export const useIsAuthStore = create<IsAuthType>()((set) => {
-  return ({
+  return {
     isAuth: false,
-    setIsAuth: (isAuth: boolean) => set({isAuth}),
-  })
-})
+    setIsAuth: (isAuth: boolean) => set({ isAuth }),
+  };
+});

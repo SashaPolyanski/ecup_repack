@@ -1,4 +1,4 @@
-import {dark} from "./darkMod";
-import {light} from "./lightMod";
+import { dark } from "./darkMod";
+import { light } from "./lightMod";
 
-export {dark, light}
+export { dark, light };

@@ -11,7 +11,7 @@ import {
   Preloader,
   Tabs,
   ThemeSwitcher,
-  Tooltip
+  Tooltip,
 } from "./ui";
 
 export {
@@ -27,5 +27,5 @@ export {
   Button,
   Tabs,
   Tooltip,
-  ParticipantsProgress
-}
+  ParticipantsProgress,
+};

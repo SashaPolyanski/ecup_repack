@@ -1,6 +1,6 @@
-import {MainImage} from "./MainImage";
-import {MainDescription} from "./MainDescription";
-import {Box} from "@mui/material";
+import { MainImage } from "./MainImage";
+import { MainDescription } from "./MainDescription";
+import { Box } from "@mui/material";
 import styled from "@emotion/styled";
 
 const MainContainer = styled(Box)`
@@ -9,13 +9,13 @@ const MainContainer = styled(Box)`
   flex-direction: column;
   justify-content: space-between;
   overflow-x: hidden;
-`
+`;
 
 export const Main = () => {
   return (
     <MainContainer>
-      <MainImage/>
-      <MainDescription/>
+      <MainImage />
+      <MainDescription />
     </MainContainer>
   );
 };

@@ -1,3 +1,3 @@
-import {ParticipantsProgress} from "./ParticipantsProgress";
+import { ParticipantsProgress } from "./ParticipantsProgress";
 
-export {ParticipantsProgress}
+export { ParticipantsProgress };

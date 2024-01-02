@@ -116,6 +116,7 @@
     "smallScreenConfirm": "Confirmer",
     "smallScreenCancel": "Annuler",
     "regAccount": "Enregistrer un compte",
-    "registrationClosed": "L'inscription est fermée, le tournoi est Beguun"
+    "registrationClosed": "L'inscription est fermée, le tournoi est Beguun",
+    "registerTournamentNotification": "Toutes nos félicitations! Vous vous êtes inscrit dans le tournoi!"
   }
 }

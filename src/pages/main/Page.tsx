@@ -1,6 +1,6 @@
-import {memo} from 'react'
-import {Main} from "@view/Main";
+import { memo } from "react";
+import { Main } from "@view/Main";
 
-const Page = memo(() => <Main/>)
+const Page = memo(() => <Main />);
 
-export default Page
+export default Page;

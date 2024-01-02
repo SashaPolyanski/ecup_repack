@@ -1,8 +1,8 @@
-import {FC} from "react";
+import { FC } from "react";
 
 export type PageConfig = {
-  path: string
-  component: FC
-  showNavbar: boolean
-  showSidebar: boolean
-}
+  path: string;
+  component: FC;
+  showNavbar: boolean;
+  showSidebar: boolean;
+};

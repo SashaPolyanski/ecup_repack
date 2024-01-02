@@ -1,4 +1,4 @@
-import {TournamentSchedule} from "./TournamentSchedule";
-import {TournamentGameSchedule} from "./TournamentGamesSchedule.tsx";
+import { TournamentSchedule } from "./TournamentSchedule";
+import { TournamentGameSchedule } from "./TournamentGamesSchedule.tsx";
 
-export {TournamentSchedule, TournamentGameSchedule}
+export { TournamentSchedule, TournamentGameSchedule };

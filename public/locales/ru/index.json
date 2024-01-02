@@ -116,6 +116,8 @@
     "smallScreenConfirm": "Подтвердить",
     "smallScreenCancel": "Отменить",
     "regAccount": "Зарегистрировать аккаунт",
-    "registrationClosed": "Регистрация закрыта, турнир начался"
+    "registrationClosed": "Регистрация закрыта, турнир начался",
+    "registerTournamentNotification": "Поздравляем! Вы зарегистрировались в турнире!",
+    "unRegisterTournamentNotification": "Вы отменили регистрацию в турниге, нам будет Вас не хватить :("
   }
 }

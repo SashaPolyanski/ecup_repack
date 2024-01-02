@@ -1,3 +1,3 @@
-import {TournamentRules} from "./TournamentRules";
+import { TournamentRules } from "./TournamentRules";
 
-export {TournamentRules}
+export { TournamentRules };

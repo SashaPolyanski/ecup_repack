@@ -1,18 +1,22 @@
-import {useMediaQuery} from "@mui/material";
-import {PaginatedTournamentReadOnlyList, TournamentReadOnly} from "@/api/types";
-import {tournamentCard} from "./TournamentCard";
-import {withGamePk, WithGamePkProps} from "@/hocs/withGamePk.tsx";
-import {useQuery} from "@/api/hooks/useQuery.ts";
-import {FC} from "react";
-import {SkeletonLoader} from "@view/Game/TournamentCard";
+import { useMediaQuery } from "@mui/material";
+import {
+  PaginatedTournamentReadOnlyList,
+  TournamentReadOnly,
+} from "@/api/types";
+import { tournamentCard } from "./TournamentCard";
+import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
+import { useQuery } from "@/api/hooks/useQuery.ts";
+import { FC } from "react";
+import { SkeletonLoader } from "@view/Game/TournamentCard";
 
-
-export const CurrentTournamentsComponent: FC<WithGamePkProps> = ({gamePk}) => {
-  const isSmallScreen = useMediaQuery(`(max-width: 716px)`)
-  const {data, isLoading} = useQuery<PaginatedTournamentReadOnlyList>({
+export const CurrentTournamentsComponent: FC<WithGamePkProps> = ({
+  gamePk,
+}) => {
+  const isSmallScreen = useMediaQuery(`(max-width: 716px)`);
+  const { data, isLoading } = useQuery<PaginatedTournamentReadOnlyList>({
     path: `/games/${gamePk}/tournaments/?limit=1000&status=STARTED`,
-    skip: !!gamePk
-  })
+    skip: !!gamePk,
+  });
   const compareTournaments = (a: TournamentReadOnly, b: TournamentReadOnly) => {
     const order = {
       RECOMMENDED: 1,
@@ -23,9 +27,13 @@ export const CurrentTournamentsComponent: FC<WithGamePkProps> = ({gamePk}) => {
   };
 
   const sortedTournament = data?.results?.slice().sort(compareTournaments);
-  return isLoading ? <SkeletonLoader/> : sortedTournament?.map(m => {
-    const Component = tournamentCard[isSmallScreen ? 'BASIC' : m.type]
-    return <Component tournament={m} key={m.id}/>
-  })
+  return isLoading ? (
+    <SkeletonLoader />
+  ) : (
+    sortedTournament?.map((m) => {
+      const Component = tournamentCard[isSmallScreen ? "BASIC" : m.type];
+      return <Component tournament={m} key={m.id} />;
+    })
+  );
 };
-export const CurrentTournaments: FC = withGamePk()(CurrentTournamentsComponent)
+export const CurrentTournaments: FC = withGamePk()(CurrentTournamentsComponent);

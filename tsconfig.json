@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -18,33 +14,15 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@theme": [
-        "src/app/theme/index"
-      ],
-      "@global": [
-        "src/app/styles/GlobalStyles/index"
-      ],
-      "@pages": [
-        "src/pages/index"
-      ],
-      "@utils": [
-        "src/utils/index"
-      ],
-      "@view/*": [
-        "src/view/*"
-      ],
-      "@constants": [
-        "src/constants/index"
-      ],
-      "@shared": [
-        "src/shared/index"
-      ],
-      "@/*": [
-        "src/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ]
+      "@theme": ["src/app/theme/index"],
+      "@global": ["src/app/styles/GlobalStyles/index"],
+      "@pages": ["src/pages/index"],
+      "@utils": ["src/utils/index"],
+      "@view/*": ["src/view/*"],
+      "@constants": ["src/constants/index"],
+      "@shared": ["src/shared/index"],
+      "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"]
     },
     /* Linting */
     "strict": true,
@@ -53,9 +31,7 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"

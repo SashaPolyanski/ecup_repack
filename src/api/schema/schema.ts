@@ -3,7 +3,6 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
   "/api/attachments/": {
     get: operations["api_attachments_list"];
@@ -356,7 +355,12 @@ export interface components {
       attachments: readonly components["schemas"]["AttachmentReadOnly"][];
     };
     /** @enum {string} */
-    AttachmentGroupReadOnlyTypeEnum: "USER_AVATAR" | "WORKSPACE_AVATAR" | "SYSTEM_LOGO" | "CONNECTOR_LOGO" | "ENTITY_LOGO";
+    AttachmentGroupReadOnlyTypeEnum:
+      | "USER_AVATAR"
+      | "WORKSPACE_AVATAR"
+      | "SYSTEM_LOGO"
+      | "CONNECTOR_LOGO"
+      | "ENTITY_LOGO";
     AttachmentReadOnly: {
       id: number;
       /** Format: uri */
@@ -366,7 +370,256 @@ export interface components {
       created: string;
     };
     /** @enum {string} */
-    CountryEnum: "AF" | "AX" | "AL" | "DZ" | "AS" | "AD" | "AO" | "AI" | "AQ" | "AG" | "AR" | "AM" | "AW" | "AU" | "AT" | "AZ" | "BS" | "BH" | "BD" | "BB" | "BY" | "BE" | "BZ" | "BJ" | "BM" | "BT" | "BO" | "BQ" | "BA" | "BW" | "BV" | "BR" | "IO" | "BN" | "BG" | "BF" | "BI" | "CV" | "KH" | "CM" | "CA" | "KY" | "CF" | "TD" | "CL" | "CN" | "CX" | "CC" | "CO" | "KM" | "CG" | "CD" | "CK" | "CR" | "CI" | "HR" | "CU" | "CW" | "CY" | "CZ" | "DK" | "DJ" | "DM" | "DO" | "EC" | "EG" | "SV" | "GQ" | "ER" | "EE" | "SZ" | "ET" | "FK" | "FO" | "FJ" | "FI" | "FR" | "GF" | "PF" | "TF" | "GA" | "GM" | "GE" | "DE" | "GH" | "GI" | "GR" | "GL" | "GD" | "GP" | "GU" | "GT" | "GG" | "GN" | "GW" | "GY" | "HT" | "HM" | "VA" | "HN" | "HK" | "HU" | "IS" | "IN" | "ID" | "IR" | "IQ" | "IE" | "IM" | "IL" | "IT" | "JM" | "JP" | "JE" | "JO" | "KZ" | "KE" | "KI" | "KW" | "KG" | "LA" | "LV" | "LB" | "LS" | "LR" | "LY" | "LI" | "LT" | "LU" | "MO" | "MG" | "MW" | "MY" | "MV" | "ML" | "MT" | "MH" | "MQ" | "MR" | "MU" | "YT" | "MX" | "FM" | "MD" | "MC" | "MN" | "ME" | "MS" | "MA" | "MZ" | "MM" | "NA" | "NR" | "NP" | "NL" | "NC" | "NZ" | "NI" | "NE" | "NG" | "NU" | "NF" | "KP" | "MK" | "MP" | "NO" | "OM" | "PK" | "PW" | "PS" | "PA" | "PG" | "PY" | "PE" | "PH" | "PN" | "PL" | "PT" | "PR" | "QA" | "RE" | "RO" | "RU" | "RW" | "BL" | "SH" | "KN" | "LC" | "MF" | "PM" | "VC" | "WS" | "SM" | "ST" | "SA" | "SN" | "RS" | "SC" | "SL" | "SG" | "SX" | "SK" | "SI" | "SB" | "SO" | "ZA" | "GS" | "KR" | "SS" | "ES" | "LK" | "SD" | "SR" | "SJ" | "SE" | "CH" | "SY" | "TW" | "TJ" | "TZ" | "TH" | "TL" | "TG" | "TK" | "TO" | "TT" | "TN" | "TR" | "TM" | "TC" | "TV" | "UG" | "UA" | "AE" | "GB" | "UM" | "US" | "UY" | "UZ" | "VU" | "VE" | "VN" | "VG" | "VI" | "WF" | "EH" | "YE" | "ZM" | "ZW";
+    CountryEnum:
+      | "AF"
+      | "AX"
+      | "AL"
+      | "DZ"
+      | "AS"
+      | "AD"
+      | "AO"
+      | "AI"
+      | "AQ"
+      | "AG"
+      | "AR"
+      | "AM"
+      | "AW"
+      | "AU"
+      | "AT"
+      | "AZ"
+      | "BS"
+      | "BH"
+      | "BD"
+      | "BB"
+      | "BY"
+      | "BE"
+      | "BZ"
+      | "BJ"
+      | "BM"
+      | "BT"
+      | "BO"
+      | "BQ"
+      | "BA"
+      | "BW"
+      | "BV"
+      | "BR"
+      | "IO"
+      | "BN"
+      | "BG"
+      | "BF"
+      | "BI"
+      | "CV"
+      | "KH"
+      | "CM"
+      | "CA"
+      | "KY"
+      | "CF"
+      | "TD"
+      | "CL"
+      | "CN"
+      | "CX"
+      | "CC"
+      | "CO"
+      | "KM"
+      | "CG"
+      | "CD"
+      | "CK"
+      | "CR"
+      | "CI"
+      | "HR"
+      | "CU"
+      | "CW"
+      | "CY"
+      | "CZ"
+      | "DK"
+      | "DJ"
+      | "DM"
+      | "DO"
+      | "EC"
+      | "EG"
+      | "SV"
+      | "GQ"
+      | "ER"
+      | "EE"
+      | "SZ"
+      | "ET"
+      | "FK"
+      | "FO"
+      | "FJ"
+      | "FI"
+      | "FR"
+      | "GF"
+      | "PF"
+      | "TF"
+      | "GA"
+      | "GM"
+      | "GE"
+      | "DE"
+      | "GH"
+      | "GI"
+      | "GR"
+      | "GL"
+      | "GD"
+      | "GP"
+      | "GU"
+      | "GT"
+      | "GG"
+      | "GN"
+      | "GW"
+      | "GY"
+      | "HT"
+      | "HM"
+      | "VA"
+      | "HN"
+      | "HK"
+      | "HU"
+      | "IS"
+      | "IN"
+      | "ID"
+      | "IR"
+      | "IQ"
+      | "IE"
+      | "IM"
+      | "IL"
+      | "IT"
+      | "JM"
+      | "JP"
+      | "JE"
+      | "JO"
+      | "KZ"
+      | "KE"
+      | "KI"
+      | "KW"
+      | "KG"
+      | "LA"
+      | "LV"
+      | "LB"
+      | "LS"
+      | "LR"
+      | "LY"
+      | "LI"
+      | "LT"
+      | "LU"
+      | "MO"
+      | "MG"
+      | "MW"
+      | "MY"
+      | "MV"
+      | "ML"
+      | "MT"
+      | "MH"
+      | "MQ"
+      | "MR"
+      | "MU"
+      | "YT"
+      | "MX"
+      | "FM"
+      | "MD"
+      | "MC"
+      | "MN"
+      | "ME"
+      | "MS"
+      | "MA"
+      | "MZ"
+      | "MM"
+      | "NA"
+      | "NR"
+      | "NP"
+      | "NL"
+      | "NC"
+      | "NZ"
+      | "NI"
+      | "NE"
+      | "NG"
+      | "NU"
+      | "NF"
+      | "KP"
+      | "MK"
+      | "MP"
+      | "NO"
+      | "OM"
+      | "PK"
+      | "PW"
+      | "PS"
+      | "PA"
+      | "PG"
+      | "PY"
+      | "PE"
+      | "PH"
+      | "PN"
+      | "PL"
+      | "PT"
+      | "PR"
+      | "QA"
+      | "RE"
+      | "RO"
+      | "RU"
+      | "RW"
+      | "BL"
+      | "SH"
+      | "KN"
+      | "LC"
+      | "MF"
+      | "PM"
+      | "VC"
+      | "WS"
+      | "SM"
+      | "ST"
+      | "SA"
+      | "SN"
+      | "RS"
+      | "SC"
+      | "SL"
+      | "SG"
+      | "SX"
+      | "SK"
+      | "SI"
+      | "SB"
+      | "SO"
+      | "ZA"
+      | "GS"
+      | "KR"
+      | "SS"
+      | "ES"
+      | "LK"
+      | "SD"
+      | "SR"
+      | "SJ"
+      | "SE"
+      | "CH"
+      | "SY"
+      | "TW"
+      | "TJ"
+      | "TZ"
+      | "TH"
+      | "TL"
+      | "TG"
+      | "TK"
+      | "TO"
+      | "TT"
+      | "TN"
+      | "TR"
+      | "TM"
+      | "TC"
+      | "TV"
+      | "UG"
+      | "UA"
+      | "AE"
+      | "GB"
+      | "UM"
+      | "US"
+      | "UY"
+      | "UZ"
+      | "VU"
+      | "VE"
+      | "VN"
+      | "VG"
+      | "VI"
+      | "WF"
+      | "EH"
+      | "YE"
+      | "ZM"
+      | "ZW";
     GameReadOnly: {
       id: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
@@ -384,7 +637,94 @@ export interface components {
       user: components["schemas"]["User"];
     };
     /** @enum {string} */
-    LanguageEnum: "af" | "ar" | "ast" | "az" | "bg" | "be" | "bn" | "br" | "bs" | "ca" | "ckb" | "cs" | "cy" | "da" | "de" | "dsb" | "el" | "en" | "eo" | "es" | "et" | "eu" | "fa" | "fi" | "fr" | "fy" | "ga" | "gd" | "gl" | "he" | "hi" | "hr" | "hsb" | "hu" | "hy" | "ia" | "id" | "ig" | "io" | "is" | "it" | "ja" | "ka" | "kab" | "kk" | "km" | "kn" | "ko" | "ky" | "lb" | "lt" | "lv" | "mk" | "ml" | "mn" | "mr" | "ms" | "my" | "nb" | "ne" | "nl" | "nn" | "os" | "pa" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sq" | "sr" | "sv" | "sw" | "ta" | "te" | "tg" | "th" | "tk" | "tr" | "tt" | "udm" | "uk" | "ur" | "uz" | "vi" | "us";
+    LanguageEnum:
+      | "af"
+      | "ar"
+      | "ast"
+      | "az"
+      | "bg"
+      | "be"
+      | "bn"
+      | "br"
+      | "bs"
+      | "ca"
+      | "ckb"
+      | "cs"
+      | "cy"
+      | "da"
+      | "de"
+      | "dsb"
+      | "el"
+      | "en"
+      | "eo"
+      | "es"
+      | "et"
+      | "eu"
+      | "fa"
+      | "fi"
+      | "fr"
+      | "fy"
+      | "ga"
+      | "gd"
+      | "gl"
+      | "he"
+      | "hi"
+      | "hr"
+      | "hsb"
+      | "hu"
+      | "hy"
+      | "ia"
+      | "id"
+      | "ig"
+      | "io"
+      | "is"
+      | "it"
+      | "ja"
+      | "ka"
+      | "kab"
+      | "kk"
+      | "km"
+      | "kn"
+      | "ko"
+      | "ky"
+      | "lb"
+      | "lt"
+      | "lv"
+      | "mk"
+      | "ml"
+      | "mn"
+      | "mr"
+      | "ms"
+      | "my"
+      | "nb"
+      | "ne"
+      | "nl"
+      | "nn"
+      | "os"
+      | "pa"
+      | "pl"
+      | "pt"
+      | "ro"
+      | "ru"
+      | "sk"
+      | "sl"
+      | "sq"
+      | "sr"
+      | "sv"
+      | "sw"
+      | "ta"
+      | "te"
+      | "tg"
+      | "th"
+      | "tk"
+      | "tr"
+      | "tt"
+      | "udm"
+      | "uk"
+      | "ur"
+      | "uz"
+      | "vi"
+      | "us";
     Login: {
       username?: string;
       /** Format: email */
@@ -398,7 +738,12 @@ export interface components {
       periods: components["schemas"]["PeriodReadOnly"][];
     };
     /** @enum {string} */
-    MimeTypeEnum: "image/png" | "image/svg+xml" | "image/jpg" | "image/jpeg" | "image/webp";
+    MimeTypeEnum:
+      | "image/png"
+      | "image/svg+xml"
+      | "image/jpg"
+      | "image/jpeg"
+      | "image/webp";
     /** @enum {unknown} */
     NullEnum: "";
     PaginatedAttachmentGroupReadOnlyList: {
@@ -571,7 +916,10 @@ export interface components {
       last_name?: string;
       /** Format: date */
       birth_day?: string | null;
-      gender?: components["schemas"]["GenderEnum"] | components["schemas"]["NullEnum"] | null;
+      gender?:
+        | components["schemas"]["GenderEnum"]
+        | components["schemas"]["NullEnum"]
+        | null;
       avatar?: components["schemas"]["AttachmentReadOnly"] | null;
       avatar_id?: number | null;
       language?: components["schemas"]["LanguageEnum"];
@@ -653,11 +1001,11 @@ export interface components {
       min_teams: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
       stage_schedule: {
-          [key: string]: unknown;
-        }[];
+        [key: string]: unknown;
+      }[];
       schedule: {
-          [key: string]: unknown;
-        }[];
+        [key: string]: unknown;
+      }[];
       stage_formats: number[];
       teams_by_place: components["schemas"]["ScoreMatch"][];
       stream_url: string | null;
@@ -707,7 +1055,10 @@ export interface components {
       last_name?: string;
       /** Format: date */
       birth_day?: string | null;
-      gender?: components["schemas"]["GenderEnum"] | components["schemas"]["NullEnum"] | null;
+      gender?:
+        | components["schemas"]["GenderEnum"]
+        | components["schemas"]["NullEnum"]
+        | null;
       avatar: components["schemas"]["AttachmentReadOnly"] | null;
       avatar_id: number | null;
       language?: components["schemas"]["LanguageEnum"];
@@ -734,7 +1085,6 @@ export type $defs = Record<string, never>;
 export type external = Record<string, never>;
 
 export interface operations {
-
   api_attachments_list: {
     parameters: {
       query?: {

@@ -1,13 +1,13 @@
-import {create} from 'zustand'
+import { create } from "zustand";
 
 type GlobalPreloaderType = {
-  isLoading: boolean
-  setIsLoading: (loading: boolean) => void
-}
+  isLoading: boolean;
+  setIsLoading: (loading: boolean) => void;
+};
 
 export const useGlobalPreloader = create<GlobalPreloaderType>()((set) => {
-  return ({
+  return {
     isLoading: true,
-    setIsLoading: (loading: boolean) => set({isLoading: loading}),
-  })
-})
+    setIsLoading: (loading: boolean) => set({ isLoading: loading }),
+  };
+});

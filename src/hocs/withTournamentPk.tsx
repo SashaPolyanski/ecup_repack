@@ -1,21 +1,19 @@
-import {isNotNil} from "@utils";
-import {FC} from "react";
-import {useParams} from "react-router-dom";
-import {isNumber} from "@/utils/isNumber";
+import { isNotNil } from "@utils";
+import { FC } from "react";
+import { useParams } from "react-router-dom";
+import { isNumber } from "@/utils/isNumber";
 
 export type withTournamentPkProps = {
-  tournamentPk: number
-}
+  tournamentPk: number;
+};
 
 export const withTournamentPk = () => {
   return <T extends {}>(Component: FC<T & withTournamentPkProps>) =>
     (props: T) => {
+      const { id } = useParams();
 
-      const {id} = useParams()
+      const pk = isNotNil(id) && isNumber(+id) ? +id : -1;
 
-      const pk = isNotNil(id) && isNumber(+id) ? +id : -1
-
-      return <Component {...props} tournamentPk={pk}/>
-
-    }
-}
+      return <Component {...props} tournamentPk={pk} />;
+    };
+};

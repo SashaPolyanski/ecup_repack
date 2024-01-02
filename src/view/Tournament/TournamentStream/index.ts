@@ -1,3 +1,3 @@
-import {TournamentStream} from "./TournamentStream";
+import { TournamentStream } from "./TournamentStream";
 
-export {TournamentStream}
+export { TournamentStream };

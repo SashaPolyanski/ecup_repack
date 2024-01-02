@@ -1,3 +1,3 @@
-import {RecommendedTournamentCard} from "./RecommendedTournamentCard";
+import { RecommendedTournamentCard } from "./RecommendedTournamentCard";
 
-export {RecommendedTournamentCard}
+export { RecommendedTournamentCard };

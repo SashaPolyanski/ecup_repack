@@ -1,3 +1,3 @@
-import {TournamentParticipants} from "./TournamentParticipans";
+import { TournamentParticipants } from "./TournamentParticipans";
 
-export {TournamentParticipants}
+export { TournamentParticipants };

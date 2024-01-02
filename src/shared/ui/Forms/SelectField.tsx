@@ -1,10 +1,20 @@
-import {FC} from 'react'
-import {TextField} from "@mui/material";
-import {FormFieldString} from "@/shared/ui/Forms/types";
+import { FC } from "react";
+import { TextField } from "@mui/material";
+import { FormFieldString } from "@/shared/ui/Forms/types";
 
-
-export const SelectField: FC<FormFieldString> = ({name, label, value, onChange}) => {
+export const SelectField: FC<FormFieldString> = ({
+  name,
+  label,
+  value,
+  onChange,
+}) => {
   return (
-    <TextField label={label} fullWidth name={name} value={value} onChange={onChange}/>
+    <TextField
+      label={label}
+      fullWidth
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
   );
 };

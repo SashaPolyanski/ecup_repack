@@ -1,3 +1,3 @@
-import {TournamentsInfo} from "./TournamentsInfo";
+import { TournamentsInfo } from "./TournamentsInfo";
 
-export {TournamentsInfo}
+export { TournamentsInfo };

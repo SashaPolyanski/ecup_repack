@@ -1,4 +1,4 @@
-import {Box, CircularProgress} from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import styled from "@emotion/styled";
 
 const PreloaderContainer = styled(Box)`
@@ -7,12 +7,12 @@ const PreloaderContainer = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const Preloader = () => {
   return (
     <PreloaderContainer>
-      <CircularProgress size={55}/>
+      <CircularProgress size={55} />
     </PreloaderContainer>
   );
 };

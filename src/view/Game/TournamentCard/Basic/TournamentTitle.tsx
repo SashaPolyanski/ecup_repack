@@ -1,8 +1,8 @@
-import {FC} from 'react';
-import {Box} from '@mui/material';
-import styled from '@emotion/styled';
-import {Tooltip} from "@shared";
-import {MEDIA_QUERY_SM} from "@/constants/breackpoints.ts";
+import { FC } from "react";
+import { Box } from "@mui/material";
+import styled from "@emotion/styled";
+import { Tooltip } from "@shared";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
 
 type TournamentTitleProps = {
   name: string;
@@ -18,15 +18,12 @@ const TournamentName = styled(Box)`
     font-size: 20px;
     margin-bottom: 0;
   }
-
 `;
 
-export const TournamentTitle: FC<TournamentTitleProps> = ({name}) => {
+export const TournamentTitle: FC<TournamentTitleProps> = ({ name }) => {
   return (
-    <Tooltip placement={'top'} title={name}>
-      <TournamentName px={2}>
-        {name}
-      </TournamentName>
+    <Tooltip placement={"top"} title={name}>
+      <TournamentName px={2}>{name}</TournamentName>
     </Tooltip>
   );
 };

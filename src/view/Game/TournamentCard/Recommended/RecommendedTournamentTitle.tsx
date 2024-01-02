@@ -1,10 +1,10 @@
-import {FC} from 'react'
-import {Typography} from "@mui/material";
+import { FC } from "react";
+import { Typography } from "@mui/material";
 import styled from "@emotion/styled";
 
 type RecommendedTournamentTitleProps = {
-  title: string
-}
+  title: string;
+};
 const RecommendedTournamentText = styled(Typography)`
   font-size: 24px;
   margin-top: 16px;
@@ -14,11 +14,9 @@ const RecommendedTournamentText = styled(Typography)`
   @media (max-width: 800px) {
     font-size: 16px;
   }
-`
-export const RecommendedTournamentTitle: FC<RecommendedTournamentTitleProps> = ({title}) => {
-  return (
-    <RecommendedTournamentText>
-      {title}
-    </RecommendedTournamentText>
-  );
+`;
+export const RecommendedTournamentTitle: FC<
+  RecommendedTournamentTitleProps
+> = ({ title }) => {
+  return <RecommendedTournamentText>{title}</RecommendedTournamentText>;
 };

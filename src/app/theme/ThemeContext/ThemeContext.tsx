@@ -1,19 +1,19 @@
-import {FC, ReactNode, useMemo, useState} from "react";
-import {PaletteMode, ThemeProvider} from "@mui/material";
-import {ThemeCtxProvider, ThemeCtxType} from "./types";
-import {dark, light} from '../mods';
+import { FC, ReactNode, useMemo, useState } from "react";
+import { PaletteMode, ThemeProvider } from "@mui/material";
+import { ThemeCtxProvider, ThemeCtxType } from "./types";
+import { dark, light } from "../mods";
 
-export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
+export const ThemeContext: FC<{ children: ReactNode }> = ({ children }) => {
   const themeMode = () => {
-    const theme = localStorage.getItem('theme') as PaletteMode
-    return theme ? theme : 'dark'
-  }
+    const theme = localStorage.getItem("theme") as PaletteMode;
+    return theme ? theme : "dark";
+  };
   const [mode, setMode] = useState<PaletteMode>(themeMode());
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode: PaletteMode) =>
-          prevMode === 'light' ? 'dark' : 'light',
+          prevMode === "light" ? "dark" : "light",
         );
       },
     }),
@@ -21,8 +21,8 @@ export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
   );
 
   const theme = useMemo(() => {
-    localStorage.setItem('theme', mode)
-    return (mode === 'light' ? light : dark)
+    localStorage.setItem("theme", mode);
+    return mode === "light" ? light : dark;
   }, [mode]);
   const contextValue: ThemeCtxType = {
     theme,
@@ -31,9 +31,7 @@ export const ThemeContext: FC<{ children: ReactNode }> = ({children}) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <ThemeCtxProvider value={contextValue}>
-        {children}
-      </ThemeCtxProvider>
+      <ThemeCtxProvider value={contextValue}>{children}</ThemeCtxProvider>
     </ThemeProvider>
   );
 };

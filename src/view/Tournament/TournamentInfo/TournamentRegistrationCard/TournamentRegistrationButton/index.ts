@@ -1,3 +1,3 @@
-import {TournamentRegistrationButton} from "./TournamentRegistrationButton";
+import { TournamentRegistrationButton } from "./TournamentRegistrationButton";
 
-export {TournamentRegistrationButton}
+export { TournamentRegistrationButton };
