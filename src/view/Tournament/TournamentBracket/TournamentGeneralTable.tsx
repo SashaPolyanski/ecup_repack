@@ -1,8 +1,12 @@
 import { FC } from "react";
+import { TabsComponents } from "./TournamentModalContent";
+import { Box } from "@mui/material";
+import { GeneralInfo } from "./GeneralInfo";
 
-type TournamentGeneralTableProps = {};
-
-export const TournamentGeneralTable: FC<TournamentGeneralTableProps> = () => {
-  console.log("asdasd");
-  return <div>asdasdasdasdasdasd</div>;
+export const TournamentGeneralTable: FC<TabsComponents> = ({ scores }) => {
+  return scores?.map((m, i) => (
+    <Box display={"flex"} mt={2} alignItems={"center"}>
+      <Box mr={2}>{i + 1}</Box> <GeneralInfo scores={m} />
+    </Box>
+  ));
 };

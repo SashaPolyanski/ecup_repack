@@ -1,15 +1,9 @@
 import { FC } from "react";
-import { TeamScoreReadOnly } from "@/api/types";
 import { TeamInfo } from "./TeamInfo";
 import { Box } from "@mui/material";
+import { TabsComponents } from "./TournamentModalContent";
 
-export type TournamentsUsersTableProps = {
-  teams: TeamScoreReadOnly[] | null;
-};
-
-export const TournamentsUsersTable: FC<TournamentsUsersTableProps> = ({
-  teams,
-}) => {
+export const TournamentsUsersTable: FC<TabsComponents> = ({ teams }) => {
   return teams?.map((m, i) => (
     <Box display={"flex"} mt={2} alignItems={"center"}>
       <Box mr={2}>{i + 1}</Box> <TeamInfo team={m} />

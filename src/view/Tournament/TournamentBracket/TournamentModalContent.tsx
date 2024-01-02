@@ -1,22 +1,24 @@
-import { ComponentType, FC, useState } from "react";
-import { MatchReadOnly } from "@/api/types";
+import { FC, useState } from "react";
+import { MatchReadOnly, ScoreMatch, TeamScoreReadOnly } from "@/api/types";
 import { Preloader, Tabs } from "@shared";
 import { useTranslation } from "react-i18next";
 import { Tab } from "@/shared/ui/Tabs/Tabs";
-import {
-  TournamentsUsersTable,
-  TournamentsUsersTableProps,
-} from "./TournamentsUsersTable";
+import { TournamentsUsersTable } from "./TournamentsUsersTable";
 import { TournamentGeneralTable } from "./TournamentGeneralTable";
 
 type TournamentModalContentProps = {
   lobbyInfo?: MatchReadOnly;
 };
-const tabsComponents: ComponentType<TournamentsUsersTableProps>[] = [];
+export type TabsComponents = {
+  teams?: TeamScoreReadOnly[];
+  scores?: ScoreMatch[];
+};
+
 export const TournamentModalContent: FC<TournamentModalContentProps> = ({
   lobbyInfo,
 }) => {
   const { t } = useTranslation();
+  const tabsComponents: FC<TabsComponents>[] = [];
   const [tabValue, setTabValue] = useState(0);
   const dynamicTabs = () => {
     const periodsTabs = lobbyInfo?.periods.map((_, i) => {
@@ -34,11 +36,11 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
         },
       ];
     }
-    return periodsTabs;
   };
   const Component = tabsComponents.length
     ? tabsComponents[tabValue]
     : TournamentsUsersTable;
+
   return (
     <div>
       {!lobbyInfo ? (
@@ -53,8 +55,13 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
           <Component
             teams={
               tabValue === lobbyInfo?.periods.length
-                ? null
-                : lobbyInfo.periods[tabValue].team_scores
+                ? undefined
+                : lobbyInfo?.periods[tabValue].team_scores
+            }
+            scores={
+              tabValue === lobbyInfo?.periods.length
+                ? lobbyInfo?.scores
+                : undefined
             }
           />
         </>
