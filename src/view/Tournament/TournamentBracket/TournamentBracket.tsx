@@ -74,7 +74,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
       >
         <Wrapper>
           {reverseData &&
-            reverseData[4].matches?.map((m, i) => {
+            reverseData[4]?.matches?.map((m, i) => {
               return (
                 <Box mb={4}>
                   <TournamentLobbyContainer key={i}>{`Lobby ${
@@ -89,7 +89,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
         </Wrapper>
         <Wrapper ml={4}>
           {reverseData &&
-            reverseData[3].matches?.map((m, i) => (
+            reverseData[3]?.matches?.map((m, i) => (
               <Box mb={4}>
                 <TournamentLobbyContainer key={i}>{`Lobby ${
                   i + 1
@@ -102,7 +102,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
         </Wrapper>
         <Wrapper ml={4}>
           {reverseData &&
-            reverseData[2].matches?.map((m, i) => (
+            reverseData[2]?.matches?.map((m, i) => (
               <Box mb={4}>
                 <TournamentLobbyContainer key={i}>{`Lobby ${
                   i + 1
@@ -119,7 +119,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
         </Wrapper>
         <Wrapper ml={4}>
           {reverseData &&
-            reverseData[1].matches?.map((m, i) => (
+            reverseData[1]?.matches?.map((m, i) => (
               <Box mb={4}>
                 <TournamentLobbyContainer key={i}>{`Lobby ${
                   i + 1

@@ -43,6 +43,7 @@ const ContentContainer = styled(Box)`
   margin-top: 20px;
   margin-bottom: 20px;
   height: 100%;
+  overflow: auto;
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     padding: 0 10px;
     margin-top: 10px;

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Tab } from "@/shared/ui/Tabs/Tabs";
 import { TournamentsUsersTable } from "./TournamentsUsersTable";
 import { TournamentGeneralTable } from "./TournamentGeneralTable";
+import { Box } from "@mui/material";
 
 type TournamentModalContentProps = {
   lobbyInfo?: MatchReadOnly;
@@ -20,9 +21,8 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
 }) => {
   const { t } = useTranslation();
   const [tabValue, setTabValue] = useState(0);
-
   const dynamicTabs = () => {
-    const periodsTabs = lobbyInfo?.periods.map((_, i) => {
+    const periodsTabs = lobbyInfo?.periods?.map((_, i) => {
       return {
         id: i + 1,
         label: t("period", { number: i + 1 }),
@@ -52,11 +52,11 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
     : TournamentsUsersTable;
 
   return (
-    <div>
+    <Box sx={{ height: "100%" }}>
       {!lobbyInfo ? (
         <Preloader />
       ) : (
-        <>
+        <Box sx={{ height: "100%", overflow: "auto" }}>
           <Tabs
             setTabValue={setTabValue}
             tabs={dynamicTabs() as Tab[]}
@@ -74,8 +74,8 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
                 : undefined
             }
           />
-        </>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };

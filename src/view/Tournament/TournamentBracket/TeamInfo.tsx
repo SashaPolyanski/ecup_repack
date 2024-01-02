@@ -33,13 +33,13 @@ export const TeamInfo: FC<TeamInfoProps> = ({ team }) => {
         <Box>
           <Box>{team.team.name}</Box>
           {isSmallScreen ? (
-            <Box mt={1}>{team.team.users[0].battle_tag}</Box>
+            <Box mt={1}>{team?.team?.users[0].battle_tag}</Box>
           ) : null}
         </Box>
       </Grid>
       <Grid item xs={3}>
         {!isSmallScreen ? (
-          <Box ml={3}>{team.team.users[0].battle_tag}</Box>
+          <Box ml={3}>{team?.team?.users[0].battle_tag}</Box>
         ) : null}
       </Grid>
       <Grid item xs={isSmallScreen ? 2 : 3}>
