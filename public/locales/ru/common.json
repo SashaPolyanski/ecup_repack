@@ -71,5 +71,10 @@
   "regAccount": "Зарегистрировать аккаунт",
   "registrationClosed": "Регистрация закрыта, турнир начался",
   "registerTournamentNotification": "Поздравляем! Вы зарегистрировались в турнире!",
-  "unRegisterTournamentNotification": "Вы отменили регистрацию в турниге, нам будет Вас не хватить :("
+  "unRegisterTournamentNotification": "Вы отменили регистрацию в турнире, нам будет Вас не хватать :(",
+  "confirmNotification": "Вы успешно подтвердили участие в турнире!",
+  "unConfirmNotification": "Вы отменили подтверждение участия :(",
+  "registerTournamentModal": "Вы зарегистрировались на участие в турнире!",
+  "registerTournamentDescModal": "Чтобы оставаться в курсе новостей, или влиять на расписание турнира, вы можете вступить в наши соц. сети :)",
+  "ready": "Готово"
 }

@@ -17,7 +17,7 @@ export const useUploadAvatar = () => {
     path: "/auth/user",
     method: "PATCH",
     token: true,
-    queryKeyRefetch: ["/auth/user"],
+    queryKeyRefetch: ["/auth/user/"],
   });
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     setUploadAvatar(true);

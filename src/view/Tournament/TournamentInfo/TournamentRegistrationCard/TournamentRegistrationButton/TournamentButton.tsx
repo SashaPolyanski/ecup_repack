@@ -7,16 +7,20 @@ import { InTournamentButton } from "./InTournamentButton";
 
 type TournamentButtonProps = {
   conditions: Conditions;
+  openModalHandler: () => void;
 };
 
-export const TournamentButton: FC<TournamentButtonProps> = ({ conditions }) => {
+export const TournamentButton: FC<TournamentButtonProps> = ({
+  conditions,
+  openModalHandler,
+}) => {
   if (conditions) {
     const { isAuth, confirm, start, inTournament } = conditions;
     if (!isAuth) {
       return <TournamentAuthButton />;
     }
     if (isAuth && !start && !inTournament) {
-      return <RegistrationButton />;
+      return <RegistrationButton openModalHandler={openModalHandler} />;
     }
     if (isAuth && !confirm && !start && inTournament) {
       return <InTournamentButton />;

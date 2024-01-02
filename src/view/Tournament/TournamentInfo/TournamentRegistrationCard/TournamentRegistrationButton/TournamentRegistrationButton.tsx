@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback, useState } from "react";
 import { useIsAuthStore } from "@/Zustand/isAuthStore";
 import { useQuery } from "@/api/hooks/useQuery";
 import {
@@ -12,6 +12,9 @@ import {
 import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { TournamentButton } from "./TournamentButton";
 import { useUserStore } from "@/Zustand/userStore.ts";
+import { Modal } from "@shared";
+import { useTranslation } from "react-i18next";
+import { TournamentModalContent } from "./TournamentModalContent";
 
 type TournamentRegistrationButtonProps = WithGamePkProps &
   withTournamentPkProps;
@@ -28,6 +31,14 @@ export const TournamentRegistrationButtonComponents: FC<
 > = ({ tournamentPk, gamePk }) => {
   const { isAuth } = useIsAuthStore();
   const { user } = useUserStore();
+  const { t } = useTranslation("common");
+  const [showModal, setShowModal] = useState(true);
+  const openModalHandler = useCallback(() => {
+    setShowModal(true);
+  }, []);
+  const closeModalHandler = useCallback(() => {
+    setShowModal(false);
+  }, []);
   const { data } = useQuery<TournamentReadOnly>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
   });
@@ -46,7 +57,23 @@ export const TournamentRegistrationButtonComponents: FC<
     confirm: startDate && endDate ? date > startDate && date < endDate : false,
     start: endDate ? date > endDate : false,
   };
-  return <TournamentButton conditions={conditions} />;
+  return (
+    <>
+      <TournamentButton
+        conditions={conditions}
+        openModalHandler={openModalHandler}
+      />
+      <Modal
+        open={showModal}
+        onClose={closeModalHandler}
+        title={t("registerTournamentModal")}
+        width={500}
+        height={300}
+      >
+        <TournamentModalContent closeModalHandler={closeModalHandler} />
+      </Modal>
+    </>
+  );
 };
 
 export const TournamentRegistrationButton = withTournamentPk()(

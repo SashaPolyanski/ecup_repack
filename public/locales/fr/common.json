@@ -70,5 +70,11 @@
   "smallScreenCancel": "Annuler",
   "regAccount": "Enregistrer un compte",
   "registrationClosed": "L'inscription est fermée, le tournoi est Beguun",
-  "registerTournamentNotification": "Toutes nos félicitations! Vous vous êtes inscrit dans le tournoi!"
+  "registerTournamentNotification": "Toutes nos félicitations! Vous vous êtes inscrit dans le tournoi!",
+  "unRegisterTournamentNotification": "Vous avez annulé l'inscription dans le tournoi, vous nous manquerez :(",
+  "confirmNotification": "Vous avez confirmé avec succès votre participation au tournoi!",
+  "unConfirmNotification": "Vous avez annulé la confirmation de la participation :(",
+  "registerTournamentModal": "Vous vous êtes inscrit pour participer au tournoi!",
+  "registerTournamentDescModal": "Pour suivre les nouvelles ou pour influencer le calendrier du tournoi, vous pouvez rejoindre notre social. Réseau :)",
+  "ready": "Prêt"
 }

@@ -71,5 +71,10 @@
   "regAccount": "Register an account",
   "registrationClosed": "Registration is closed, the tournament has begun",
   "registerTournamentNotification": "Congratulations! You registered in the tournament!",
-  "unRegisterTournamentNotification": "You canceled registration in a tournament, we will not have enough of you :("
+  "unRegisterTournamentNotification": "You canceled registration in the tournament, we will miss you :(",
+  "confirmNotification": "You have successfully confirmed your participation in the tournament!",
+  "unConfirmNotification": "You canceled the confirmation of participation :(",
+  "registerTournamentModal": "You registered to participate in the tournament!",
+  "registerTournamentDescModal": "To keep up with the news, or to influence the schedule of the tournament, you can join our social. Network :)",
+  "ready": "Ready"
 }

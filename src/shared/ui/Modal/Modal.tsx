@@ -40,7 +40,7 @@ const ButtonWrapper = styled(IconButton)`
 const ContentContainer = styled(Box)`
   padding: 0 40px;
   margin-top: 20px;
-  margin-bottom: 36px;
+  margin-bottom: 20px;
   height: 100%;
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     padding: 0 10px;

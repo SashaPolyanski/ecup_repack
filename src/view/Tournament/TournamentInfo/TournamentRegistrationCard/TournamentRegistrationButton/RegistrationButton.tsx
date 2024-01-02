@@ -13,7 +13,8 @@ import { PaginatedTeamReadOnlyList, TournamentTeamCreate } from "@/api/types";
 import styled from "@emotion/styled";
 import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
 
-type RegistrationButton = WithGamePkProps & withTournamentPkProps;
+type RegistrationButton = WithGamePkProps &
+  withTournamentPkProps & { openModalHandler: () => void };
 const RegButton = styled(Button)`
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     width: 100%;
@@ -22,6 +23,7 @@ const RegButton = styled(Button)`
 const RegistrationButtonComponent: FC<RegistrationButton> = ({
   tournamentPk,
   gamePk,
+  openModalHandler,
 }) => {
   const { t } = useTranslation("common");
   const { user } = useUserStore();
@@ -51,6 +53,7 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({
           message: t("registerTournamentNotification"),
           type: "success",
         });
+        openModalHandler();
       });
     }
   };
@@ -65,6 +68,5 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({
     </RegButton>
   );
 };
-export const RegistrationButton: FC = withTournamentPk()(
-  withGamePk()(RegistrationButtonComponent),
-);
+export const RegistrationButton: FC<{ openModalHandler: () => void }> =
+  withTournamentPk()(withGamePk()(RegistrationButtonComponent));
