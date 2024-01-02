@@ -86,17 +86,6 @@ export const SkeletonLoader: FC<SkeletonLoaderProps> = () => {
           <rect x="0" y="0" rx="50" ry="50" width="180" height="30"/>
         </ContentLoader>
       </Box>
-      <Box sx={{position: 'absolute', bottom: '245px', left: '0px'}}>
-        <ContentLoader
-          speed={2}
-          width={isSmallScreen ? 350 : 440}
-          viewBox={isSmallScreen ? "0 0 350 400" : "0 0 440 470"}
-          backgroundColor="#171c26"
-          foregroundColor="#171c26"
-        >
-          <rect x="0" y="0" rx="0" ry="0" width={isSmallScreen ? "350" : "440"} height="1"/>
-        </ContentLoader>
-      </Box>
     </Box>
   })
 };
