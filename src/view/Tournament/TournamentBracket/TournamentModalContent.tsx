@@ -9,6 +9,7 @@ import { TournamentGeneralTable } from "./TournamentGeneralTable";
 type TournamentModalContentProps = {
   lobbyInfo?: MatchReadOnly;
 };
+
 export type TabsComponents = {
   teams?: TeamScoreReadOnly[];
   scores?: ScoreMatch[];
@@ -18,26 +19,36 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
   lobbyInfo,
 }) => {
   const { t } = useTranslation();
-  const tabsComponents: FC<TabsComponents>[] = [];
   const [tabValue, setTabValue] = useState(0);
+
   const dynamicTabs = () => {
     const periodsTabs = lobbyInfo?.periods.map((_, i) => {
-      tabsComponents.push(TournamentsUsersTable);
-      return { id: i + 1, label: t("period", { number: i + 1 }), value: i };
+      return {
+        id: i + 1,
+        label: t("period", { number: i + 1 }),
+        value: i,
+        component: TournamentsUsersTable, // Add the component function here
+      };
     });
+
     if (periodsTabs && lobbyInfo) {
-      tabsComponents.push(TournamentGeneralTable);
       return [
         ...periodsTabs,
         {
           id: lobbyInfo?.periods.length + 1,
           value: lobbyInfo?.periods.length,
           label: t("generalTable"),
+          component: TournamentGeneralTable, // Add the component function here
         },
       ];
     }
   };
-  const Component = tabsComponents.length
+
+  const tabsComponents: FC<TabsComponents>[] | undefined = dynamicTabs()?.map(
+    (tab) => tab.component,
+  );
+  console.log(tabsComponents);
+  const Component = tabsComponents?.length
     ? tabsComponents[tabValue]
     : TournamentsUsersTable;
 
