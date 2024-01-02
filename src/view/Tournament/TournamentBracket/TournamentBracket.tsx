@@ -136,7 +136,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
         </Wrapper>
         <Wrapper ml={4}>
           {reverseData &&
-            reverseData[0].matches?.map((m, i) => (
+            reverseData[0]?.matches?.map((m, i) => (
               <Box mb={4}>
                 <TournamentLobbyContainer key={i}>{`Lobby ${
                   i + 1

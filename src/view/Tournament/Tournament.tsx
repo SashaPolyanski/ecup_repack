@@ -32,7 +32,7 @@ export const TournamentComponent: FC<TournamentProps> = ({
   tournamentPk,
   gamePk,
 }) => {
-  const [tabValue, setTabValue] = useState(3);
+  const [tabValue, setTabValue] = useState(0);
   const { data } = useQuery<TournamentReadOnly>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
   });
