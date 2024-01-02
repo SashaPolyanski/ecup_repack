@@ -1,11 +1,7 @@
-import {FC} from 'react'
+import { FC } from "react";
 
-type BooleanFieldProps = {}
+type BooleanFieldProps = {};
 
-export const BooleanField: FC<BooleanFieldProps> = ({}) => {
-  return (
-    <div>
-
-    </div>
-  );
+export const BooleanField: FC<BooleanFieldProps> = () => {
+  return <div></div>;
 };

@@ -10,7 +10,19 @@
     "types": "tsc --noEmit",
     "preview": "vite preview",
     "translations": "node scripts/downloadTranslations.js",
-    "generate-types": "npx openapi-typescript https://ecup.pro/api/swagger/schema.yml -o src/api/schema/schema.ts"
+    "generate-types": "npx openapi-typescript https://ecup.pro/api/swagger/schema.yml -o src/api/schema/schema.ts",
+    "prepare": "husky install",
+    "format": "npx prettier --write ."
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "pnpm lint --fix",
+      "pnpm format"
+    ],
+    "*.{md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -48,6 +60,7 @@
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "husky": "^8.0.3",
     "js-yaml": "^4.1.0",
     "openapi-typescript": "^6.7.1",
     "typescript": "^5.2.2",

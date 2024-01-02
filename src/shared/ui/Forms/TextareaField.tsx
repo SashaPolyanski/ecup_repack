@@ -1,11 +1,7 @@
-import {FC} from 'react'
+import { FC } from "react";
 
-type TextareaFieldProps = {}
+type TextareaFieldProps = {};
 
-export const TextareaField: FC<TextareaFieldProps> = ({}) => {
-  return (
-    <div>
-
-    </div>
-  );
+export const TextareaField: FC<TextareaFieldProps> = () => {
+  return <div></div>;
 };

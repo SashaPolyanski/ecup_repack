@@ -1,10 +1,10 @@
-import {useUserStore} from "@/Zustand/userStore";
-import {Box, Typography} from "@mui/material";
-import CurrencyRubleIcon from '@mui/icons-material/CurrencyRuble';
-import PaidIcon from '@mui/icons-material/Paid';
+import { useUserStore } from "@/Zustand/userStore";
+import { Box, Typography } from "@mui/material";
+import CurrencyRubleIcon from "@mui/icons-material/CurrencyRuble";
+import PaidIcon from "@mui/icons-material/Paid";
 import styled from "@emotion/styled";
-import {useTranslation} from "react-i18next";
-import {Button} from "@shared";
+import { useTranslation } from "react-i18next";
+import { Button } from "@shared";
 
 const UserBalanceContainer = styled(Box)`
   display: flex;
@@ -17,28 +17,33 @@ const CurrencyContainer = styled(Box)`
   align-items: center;
 `;
 const UserBalanceButton = styled(Button)`
-  margin: 20px 0px`
-export const UserBalance = ({}) => {
-  const {user} = useUserStore()
-  const {t} = useTranslation('common')
+  margin: 20px 0px;
+`;
+export const UserBalance = () => {
+  const { user } = useUserStore();
+  const { t } = useTranslation("common");
   return (
     <UserBalanceContainer>
-      <Typography fontSize={30} mb={4}>{t('balance')}</Typography>
+      <Typography fontSize={30} mb={4}>
+        {t("balance")}
+      </Typography>
       <Box flex="1">
         <CurrencyContainer mb={2}>
-          <CurrencyRubleIcon fontSize={'large'}/>
+          <CurrencyRubleIcon fontSize={"large"} />
           <Typography fontSize={30}>
-            {`: ${user?.real_currency} ${t('rubles')}`}
+            {`: ${user?.real_currency} ${t("rubles")}`}
           </Typography>
         </CurrencyContainer>
         <CurrencyContainer>
-          <PaidIcon fontSize={'large'}/>
+          <PaidIcon fontSize={"large"} />
           <Typography fontSize={30}>
-            {`: ${user?.virtual_currency} ${t('coins')}`}
+            {`: ${user?.virtual_currency} ${t("coins")}`}
           </Typography>
         </CurrencyContainer>
       </Box>
-      <UserBalanceButton variant={'outlined'}>{t('withdrawMoney')}</UserBalanceButton>
+      <UserBalanceButton variant={"outlined"}>
+        {t("withdrawMoney")}
+      </UserBalanceButton>
     </UserBalanceContainer>
   );
 };
