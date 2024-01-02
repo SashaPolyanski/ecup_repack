@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 import {
   withTournamentPk,
   withTournamentPkProps,
@@ -12,33 +12,19 @@ import {
 import { Box } from "@mui/material";
 import styled from "@emotion/styled";
 import { Modal } from "@shared";
-import { TournamentModalContent } from "@view/Tournament/TournamentBracket/TournamentModalContent.tsx";
-import { useTranslation } from "react-i18next";
-
-const TournamentLobbyContainer = styled(Box)`
-  background-color: #252a40;
-  min-width: 200px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-`;
-const Wrapper = styled(Box)`
-  position: relative;
-`;
-const OpenButton = styled(Box)`
-  text-align: end;
-  margin-top: 8px;
-  cursor: pointer;
-`;
+import { TournamentModalContent } from "./TournamentModalContent";
+import { TourmanentBaracketStages } from "./TourmanentBaracketStages";
+import { MEDIA_QUERY_MD } from "@/constants/breackpoints.ts";
 
 type TournamentBracketProps = WithGamePkProps & withTournamentPkProps;
-
+const TourmanentBracketStagesContainer = styled(Box)`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @media (max-width: ${MEDIA_QUERY_MD}px) {
+    flex-direction: column;
+  }
+`;
 export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
   tournamentPk,
   gamePk,
@@ -49,109 +35,46 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
   const closeLobbyModal = () => {
     setShowModal(false);
   };
-  const { t } = useTranslation("common");
+
   const [lobbyId, setLobbyId] = useState<null | number>(null);
-  const openLobbyModal = (id: number, lobby: string) => () => {
-    setLobbyId(id);
-    setLobbyTitle(lobby);
-    setShowModal(true);
-  };
+  const openLobbyModal = useCallback(
+    (id: number, lobby: string) => () => {
+      setLobbyId(id);
+      setLobbyTitle(lobby);
+      setShowModal(true);
+    },
+    [],
+  );
   const { data } = useQuery<PaginatedTournamentStageReadOnlyList>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/stages/`,
   });
   const { data: lobbyInfo } = useQuery<MatchReadOnly>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/matches/${lobbyId}/`,
     token: true,
+    skip: !!lobbyId,
   });
-  const reverseData = useMemo(() => data?.results, [data?.results]);
+  const reverseData = useMemo(() => data?.results?.reverse(), [data?.results]);
+  const tourmanentBaracketStages = useMemo(
+    () => [
+      { id: 1, data: reverseData && reverseData[0] },
+      { id: 2, data: reverseData && reverseData[1] },
+      { id: 3, data: reverseData && reverseData[2] },
+      { id: 4, data: reverseData && reverseData[3] },
+      { id: 5, data: reverseData && reverseData[4] },
+    ],
+    [reverseData],
+  );
   return (
     <>
-      <Box
-        display={"flex"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        sx={{ width: "100%" }}
-      >
-        <Wrapper>
-          {reverseData &&
-            reverseData[4]?.matches?.map((m, i) => {
-              return (
-                <Box mb={4}>
-                  <TournamentLobbyContainer key={i}>{`Lobby ${
-                    i + 1
-                  }`}</TournamentLobbyContainer>
-                  <OpenButton onClick={openLobbyModal(m.id, `Lobby ${i + 1}`)}>
-                    {t("open")}
-                  </OpenButton>
-                </Box>
-              );
-            })}
-        </Wrapper>
-        <Wrapper ml={4}>
-          {reverseData &&
-            reverseData[3]?.matches?.map((m, i) => (
-              <Box mb={4}>
-                <TournamentLobbyContainer key={i}>{`Lobby ${
-                  i + 1
-                }`}</TournamentLobbyContainer>
-                <OpenButton onClick={openLobbyModal(m.id, `Lobby ${i + 1}`)}>
-                  {t("open")}
-                </OpenButton>
-              </Box>
-            ))}
-        </Wrapper>
-        <Wrapper ml={4}>
-          {reverseData &&
-            reverseData[2]?.matches?.map((m, i) => (
-              <Box mb={4}>
-                <TournamentLobbyContainer key={i}>{`Lobby ${
-                  i + 1
-                }`}</TournamentLobbyContainer>
-                <OpenButton
-                  textAlign={"end"}
-                  mt={1}
-                  onClick={openLobbyModal(m.id, `Lobby ${i + 1}`)}
-                >
-                  {t("open")}
-                </OpenButton>
-              </Box>
-            ))}
-        </Wrapper>
-        <Wrapper ml={4}>
-          {reverseData &&
-            reverseData[1]?.matches?.map((m, i) => (
-              <Box mb={4}>
-                <TournamentLobbyContainer key={i}>{`Lobby ${
-                  i + 1
-                }`}</TournamentLobbyContainer>
-                <OpenButton
-                  textAlign={"end"}
-                  mt={1}
-                  onClick={openLobbyModal(m.id, `Lobby ${i + 1}`)}
-                >
-                  {t("open")}
-                </OpenButton>
-              </Box>
-            ))}
-        </Wrapper>
-        <Wrapper ml={4}>
-          {reverseData &&
-            reverseData[0]?.matches?.map((m, i) => (
-              <Box mb={4}>
-                <TournamentLobbyContainer key={i}>{`Lobby ${
-                  i + 1
-                }`}</TournamentLobbyContainer>
-                <OpenButton
-                  textAlign={"end"}
-                  mt={1}
-                  onClick={openLobbyModal(m.id, `Lobby ${i + 1}`)}
-                >
-                  {t("open")}
-                </OpenButton>
-              </Box>
-            ))}
-        </Wrapper>
-      </Box>
+      <TourmanentBracketStagesContainer>
+        {tourmanentBaracketStages.map(({ id, data }) => (
+          <TourmanentBaracketStages
+            key={id}
+            data={data}
+            openLobbyModal={openLobbyModal}
+          />
+        ))}
+      </TourmanentBracketStagesContainer>
       <Modal
         open={showModal}
         onClose={closeLobbyModal}

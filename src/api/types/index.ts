@@ -33,3 +33,5 @@ export type PaginatedTournamentStageReadOnlyList =
 export type MatchReadOnly = components["schemas"]["MatchReadOnly"];
 export type TeamScoreReadOnly = components["schemas"]["TeamScoreReadOnly"];
 export type ScoreMatch = components["schemas"]["ScoreMatch"];
+export type TournamentStageReadOnly =
+  components["schemas"]["TournamentStageReadOnly"];
