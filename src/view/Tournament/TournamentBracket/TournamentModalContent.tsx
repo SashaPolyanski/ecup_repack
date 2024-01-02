@@ -27,7 +27,7 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
         id: i + 1,
         label: t("period", { number: i + 1 }),
         value: i,
-        component: TournamentsUsersTable, // Add the component function here
+        component: TournamentsUsersTable,
       };
     });
 
@@ -38,7 +38,7 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
           id: lobbyInfo?.periods.length + 1,
           value: lobbyInfo?.periods.length,
           label: t("generalTable"),
-          component: TournamentGeneralTable, // Add the component function here
+          component: TournamentGeneralTable,
         },
       ];
     }
