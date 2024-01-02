@@ -32,7 +32,7 @@ export const TournamentRegistrationButtonComponents: FC<
   const { isAuth } = useIsAuthStore();
   const { user } = useUserStore();
   const { t } = useTranslation("common");
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const openModalHandler = useCallback(() => {
     setShowModal(true);
   }, []);
