@@ -45,7 +45,7 @@ export const TourmanentBaracketStages: FC<TourmanentBaracketStagesProps> = ({
           Show stages
         </Box>
       ) : null}
-      <Collapse in={collapsed}>
+      <Collapse in={collapsed} unmountOnExit>
         <Box ml={4}>
           {data?.matches?.map((m, i) => (
             <Box mb={4} key={m.id}>
