@@ -28,3 +28,7 @@ export type PatchedTournamentTeamUpdate =
   components["schemas"]["PatchedTournamentTeamUpdate"];
 export type TournamentTeamUpdate =
   components["schemas"]["TournamentTeamUpdate"];
+export type PaginatedTournamentStageReadOnlyList =
+  components["schemas"]["PaginatedTournamentStageReadOnlyList"];
+export type MatchReadOnly = components["schemas"]["MatchReadOnly"];
+export type TeamScoreReadOnly = components["schemas"]["TeamScoreReadOnly"];

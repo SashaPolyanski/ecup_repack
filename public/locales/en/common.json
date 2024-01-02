@@ -76,5 +76,9 @@
   "unConfirmNotification": "You canceled the confirmation of participation :(",
   "registerTournamentModal": "You registered to participate in the tournament!",
   "registerTournamentDescModal": "To keep up with the news, or to influence the schedule of the tournament, you can join our social. Network :)",
-  "ready": "Ready"
+  "ready": "Ready",
+  "period": "Period {{number}}",
+  "generalTable": "General table",
+  "copySuccess": "Battle Tag {{tag}} copied",
+  "open": "Open"
 }

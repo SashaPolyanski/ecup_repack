@@ -25,6 +25,7 @@ const ModalContainer = styled(Dialog, transientOptions)<ModalContainerProps>`
     width: ${({ $width }) => ($width ? `${$width}px` : "300px")};
     height: ${({ $height }) => ($height ? `${$height}px` : "300px")};
     background-color: ${({ theme }) => theme.backgrounds.modalBackground};
+    max-width: none;
   }
 
   .MuiDialogTitle-root {

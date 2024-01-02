@@ -76,5 +76,9 @@
   "unConfirmNotification": "Vous avez annulé la confirmation de la participation :(",
   "registerTournamentModal": "Vous vous êtes inscrit pour participer au tournoi!",
   "registerTournamentDescModal": "Pour suivre les nouvelles ou pour influencer le calendrier du tournoi, vous pouvez rejoindre notre social. Réseau :)",
-  "ready": "Prêt"
+  "ready": "Prêt",
+  "period": "Période {{numéro}}",
+  "generalTable": "Table générale",
+  "copySuccess": "Battle Tag {{tag}} copié",
+  "open": "Ouvrir"
 }

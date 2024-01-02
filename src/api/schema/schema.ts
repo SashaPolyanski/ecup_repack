@@ -76,6 +76,17 @@ export interface paths {
      */
     post: operations["api_auth_password_reset_confirm_create"];
   };
+  "/api/auth/password/reset/confirm/{uidb64}-{token}/": {
+    /**
+     * @description Password reset e-mail link is confirmed, therefore
+     * this resets the user's password.
+     *
+     * Accepts the following POST parameters: token, uid,
+     *     new_password1, new_password2
+     * Returns the success/fail message.
+     */
+    post: operations["api_auth_password_reset_confirm___create"];
+  };
   "/api/auth/registration/": {
     post: operations["api_auth_registration_create"];
   };
@@ -274,6 +285,17 @@ export interface paths {
      * Returns the success/fail message.
      */
     post: operations["auth_password_reset_confirm_create"];
+  };
+  "/auth/password/reset/confirm/{uidb64}-{token}/": {
+    /**
+     * @description Password reset e-mail link is confirmed, therefore
+     * this resets the user's password.
+     *
+     * Accepts the following POST parameters: token, uid,
+     *     new_password1, new_password2
+     * Returns the success/fail message.
+     */
+    post: operations["auth_password_reset_confirm___create"];
   };
   "/auth/registration/": {
     post: operations["auth_registration_create"];
@@ -620,6 +642,11 @@ export interface components {
       | "YE"
       | "ZM"
       | "ZW";
+    /** @description Serializer for requesting a password reset e-mail. */
+    CustomPasswordReset: {
+      /** Format: email */
+      email: string;
+    };
     GameReadOnly: {
       id: number;
       avatar: components["schemas"]["AttachmentReadOnly"];
@@ -870,11 +897,6 @@ export interface components {
       new_password1: string;
       new_password2: string;
     };
-    /** @description Serializer for requesting a password reset e-mail. */
-    PasswordReset: {
-      /** Format: email */
-      email: string;
-    };
     /** @description Serializer for confirming a password reset attempt. */
     PasswordResetConfirm: {
       new_password1: string;
@@ -929,6 +951,7 @@ export interface components {
       virtual_currency?: number;
       battle_tag?: string | null;
       team?: number | null;
+      match?: string | null;
     };
     PeriodReadOnly: {
       id: number;
@@ -1068,6 +1091,7 @@ export interface components {
       virtual_currency?: number;
       battle_tag?: string | null;
       team: number | null;
+      match: string | null;
     };
     VerifyEmail: {
       key: string;
@@ -1332,9 +1356,9 @@ export interface operations {
   api_auth_password_reset_create: {
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PasswordReset"];
-        "application/x-www-form-urlencoded": components["schemas"]["PasswordReset"];
-        "multipart/form-data": components["schemas"]["PasswordReset"];
+        "application/json": components["schemas"]["CustomPasswordReset"];
+        "application/x-www-form-urlencoded": components["schemas"]["CustomPasswordReset"];
+        "multipart/form-data": components["schemas"]["CustomPasswordReset"];
       };
     };
     responses: {
@@ -1354,6 +1378,36 @@ export interface operations {
    * Returns the success/fail message.
    */
   api_auth_password_reset_confirm_create: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PasswordResetConfirm"];
+        "application/x-www-form-urlencoded": components["schemas"]["PasswordResetConfirm"];
+        "multipart/form-data": components["schemas"]["PasswordResetConfirm"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["RestAuthDetail"];
+        };
+      };
+    };
+  };
+  /**
+   * @description Password reset e-mail link is confirmed, therefore
+   * this resets the user's password.
+   *
+   * Accepts the following POST parameters: token, uid,
+   *     new_password1, new_password2
+   * Returns the success/fail message.
+   */
+  api_auth_password_reset_confirm___create: {
+    parameters: {
+      path: {
+        token: string;
+        uidb64: string;
+      };
+    };
     requestBody: {
       content: {
         "application/json": components["schemas"]["PasswordResetConfirm"];
@@ -2280,9 +2334,9 @@ export interface operations {
   auth_password_reset_create: {
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PasswordReset"];
-        "application/x-www-form-urlencoded": components["schemas"]["PasswordReset"];
-        "multipart/form-data": components["schemas"]["PasswordReset"];
+        "application/json": components["schemas"]["CustomPasswordReset"];
+        "application/x-www-form-urlencoded": components["schemas"]["CustomPasswordReset"];
+        "multipart/form-data": components["schemas"]["CustomPasswordReset"];
       };
     };
     responses: {
@@ -2302,6 +2356,36 @@ export interface operations {
    * Returns the success/fail message.
    */
   auth_password_reset_confirm_create: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PasswordResetConfirm"];
+        "application/x-www-form-urlencoded": components["schemas"]["PasswordResetConfirm"];
+        "multipart/form-data": components["schemas"]["PasswordResetConfirm"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["RestAuthDetail"];
+        };
+      };
+    };
+  };
+  /**
+   * @description Password reset e-mail link is confirmed, therefore
+   * this resets the user's password.
+   *
+   * Accepts the following POST parameters: token, uid,
+   *     new_password1, new_password2
+   * Returns the success/fail message.
+   */
+  auth_password_reset_confirm___create: {
+    parameters: {
+      path: {
+        token: string;
+        uidb64: string;
+      };
+    };
     requestBody: {
       content: {
         "application/json": components["schemas"]["PasswordResetConfirm"];

@@ -76,5 +76,9 @@
   "unConfirmNotification": "Вы отменили подтверждение участия :(",
   "registerTournamentModal": "Вы зарегистрировались на участие в турнире!",
   "registerTournamentDescModal": "Чтобы оставаться в курсе новостей, или влиять на расписание турнира, вы можете вступить в наши соц. сети :)",
-  "ready": "Готово"
+  "ready": "Готово",
+  "period": "Период {{number}}",
+  "generalTable": "Общая таблица",
+  "copySuccess": "Battle Tag {{tag}} скопирован",
+  "open": "Открыть"
 }
