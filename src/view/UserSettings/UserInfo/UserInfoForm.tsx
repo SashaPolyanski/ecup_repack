@@ -64,10 +64,10 @@ export const UserInfoForm = () => {
     path: "/auth/user",
     method: "PATCH",
     token: true,
-    queryKeyRefetch: ["/auth/user"],
+    queryKeyRefetch: ["/auth/user/"],
   });
   const onSubmit: SubmitHandler<UserInfoFormTypes> = (values) => {
-    updateUser(values).then(() => {
+    updateUser({ args: values }).then(() => {
       notification({ message: t("persodalDataChanged"), type: "success" });
     });
   };

@@ -9,7 +9,7 @@ import {
   MatchReadOnly,
   PaginatedTournamentStageReadOnlyList,
 } from "@/api/types";
-import { Box, Stack, useMediaQuery } from "@mui/material";
+import { Box } from "@mui/material";
 import styled from "@emotion/styled";
 import { Modal, Preloader } from "@shared";
 import { TournamentModalContent } from "./TournamentModalContent";
@@ -19,6 +19,7 @@ import {
   MEDIA_QUERY_MD,
   WIDTH,
 } from "@/constants/breackpoints.ts";
+import { TournamentBracketStagesTitle } from "@view/Tournament/TournamentBracket/TournamentBracketStagesTitle.tsx";
 
 type TournamentBracketProps = WithGamePkProps & withTournamentPkProps;
 const TourmanentBracketStagesContainer = styled(Box)`
@@ -29,23 +30,6 @@ const TourmanentBracketStagesContainer = styled(Box)`
   @media (max-width: ${MEDIA_QUERY_MD}px) {
     flex-direction: column;
   }
-`;
-const StagerTitleContainer = styled(Stack)`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  height: 100%;
-`;
-const TitleItem = styled(Box)`
-  background-color: #252a40;
-  width: 230px;
-  height: 50px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 8px;
 `;
 const TournamentBracketContainer = styled(Box)`
   height: 100%;
@@ -60,7 +44,6 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [lobbyTitle, setLobbyTitle] = useState("");
-  const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_LG}px)`);
   const closeLobbyModal = () => {
     setShowModal(false);
   };
@@ -82,6 +65,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
     token: true,
     skip: !!lobbyId,
   });
+
   const reverseData = useMemo(() => data?.results?.reverse(), [data?.results]);
   const tourmanentBaracketStages = useMemo(
     () => [
@@ -99,17 +83,11 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
     <>
       <TournamentBracketContainer mt={2}>
         <Box sx={{ width: "100%", overflowX: "auto", overflowY: "hidden" }}>
-          {isSmallScreen ? null : (
-            <StagerTitleContainer display={"flex"} direction={"row"} gap={2.3}>
-              {tourmanentBaracketStages.map(({ id, data }) =>
-                data ? (
-                  <TitleItem key={id} ml={4}>
-                    {data?.title}
-                  </TitleItem>
-                ) : null,
-              )}
-            </StagerTitleContainer>
-          )}
+          <TournamentBracketStagesTitle
+            tournamentPk={tournamentPk}
+            gamePk={gamePk}
+            tourmanentBaracketStages={tourmanentBaracketStages}
+          />
           <TourmanentBracketStagesContainer>
             {tourmanentBaracketStages.map(({ id, data }) => (
               <TourmanentBaracketStages

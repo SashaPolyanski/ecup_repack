@@ -53,7 +53,7 @@ export const InTournamentButtonComponent: FC<InTournamentButtonProps> = ({
     ],
   });
   const unRegisteredHandler = () => {
-    unRegistered({}).then(() => {
+    unRegistered({ args: {} }).then(() => {
       notification({
         message: t("unRegisterTournamentNotification"),
         type: "error",

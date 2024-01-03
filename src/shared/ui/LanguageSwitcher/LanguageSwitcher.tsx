@@ -18,7 +18,7 @@ export const LanguageSwitcher = () => {
     path: "/auth/user",
     method: "PATCH",
     token: true,
-    queryKeyRefetch: ["/auth/user"],
+    queryKeyRefetch: ["/auth/user/"],
   });
 
   const handleChange = (e: SelectChangeEvent) => {
@@ -27,7 +27,7 @@ export const LanguageSwitcher = () => {
     i18next.changeLanguage(language);
     setLanguage(language);
     if (isAuth) {
-      updateUser({ language });
+      updateUser({ args: { language } });
     }
   };
   return (

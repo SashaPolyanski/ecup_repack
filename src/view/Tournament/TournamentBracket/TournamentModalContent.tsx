@@ -14,6 +14,7 @@ type TournamentModalContentProps = {
 export type TabsComponents = {
   teams?: TeamScoreReadOnly[];
   scores?: ScoreMatch[];
+  lobbyPk?: number;
 };
 
 export const TournamentModalContent: FC<TournamentModalContentProps> = ({
@@ -73,6 +74,7 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
                 ? lobbyInfo?.scores
                 : undefined
             }
+            lobbyPk={lobbyInfo.id}
           />
         </Box>
       )}

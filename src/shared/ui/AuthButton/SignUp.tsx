@@ -100,10 +100,10 @@ export const SignUp: FC<SignUpProps> = ({ changeModalComponent }) => {
 
   const onSubmit: SubmitHandler<SignUpFormTypes> = useCallback(
     async (values) => {
-      register(values).then((res) => {
+      register({ args: values }).then((res) => {
         if (res.status === 201) {
           res.json().then((data) => {
-            verify({ token: data.access_token }).then(() => {
+            verify({ args: { token: data.access_token } }).then(() => {
               setIsAuth(true);
             });
             setUser(data.user);

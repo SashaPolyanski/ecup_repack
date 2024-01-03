@@ -13,6 +13,9 @@ import {
 import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
 import { TournamentsPrize } from "@view/Tournament/TournamentInfo/TournamentPrize";
 import { MEDIA_QUERY_SM, MEDIA_QUERY_XL } from "@/constants/breackpoints.ts";
+import { Button, notification } from "@shared";
+import { useUserStore } from "@/Zustand/userStore.ts";
+import { useMutation } from "@/api/hooks/useMutation.ts";
 
 type TournamentRegistrationCardProps = WithGamePkProps & withTournamentPkProps;
 const RegistrationCardContainer = styled(Box)`
@@ -40,9 +43,31 @@ export const TournamentRegistrationCardComponent: FC<
   TournamentRegistrationCardProps
 > = ({ tournamentPk, gamePk }) => {
   const { t } = useTranslation("common");
+  const { user } = useUserStore();
   const { data } = useQuery<TournamentReadOnly>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/`,
   });
+  const { mutate: startTournament } = useMutation({
+    path: `/games/${gamePk}/tournaments/${tournamentPk}/start`,
+    method: "POST",
+    token: true,
+    queryKeyRefetch: [`/games/${gamePk}/tournaments/${tournamentPk}/`],
+  });
+  const startTournamentHandler = () => {
+    startTournament({ args: {} }).then((res) => {
+      if (res.ok) {
+        notification({
+          message: t("tournamentStartSuccessNotification"),
+          type: "success",
+        });
+      } else {
+        notification({
+          message: t("tournamentStartFailNotification"),
+          type: "error",
+        });
+      }
+    });
+  };
   return (
     <TournamentRegistrationCardContainer>
       <RegistrationCardContainer>
@@ -55,6 +80,11 @@ export const TournamentRegistrationCardComponent: FC<
           max_teams={data?.max_teams}
         />
         <TournamentRegistrationButton />
+        {!user?.is_staff ? null : data?.status === "NOT_STARTED" ? (
+          <Button variant={"outlined"} onClick={startTournamentHandler}>
+            {t("start")}
+          </Button>
+        ) : null}
       </RegistrationCardContainer>
       <TournamentsPrize />
     </TournamentRegistrationCardContainer>

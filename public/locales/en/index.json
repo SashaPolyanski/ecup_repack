@@ -127,6 +127,17 @@
     "period": "Period {{number}}",
     "generalTable": "General table",
     "copySuccess": "Battle Tag {{tag}} copied",
-    "open": "Open"
+    "open": "Open",
+    "start": "Start",
+    "tournamentStartFailNotification": "An error occurred at the start of the tournament",
+    "tournamentStartSuccessNotification": "The tournament is launched! Good luck to all participants",
+    "startStage": "Start {{stage}}",
+    "stageStarted": "Stage {{stage}} Started!",
+    "stageStartedFail": "At the start of the stage {{stage}} an error occurred",
+    "bracketPlace": "{{place}} Place",
+    "confirmPlaceModal": "Are you sure you took {{place}} place?",
+    "confirmPlace": "Yes, I am sure",
+    "calcelConfirmPlace": "No, I'm not sure",
+    "confirmPlaceNotification": "Congratulations, you took {{place}} place!"
   }
 }

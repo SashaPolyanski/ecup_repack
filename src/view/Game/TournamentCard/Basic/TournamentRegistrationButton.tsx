@@ -69,8 +69,10 @@ export const TournamentRegistrationButtonComponent: FC<
     e.stopPropagation();
     if (data?.results) {
       registerInTournament({
-        tournament: tournamentId,
-        team: data.results[0].id,
+        args: {
+          tournament: tournamentId,
+          team: data.results[0].id,
+        },
       }).then(() => {
         notification({
           message: t("registerTournamentNotification"),
@@ -81,7 +83,7 @@ export const TournamentRegistrationButtonComponent: FC<
   };
   const unRegisterInTournamentHandler = (e: SyntheticEvent) => {
     e.stopPropagation();
-    unRegistered({}).then(() => {
+    unRegistered({ args: {} }).then(() => {
       notification({
         message: t("unRegisterTournamentNotification"),
         type: "error",

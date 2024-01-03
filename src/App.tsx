@@ -41,10 +41,10 @@ export const App = () => {
     const lang = localStorage.getItem("i18nextLng");
     i18next.changeLanguage(lang || "en");
     const accessToken = cookies.get("token");
-    verify({ token: accessToken }).then((res) => {
+    verify({ args: { token: accessToken } }).then((res) => {
       if (res.status === 401) {
         const refreshToken = cookies.get("refresh");
-        refresh({ refresh: refreshToken })
+        refresh({ args: { refresh: refreshToken } })
           .then((res) => {
             return res.json();
           })

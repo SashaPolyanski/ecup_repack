@@ -29,7 +29,7 @@ export const IsAuthHeader = () => {
     method: "POST",
   });
   const logoutHandler = useCallback(() => {
-    logout({}).then(() => {
+    logout({ args: {} }).then(() => {
       setIsAuth(false);
       notification({ message: t("missYou", { username: user?.username }) });
       cookies.remove("token");

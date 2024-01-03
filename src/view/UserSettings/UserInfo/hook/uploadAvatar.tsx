@@ -40,7 +40,7 @@ export const useUploadAvatar = () => {
           const data = await response.json();
           setAvatar(data.file);
           setUploadAvatar(false);
-          updateUser({ avatar_id: data.id }).then(() => {
+          updateUser({ args: { avatar_id: data.id } }).then(() => {
             notification({
               message: t("downloadAvatarSuccess"),
               type: "success",

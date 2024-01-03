@@ -80,5 +80,16 @@
   "period": "Период {{number}}",
   "generalTable": "Общая таблица",
   "copySuccess": "Battle Tag {{tag}} скопирован",
-  "open": "Открыть"
+  "open": "Открыть",
+  "start": "Старт",
+  "tournamentStartFailNotification": "Произошла ошибка при старте турнира",
+  "tournamentStartSuccessNotification": "Турнир запущен! Удачи всем участникам",
+  "startStage": "Старт {{stage}}",
+  "stageStarted": "Стадия {{stage}} стартовала!",
+  "stageStartedFail": "При старте стадии {{stage}} произошла ошибка",
+  "bracketPlace": "{{place}} место",
+  "confirmPlaceModal": "Вы уверены, что заняли {{place}} место?",
+  "confirmPlace": "Да, я уверен",
+  "calcelConfirmPlace": "Нет, не уверен",
+  "confirmPlaceNotification": "Поздравляем, Вы заняли {{place}} место!"
 }

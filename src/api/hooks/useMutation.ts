@@ -15,24 +15,26 @@ export const getHeaders = () => {
 const baseUrl = import.meta.env.VITE_PUBLIC_API_PATH;
 type MethodType = "POST" | "PUT" | "PATCH" | "DELETE";
 type MutationType = {
-  path: string;
+  path?: string;
   method: MethodType;
   queryKeyRefetch?: string[];
   token?: boolean;
 };
 type FetcherType<T> = {
   args: T;
-  path: string;
+  path?: string;
   method: MethodType;
   token?: boolean;
 };
-export const fetcher = async <T>(config: FetcherType<T>) => {
+export const fetcher = async <T>(
+  config: FetcherType<{ args: T; pathWithParams?: string }>,
+) => {
   const { method, path, args, token } = config;
-
-  return await fetch(`${baseUrl}${path}/`, {
+  const { pathWithParams, args: mutationArgs } = args;
+  return await fetch(`${baseUrl}${pathWithParams ? pathWithParams : path}/`, {
     method,
     headers: token ? getHeaders() : { "Content-Type": "application/json" },
-    body: JSON.stringify(args),
+    body: JSON.stringify(mutationArgs),
   });
 };
 
@@ -46,7 +48,8 @@ export const useMutation = <T, D>(config: MutationType) => {
     error,
     status,
   } = useReactQuery({
-    mutationFn: (args: T) => fetcher<T>({ path, method, args, token }),
+    mutationFn: (args: { args: T; pathWithParams?: string }) =>
+      fetcher<T>({ path, method, args, token }),
     onError: (error) => {
       console.log(error);
     },

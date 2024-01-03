@@ -47,7 +47,7 @@ export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({
     ],
   });
   const unRegisteredHandler = () => {
-    unRegistered({});
+    unRegistered({ args: {} });
   };
   const isConfirmed = data?.results && data?.results[0].is_confirmed;
   const { mutate: registrationConfirm, loading } = useMutation<
@@ -64,12 +64,12 @@ export const ConfirmButtonComponent: FC<ConfirmButtonProps> = ({
     ],
   });
   const registrationConfirmHandler = () => {
-    registrationConfirm({ is_confirmed: true }).then(() => {
+    registrationConfirm({ args: { is_confirmed: true } }).then(() => {
       notification({ message: t("confirmNotification"), type: "success" });
     });
   };
   const unRegistrationConfirmHandler = () => {
-    registrationConfirm({ is_confirmed: false }).then(() => {
+    registrationConfirm({ args: { is_confirmed: false } }).then(() => {
       notification({ message: t("unConfirmNotification"), type: "error" });
     });
   };

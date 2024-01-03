@@ -74,13 +74,13 @@ export const SingIn: FC<SingInProps> = ({ changeModalComponent }) => {
   const { control, handleSubmit } = useForm<SignInTypes>({
     resolver: signInResolver,
   });
-  const { mutate: Login, loading } = useMutation<Login, JWT>({
+  const { mutate: login, loading } = useMutation<Login, JWT>({
     path: "/auth/login",
     method: "POST",
   });
   const onSubmit: SubmitHandler<SignInTypes> = useCallback(
     async (values) => {
-      Login(values).then((res) => {
+      login({ args: values }).then((res) => {
         if (res.status === 200) {
           res.json().then((data) => {
             setIsAuth(true);
@@ -100,7 +100,7 @@ export const SingIn: FC<SingInProps> = ({ changeModalComponent }) => {
         }
       });
     },
-    [t, Login, cookies, setIsAuth, setUser],
+    [t, login, cookies, setIsAuth, setUser],
   );
   const changeFormToSignUp = useCallback(() => {
     changeModalComponent("signup");

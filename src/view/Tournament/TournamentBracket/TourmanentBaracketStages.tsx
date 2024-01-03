@@ -27,7 +27,12 @@ const TournamentLobbyContainer = styled(Box)`
     margin-bottom: 0;
   }
 `;
-
+const CollapsedItems = styled(Collapse)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
 export const TourmanentBaracketStages: FC<TourmanentBaracketStagesProps> = ({
   data,
   openLobbyModal,
@@ -48,16 +53,7 @@ export const TourmanentBaracketStages: FC<TourmanentBaracketStagesProps> = ({
           {data?.title}
         </Button>
       ) : null}
-      <Collapse
-        sx={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-        in={collapsed}
-        unmountOnExit
-      >
+      <CollapsedItems in={collapsed} unmountOnExit>
         <Box ml={isSmallScreen ? 0 : 4} mt={4} sx={{ height: "100%" }}>
           <Box>
             {data?.matches?.map((m, i) => (
@@ -70,7 +66,7 @@ export const TourmanentBaracketStages: FC<TourmanentBaracketStagesProps> = ({
             ))}
           </Box>
         </Box>
-      </Collapse>
+      </CollapsedItems>
     </Box>
   );
 };

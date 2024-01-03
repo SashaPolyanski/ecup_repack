@@ -80,5 +80,16 @@
   "period": "Période {{numéro}}",
   "generalTable": "Table générale",
   "copySuccess": "Battle Tag {{tag}} copié",
-  "open": "Ouvrir"
+  "open": "Ouvrir",
+  "start": "Commencer",
+  "tournamentStartFailNotification": "Une erreur s'est produite au début du tournoi",
+  "tournamentStartSuccessNotification": "Le tournoi est lancé! Bonne chance à tous les participants",
+  "startStage": "Démarrer {{stage}}",
+  "stageStarted": "Stage {{stage}} a commencé!",
+  "stageStartedFail": "Au début de l'étape {{stade}}, une erreur s'est produite",
+  "bracketPlace": "{{place}} place",
+  "confirmPlaceModal": "Êtes-vous suo que vous avez pris {{place}} place?",
+  "confirmPlace": "Oui je suis sûr",
+  "calcelConfirmPlace": "Non, je ne suis pas à la suite",
+  "confirmPlaceNotification": "Félicitations, vous avez pris {{place}} lieu!"
 }

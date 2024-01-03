@@ -46,8 +46,10 @@ const RegistrationButtonComponent: FC<RegistrationButton> = ({
   const registerInTournamentHandler = () => {
     if (data?.results) {
       registerInTournament({
-        tournament: tournamentPk,
-        team: data.results[0].id,
+        args: {
+          tournament: tournamentPk,
+          team: data.results[0].id,
+        },
       }).then(() => {
         notification({
           message: t("registerTournamentNotification"),
