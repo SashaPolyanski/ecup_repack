@@ -5,6 +5,7 @@ import PaidIcon from "@mui/icons-material/Paid";
 import styled from "@emotion/styled";
 import { useTranslation } from "react-i18next";
 import { Button } from "@shared";
+import { Link } from "react-router-dom";
 
 const UserBalanceContainer = styled(Box)`
   display: flex;
@@ -41,9 +42,11 @@ export const UserBalance = () => {
           </Typography>
         </CurrencyContainer>
       </Box>
-      <UserBalanceButton variant={"outlined"}>
-        {t("withdrawMoney")}
-      </UserBalanceButton>
+      <Link to="https://t.me/basicscode"  target="_blank">
+        <UserBalanceButton variant={"outlined"}>
+          {t("withdrawMoney")}  
+          </UserBalanceButton>
+      </Link>
     </UserBalanceContainer>
   );
 };
