@@ -1,5 +1,10 @@
 import { FC, useState } from "react";
-import { MatchReadOnly, ScoreMatch, TeamScoreReadOnly } from "@/api/types";
+import {
+  MatchReadOnly,
+  ScoreMatch,
+  Status1fcEnum,
+  TeamScoreReadOnly,
+} from "@/api/types";
 import { Preloader, Tabs } from "@shared";
 import { useTranslation } from "react-i18next";
 import { Tab } from "@/shared/ui/Tabs/Tabs";
@@ -15,12 +20,14 @@ export type TabsComponents = {
   teams?: TeamScoreReadOnly[];
   scores?: ScoreMatch[];
   lobbyPk?: number;
+  lobbyStatus?: Status1fcEnum;
 };
 
 export const TournamentModalContent: FC<TournamentModalContentProps> = ({
   lobbyInfo,
 }) => {
   const { t } = useTranslation();
+
   const [tabValue, setTabValue] = useState(0);
   const dynamicTabs = () => {
     const periodsTabs = lobbyInfo?.periods?.map((_, i) => {
@@ -75,6 +82,7 @@ export const TournamentModalContent: FC<TournamentModalContentProps> = ({
                 : undefined
             }
             lobbyPk={lobbyInfo.id}
+            lobbyStatus={lobbyInfo.status}
           />
         </Box>
       )}

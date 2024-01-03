@@ -138,6 +138,8 @@
     "confirmPlaceModal": "Êtes-vous suo que vous avez pris {{place}} place?",
     "confirmPlace": "Oui je suis sûr",
     "calcelConfirmPlace": "Non, je ne suis pas à la suite",
-    "confirmPlaceNotification": "Félicitations, vous avez pris {{place}} lieu!"
+    "confirmPlaceNotification": "Félicitations, vous avez pris {{place}} lieu!",
+    "finishLobby": "Compléter le hall",
+    "lobbyCompleted": "Le hall est terminé"
   }
 }
