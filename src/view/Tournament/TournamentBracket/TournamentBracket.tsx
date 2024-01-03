@@ -101,11 +101,13 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
         <Box sx={{ width: "100%", overflowX: "auto", overflowY: "hidden" }}>
           {isSmallScreen ? null : (
             <StagerTitleContainer display={"flex"} direction={"row"} gap={2.3}>
-              {tourmanentBaracketStages.map(({ id, data }) => (
-                <TitleItem key={id} ml={4}>
-                  {data?.title}
-                </TitleItem>
-              ))}
+              {tourmanentBaracketStages.map(({ id, data }) =>
+                data ? (
+                  <TitleItem key={id} ml={4}>
+                    {data?.title}
+                  </TitleItem>
+                ) : null,
+              )}
             </StagerTitleContainer>
           )}
           <TourmanentBracketStagesContainer>
