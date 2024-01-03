@@ -11,7 +11,7 @@ import {
 } from "@/api/types";
 import { Box, Stack, useMediaQuery } from "@mui/material";
 import styled from "@emotion/styled";
-import { Modal } from "@shared";
+import { Modal, Preloader } from "@shared";
 import { TournamentModalContent } from "./TournamentModalContent";
 import { TourmanentBaracketStages } from "./TourmanentBaracketStages";
 import {
@@ -95,26 +95,31 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
   );
   return (
     <TournamentBracketContainer mt={2}>
-      <Box sx={{ width: "100%", overflowX: "auto", overflowY: "hidden" }}>
-        {isSmallScreen ? null : (
-          <StagerTitleContainer display={"flex"} direction={"row"} gap={2.3}>
+      {" "}
+      {!data ? (
+        <Preloader />
+      ) : (
+        <Box sx={{ width: "100%", overflowX: "auto", overflowY: "hidden" }}>
+          {isSmallScreen ? null : (
+            <StagerTitleContainer display={"flex"} direction={"row"} gap={2.3}>
+              {tourmanentBaracketStages.map(({ id, data }) => (
+                <TitleItem key={id} ml={4}>
+                  {data?.title}
+                </TitleItem>
+              ))}
+            </StagerTitleContainer>
+          )}
+          <TourmanentBracketStagesContainer>
             {tourmanentBaracketStages.map(({ id, data }) => (
-              <TitleItem key={id} ml={4}>
-                {data?.title}
-              </TitleItem>
+              <TourmanentBaracketStages
+                key={id}
+                data={data}
+                openLobbyModal={openLobbyModal}
+              />
             ))}
-          </StagerTitleContainer>
-        )}
-        <TourmanentBracketStagesContainer>
-          {tourmanentBaracketStages.map(({ id, data }) => (
-            <TourmanentBaracketStages
-              key={id}
-              data={data}
-              openLobbyModal={openLobbyModal}
-            />
-          ))}
-        </TourmanentBracketStagesContainer>
-      </Box>
+          </TourmanentBracketStagesContainer>
+        </Box>
+      )}
       <Modal
         open={showModal}
         onClose={closeLobbyModal}
