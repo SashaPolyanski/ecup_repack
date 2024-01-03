@@ -93,12 +93,11 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
     ],
     [reverseData],
   );
-  return (
-    <TournamentBracketContainer mt={2}>
-      {" "}
-      {!data ? (
-        <Preloader />
-      ) : (
+  return !data ? (
+    <Preloader />
+  ) : data?.results?.length === 0 ? null : (
+    <>
+      <TournamentBracketContainer mt={2}>
         <Box sx={{ width: "100%", overflowX: "auto", overflowY: "hidden" }}>
           {isSmallScreen ? null : (
             <StagerTitleContainer display={"flex"} direction={"row"} gap={2.3}>
@@ -119,17 +118,17 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
             ))}
           </TourmanentBracketStagesContainer>
         </Box>
-      )}
-      <Modal
-        open={showModal}
-        onClose={closeLobbyModal}
-        title={lobbyTitle}
-        width={800}
-        height={640}
-      >
-        <TournamentModalContent lobbyInfo={lobbyInfo} />
-      </Modal>
-    </TournamentBracketContainer>
+        <Modal
+          open={showModal}
+          onClose={closeLobbyModal}
+          title={lobbyTitle}
+          width={800}
+          height={640}
+        >
+          <TournamentModalContent lobbyInfo={lobbyInfo} />
+        </Modal>
+      </TournamentBracketContainer>
+    </>
   );
 };
 export const TournamentBracket = withTournamentPk()(
