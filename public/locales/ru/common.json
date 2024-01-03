@@ -91,5 +91,7 @@
   "confirmPlaceModal": "Вы уверены, что заняли {{place}} место?",
   "confirmPlace": "Да, я уверен",
   "calcelConfirmPlace": "Нет, не уверен",
-  "confirmPlaceNotification": "Поздравляем, Вы заняли {{place}} место!"
+  "confirmPlaceNotification": "Поздравляем, Вы заняли {{place}} место!",
+  "finishLobby": "Завершить лобби",
+  "lobbyCompleted": "Лобби завершено"
 }

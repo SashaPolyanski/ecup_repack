@@ -102,7 +102,7 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
           onClose={closeLobbyModal}
           title={lobbyTitle}
           width={800}
-          height={640}
+          height={700}
         >
           <TournamentModalContent lobbyInfo={lobbyInfo} />
         </Modal>

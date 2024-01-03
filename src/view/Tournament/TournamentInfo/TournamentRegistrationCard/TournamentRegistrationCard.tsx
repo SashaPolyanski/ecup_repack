@@ -51,7 +51,10 @@ export const TournamentRegistrationCardComponent: FC<
     path: `/games/${gamePk}/tournaments/${tournamentPk}/start`,
     method: "POST",
     token: true,
-    queryKeyRefetch: [`/games/${gamePk}/tournaments/${tournamentPk}/`],
+    queryKeyRefetch: [
+      `/games/${gamePk}/tournaments/${tournamentPk}/`,
+      `/games/${gamePk}/tournaments/${tournamentPk}/stages/`,
+    ],
   });
   const startTournamentHandler = () => {
     startTournament({ args: {} }).then((res) => {

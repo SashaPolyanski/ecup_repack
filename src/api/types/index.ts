@@ -34,6 +34,7 @@ export type MatchReadOnly = components["schemas"]["MatchReadOnly"];
 export type TeamScoreReadOnly = components["schemas"]["TeamScoreReadOnly"];
 export type ScoreMatch = components["schemas"]["ScoreMatch"];
 export type TeamScore = components["schemas"]["TeamScore"];
+export type Status1fcEnum = components["schemas"]["Status1fcEnum"];
 export type PatchedTeamScore = components["schemas"]["PatchedTeamScore"];
 export type TournamentStageReadOnly =
   components["schemas"]["TournamentStageReadOnly"];

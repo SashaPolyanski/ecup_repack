@@ -138,6 +138,8 @@
     "confirmPlaceModal": "Are you sure you took {{place}} place?",
     "confirmPlace": "Yes, I am sure",
     "calcelConfirmPlace": "No, I'm not sure",
-    "confirmPlaceNotification": "Congratulations, you took {{place}} place!"
+    "confirmPlaceNotification": "Congratulations, you took {{place}} place!",
+    "finishLobby": "Complete the lobby",
+    "lobbyCompleted": "Lobby has been completed"
   }
 }
