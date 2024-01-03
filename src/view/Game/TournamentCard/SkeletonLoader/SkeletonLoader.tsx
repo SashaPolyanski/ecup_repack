@@ -9,8 +9,8 @@ export const SkeletonLoader: FC<SkeletonLoaderProps> = () => {
   const isSmallScreen = useMediaQuery(`(max-width: ${MEDIA_QUERY_SM}px)`);
   return skeletonArray.map((_, index) => {
     return (
-      <Box sx={{ position: "relative", marginTop: "10px" }}>
-        <Box key={index}>
+      <Box sx={{ position: "relative", marginTop: "10px" }} key={index}>
+        <Box>
           <ContentLoader
             speed={2}
             width={isSmallScreen ? 350 : 440}

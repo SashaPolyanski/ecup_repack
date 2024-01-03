@@ -13,6 +13,7 @@ import styled from "@emotion/styled";
 type UserInfoFormTypes = {
   username: string;
   email: string;
+  battle_tag: string;
 };
 type FormsType = {
   id: number;
@@ -32,6 +33,12 @@ const forms = (t: TFunction, isSmallScreen: boolean): FormsType[] => [
   },
   {
     id: 2,
+    name: "battle_tag",
+    marginBottom: isSmallScreen ? 27 : 35,
+    label: t("Battle tag"),
+  },
+  {
+    id: 3,
     name: "email",
     marginBottom: isSmallScreen ? 27 : 35,
     label: t("email"),
@@ -46,6 +53,7 @@ export const UserInfoForm = () => {
       const userData = {
         username: user.username,
         email: user.email,
+        battle_tag: user.battle_tag,
       };
       Object.entries(userData).forEach(([fieldName, value]) => {
         setValue(fieldName as keyof UserInfoFormTypes, value ? value : "");

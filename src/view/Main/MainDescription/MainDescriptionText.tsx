@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
 import { Box, Typography } from "@mui/material";
+import { transientOptions } from "@utils";
 
 type MainDescriptionTextProps = {
   title: string;
@@ -17,7 +18,9 @@ const MainDescriptionTextContainer = styled(Box)`
     padding-bottom: 40px;
   }
 `;
-const MainDescriptionTitle = styled(Typography)<{ $gradient: string }>`
+const MainDescriptionTitle = styled(Typography, transientOptions)<{
+  $gradient: string;
+}>`
   font-size: 35px;
   margin-bottom: 20px;
   background: linear-gradient(${({ $gradient }) => $gradient});

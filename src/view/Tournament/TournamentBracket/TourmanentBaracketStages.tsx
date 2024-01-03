@@ -36,11 +36,10 @@ export const TourmanentBaracketStages: FC<TourmanentBaracketStagesProps> = ({
   const [collapsed, setCollapsed] = useState(!isSmallScreen);
   const showStagesHandler = () => {
     setCollapsed((p) => !p);
-    console.log(isSmallScreen);
   };
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
-      {isSmallScreen ? (
+      {isSmallScreen && data ? (
         <Button
           sx={{ marginTop: "20px", width: "100%", height: "35px" }}
           variant={"outlined"}
