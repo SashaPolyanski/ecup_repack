@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
-import bgImage from "@assets/homeBg.webp";
+import bgImage from "@assets/homeBg.png";
 import { useTranslation } from "react-i18next";
 
 const Container = styled(Box)`
@@ -31,7 +31,8 @@ const ImageContentContainer = styled(Box)`
   }
 `;
 const Title = styled(Typography)`
-  font-size: 55px;
+  font-size: 70px;
+  font-weight: 700;
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     font-size: 30px;
   }

@@ -62,7 +62,6 @@ export const TournamentBracketComponent: FC<TournamentBracketProps> = ({
   });
   const { data: lobbyInfo } = useQuery<MatchReadOnly>({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/matches/${lobbyId}/`,
-    token: true,
     skip: !!lobbyId,
   });
 
