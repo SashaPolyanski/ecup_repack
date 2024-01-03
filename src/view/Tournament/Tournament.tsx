@@ -28,6 +28,7 @@ const tournamentsComponents = [
   TournamentBracket,
   TournamentRules,
 ];
+
 export const TournamentComponent: FC<TournamentProps> = ({
   tournamentPk,
   gamePk,
@@ -40,7 +41,7 @@ export const TournamentComponent: FC<TournamentProps> = ({
   return !data ? (
     <Preloader />
   ) : (
-    <>
+    <Box sx={{ height: "100%" }}>
       <Banner bannerImage={data?.game?.header.file} />
       <Box px={1} pb={5}>
         <TournamentName fontSize={30} my={2}>
@@ -49,7 +50,7 @@ export const TournamentComponent: FC<TournamentProps> = ({
         <TournamentTabs tabValue={tabValue} setTabValue={setTabValue} />
         <TournamentComponent />
       </Box>
-    </>
+    </Box>
   );
 };
 export const Tournament = withTournamentPk()(withGamePk()(TournamentComponent));

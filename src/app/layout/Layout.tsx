@@ -5,6 +5,7 @@ import { matchPath, useLocation } from "react-router-dom";
 import { pages } from "@pages";
 import { Navbar } from "@/app/navbar";
 import { Sidebar } from "@/app/sidebar";
+import { WIDTH } from "@/constants/breackpoints.ts";
 
 const Container = styled(Box)`
   display: flex;
@@ -33,7 +34,7 @@ const ContentWrapper = styled(Box)`
   height: 100%;
 `;
 const ContentContainer = styled(Box)`
-  max-width: 1400px;
+  max-width: ${WIDTH}px;
   margin: 0 auto;
   height: 100%;
 `;

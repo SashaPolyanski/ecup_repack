@@ -1045,6 +1045,7 @@ export interface components {
     };
     TournamentStageReadOnly: {
       id: number;
+      title: string | null;
       order: number;
       matches: components["schemas"]["TournamentStageMatches"][];
     };
