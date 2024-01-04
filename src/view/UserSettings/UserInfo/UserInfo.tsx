@@ -38,6 +38,7 @@ const UserInfoContainer = styled(Box)`
   display: flex;
   width: 100%;
   gap: 20px;
+  padding-bottom: 76px;
   @media (max-width: ${MEDIA_QUERY_LG}px) {
     flex-direction: column;
     align-items: center;

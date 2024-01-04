@@ -15,6 +15,7 @@ export const GlobalStyles: React.FC = () => {
 
         * {
           box-sizing: border-box;
+          font-family: 'Inter' !important;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -35,6 +36,7 @@ export const GlobalStyles: React.FC = () => {
           margin: 0;
           padding: 0;
           color: ${theme.palette.text.primary};
+          
         }
 
         a {
