@@ -31,7 +31,7 @@ const ImageContentContainer = styled(Box)`
   }
 `;
 const Title = styled(Typography)`
-  font-size: 70px;
+  font-size: 55px;
   font-weight: 700;
   @media (max-width: ${MEDIA_QUERY_SM}px) {
     font-size: 30px;
