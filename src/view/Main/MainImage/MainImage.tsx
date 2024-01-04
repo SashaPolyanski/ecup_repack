@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
-import bgImage from "@assets/homeBg.png";
+import bgImage from "@assets/homeBg3.webp";
 import { useTranslation } from "react-i18next";
 
 const Container = styled(Box)`

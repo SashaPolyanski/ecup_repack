@@ -42,10 +42,10 @@ export const UserBalance = () => {
           </Typography>
         </CurrencyContainer>
       </Box>
-      <Link to="https://t.me/basicscode"  target="_blank">
+      <Link to="https://t.me/basicscode" target="_blank">
         <UserBalanceButton variant={"outlined"}>
-          {t("withdrawMoney")}  
-          </UserBalanceButton>
+          {t("withdrawMoney")}
+        </UserBalanceButton>
       </Link>
     </UserBalanceContainer>
   );

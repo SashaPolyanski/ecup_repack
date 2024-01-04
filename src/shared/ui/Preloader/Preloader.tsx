@@ -1,5 +1,6 @@
 import { Box, CircularProgress } from "@mui/material";
 import styled from "@emotion/styled";
+import { FC } from "react";
 
 const PreloaderContainer = styled(Box)`
   width: 100%;
@@ -9,10 +10,10 @@ const PreloaderContainer = styled(Box)`
   justify-content: center;
 `;
 
-export const Preloader = () => {
+export const Preloader: FC<{ size?: number }> = ({ size = 50 }) => {
   return (
     <PreloaderContainer>
-      <CircularProgress size={55} />
+      <CircularProgress size={size} />
     </PreloaderContainer>
   );
 };

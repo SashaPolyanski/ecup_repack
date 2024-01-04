@@ -22,6 +22,13 @@ export const dark = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
+        outlined: {
+          "&:disabled": {
+            opacity: "0.4",
+            borderColor: "rgb(255,255,255)",
+            color: "white",
+          },
+        },
         contained: {
           backgroundColor: `rgba(211, 74, 77, 0.8)`,
           borderRadius: "25px",
@@ -52,6 +59,9 @@ export const dark = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
+        input: {
+          color: "white",
+        },
         notchedOutline: {
           borderColor: "rgb(255,255,255)",
         },
@@ -61,7 +71,21 @@ export const dark = createTheme({
             borderColor: "#41a6a8",
           },
           [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
-            border: `2px solid #41a6a8`,
+            border: "2px solid #41a6a8",
+          },
+          [`&.Mui-disabled .${outlinedInputClasses.notchedOutline}`]: {
+            opacity: "0.4",
+            borderColor: "rgb(255, 255, 255)",
+            "& .MuiInputLabel-root": {
+              color: "white", // Set label color to white when disabled
+            },
+          },
+          "&.Mui-disabled": {
+            "& .MuiInputBase-input": {
+              color: "white",
+              opacity: "0.5",
+              "-webkit-text-fill-color": "white",
+            },
           },
         },
       },

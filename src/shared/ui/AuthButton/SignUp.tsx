@@ -156,7 +156,12 @@ export const SignUp: FC<SignUpProps> = ({ changeModalComponent }) => {
           </Typography>
           <Typography fontSize={12} mb={1}>
             {" "}
-            <Link to="https://docs.google.com/document/d/1lcSQewgG-4sTb7My_hmnPqz504tp-TGLV1NaBqXIRGY/edit#heading=h.aunoryvky1yq" target="_blank">{t("privatePolicy")}</Link>
+            <Link
+              to="https://docs.google.com/document/d/1lcSQewgG-4sTb7My_hmnPqz504tp-TGLV1NaBqXIRGY/edit#heading=h.aunoryvky1yq"
+              target="_blank"
+            >
+              {t("privatePolicy")}
+            </Link>
           </Typography>
 
           <Typography fontSize={12}></Typography>

@@ -1,12 +1,6 @@
 import { FC, useState } from "react";
 import { PatchedTeamScore, TeamScore, TeamScoreReadOnly } from "@/api/types";
-import {
-  Avatar,
-  Box,
-  Grid,
-  SelectChangeEvent,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Grid, SelectChangeEvent, useMediaQuery } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Modal, notification } from "@shared";
 import { useTranslation } from "react-i18next";
@@ -20,6 +14,7 @@ import {
 import { useMutation } from "@/api/hooks/useMutation";
 import { TournamentModalButton } from "./TournamentModalButton";
 import { TournamentUsersTableSelect } from "./TournamentUsersTableSelect";
+import { TournamentUserInfo } from "@view/Tournament/TournamentBracket/TournamentUserInfo.tsx";
 
 type TeamInfoProps = {
   team: TeamScoreReadOnly;
@@ -94,47 +89,51 @@ export const TournamentTeamInfoComponent: FC<TournamentTeamInfo> = ({
       closeConfirmModalHandler();
     });
   };
+  const conditions = isSmallScreen
+    ? 2
+    : user?.is_staff || isUser
+      ? hiddenSelect
+        ? 3
+        : 1
+      : 3;
   return (
     <>
       <Grid container alignItems="center">
-        <Grid item xs={4} display={"flex"} alignItems={"center"}>
-          <Avatar
-            sx={{ marginRight: "20px" }}
-            src={team?.team?.avatar ? team?.team?.avatar.file : ""}
-          />
-          <Box>
-            <Box>{team.team.name}</Box>
-            {isSmallScreen ? (
-              <Box mt={1}>{team?.team?.users[0].battle_tag}</Box>
-            ) : null}
-          </Box>
-        </Grid>
-        <Grid item xs={3}>
-          {!isSmallScreen ? (
-            <Box ml={3}>{team?.team?.users[0].battle_tag}</Box>
-          ) : null}
-        </Grid>
         <Grid
           item
-          xs={
-            isSmallScreen
-              ? 2
-              : user?.is_staff || isUser
-                ? hiddenSelect
-                  ? 3
-                  : 1
-                : 3
-          }
+          xs={isSmallScreen ? 7 : 4}
+          display={"flex"}
+          alignItems={"center"}
         >
+          <TournamentUserInfo
+            avatar={team?.team?.avatar ? team?.team?.avatar.file : ""}
+            team_name={team.team.name}
+            battle_tag={team?.team?.users[0].battle_tag}
+          />
+        </Grid>
+        {!isSmallScreen ? (
+          <Grid item xs={3}>
+            <Box ml={3}>{team?.team?.users[0].battle_tag}</Box>
+          </Grid>
+        ) : null}
+        <Grid item xs={conditions}>
           <Box ml={3} sx={{ cursor: "pointer" }} onClick={copyBattleTag}>
             <ContentCopyIcon />
           </Box>
         </Grid>
         <Grid item xs={isSmallScreen ? 3 : user?.is_staff || isUser ? 2 : 2}>
-          <Box ml={3}>{`${Math.round(team?.value)} pts`}</Box>
+          <Box ml={3}>
+            <Box>{`${Math.round(team?.value)} pts`}</Box>
+            {isSmallScreen ? (
+              <TournamentUsersTableSelect
+                value={value}
+                handleChange={handleChange}
+              />
+            ) : null}
+          </Box>
         </Grid>
         {user?.is_staff || isUser ? (
-          hiddenSelect ? null : (
+          hiddenSelect || isSmallScreen ? null : (
             <Grid item xs={2}>
               <TournamentUsersTableSelect
                 value={value}
@@ -144,6 +143,7 @@ export const TournamentTeamInfoComponent: FC<TournamentTeamInfo> = ({
           )
         ) : null}
       </Grid>
+
       <Modal
         width={450}
         height={180}

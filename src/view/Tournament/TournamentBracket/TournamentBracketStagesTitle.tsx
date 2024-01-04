@@ -79,7 +79,7 @@ export const TournamentBracketStagesTitle: FC<TournamentBracketStagesTitle> = ({
             <TitleItem ml={4}>{data?.title}</TitleItem>
             {!user?.is_staff ? null : (
               <StartStageButton
-                disabled={data.matches[0]?.status === "STARTED"}
+                disabled={data.matches[0]?.status !== "NOT_STARTED"}
                 variant={"outlined"}
                 onClick={startTournamentStageHandler(data?.id, data?.title)}
               >

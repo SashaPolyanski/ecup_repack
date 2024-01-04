@@ -80,7 +80,7 @@ export const UserInfoForm = () => {
             type={"string"}
             control={control}
             name={name}
-            disabled={loading}
+            disabled={true}
             label={label}
             marginBottom={marginBottom}
           />
