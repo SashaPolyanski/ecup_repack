@@ -2,7 +2,7 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import { transientOptions } from "@utils";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type BannerProps = {
   bannerImage?: string;

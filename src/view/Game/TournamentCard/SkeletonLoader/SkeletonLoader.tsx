@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Box, useMediaQuery } from "@mui/material";
 import ContentLoader from "react-content-loader";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type SkeletonLoaderProps = {};
 const skeletonArray = Array.from({ length: 6 }, (_, index) => index + 1);

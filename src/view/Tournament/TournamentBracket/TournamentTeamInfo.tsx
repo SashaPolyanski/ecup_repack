@@ -14,7 +14,7 @@ import {
 import { useMutation } from "@/api/hooks/useMutation";
 import { TournamentModalButton } from "./TournamentModalButton";
 import { TournamentUsersTableSelect } from "./TournamentUsersTableSelect";
-import { TournamentUserInfo } from "@view/Tournament/TournamentBracket/TournamentUserInfo.tsx";
+import { TournamentUserInfo } from "./TournamentUserInfo";
 
 type TeamInfoProps = {
   team: TeamScoreReadOnly;

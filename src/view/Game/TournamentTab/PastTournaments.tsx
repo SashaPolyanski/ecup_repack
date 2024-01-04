@@ -4,8 +4,8 @@ import {
   TournamentReadOnly,
 } from "@/api/types";
 import { tournamentCard } from "./TournamentCard";
-import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
-import { useQuery } from "@/api/hooks/useQuery.ts";
+import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
+import { useQuery } from "@/api/hooks/useQuery";
 import { FC } from "react";
 import { SkeletonLoader } from "@view/Game/TournamentCard";
 

@@ -10,6 +10,7 @@ import {
   withTournamentPkProps,
 } from "@/hocs/withTournamentPk";
 import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
+import { useUserStore } from "@/Zustand/userStore";
 
 type TournamentsUsersTable = WithGamePkProps &
   withTournamentPkProps &
@@ -22,6 +23,7 @@ export const TournamentsUsersTableComponent: FC<TournamentsUsersTable> = ({
   lobbyStatus,
 }) => {
   const { t } = useTranslation("common");
+  const { user } = useUserStore();
   const { mutate: finishLobby, loading } = useMutation({
     path: `/games/${gamePk}/tournaments/${tournamentPk}/matches/${lobbyPk}/finish`,
     method: "POST",
@@ -30,6 +32,7 @@ export const TournamentsUsersTableComponent: FC<TournamentsUsersTable> = ({
       `/games/${gamePk}/tournaments/${tournamentPk}/matches/${lobbyPk}/`,
     ],
   });
+  const isUser = user?.team === teams?.[0]?.team?.id ?? undefined;
   const finishLobbyHandler = () => {
     finishLobby({ args: {} }).then((res) => {
       if (res.ok) {
@@ -57,7 +60,7 @@ export const TournamentsUsersTableComponent: FC<TournamentsUsersTable> = ({
         <Typography variant={"h6"} mt={3}>
           {t("lobbyCompleted")}
         </Typography>
-      ) : (
+      ) : user?.is_staff || isUser ? (
         <Button
           sx={{ marginTop: "24px" }}
           variant={"outlined"}
@@ -66,7 +69,7 @@ export const TournamentsUsersTableComponent: FC<TournamentsUsersTable> = ({
         >
           {t("finishLobby")}
         </Button>
-      )}
+      ) : null}
     </Box>
   );
 };

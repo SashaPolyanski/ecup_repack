@@ -7,7 +7,7 @@ import {
 } from "@/api/types";
 import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { TournamentButton } from "./TournamentButton";
-import { useUserStore } from "@/Zustand/userStore.ts";
+import { useUserStore } from "@/Zustand/userStore";
 
 type TournamentRegistrationButtonProps = WithGamePkProps & {
   tournamentPk: number;

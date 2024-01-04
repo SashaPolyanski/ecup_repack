@@ -15,7 +15,7 @@ import { useQuery } from "@/api/hooks/useQuery";
 import { useUserStore } from "@/Zustand/userStore";
 import { useTranslation } from "react-i18next";
 import { Stack, useMediaQuery } from "@mui/material";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 import styled from "@emotion/styled";
 
 type ConfirmButtonProps = WithGamePkProps & withTournamentPkProps;

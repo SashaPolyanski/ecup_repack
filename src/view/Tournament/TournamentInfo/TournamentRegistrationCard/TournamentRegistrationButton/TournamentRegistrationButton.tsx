@@ -11,7 +11,7 @@ import {
 } from "@/hocs/withTournamentPk";
 import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { TournamentButton } from "./TournamentButton";
-import { useUserStore } from "@/Zustand/userStore.ts";
+import { useUserStore } from "@/Zustand/userStore";
 import { Modal } from "@shared";
 import { useTranslation } from "react-i18next";
 import { TournamentModalContent } from "./TournamentModalContent";
@@ -55,7 +55,7 @@ export const TournamentRegistrationButtonComponents: FC<
     isAuth,
     inTournament: !!userInTournament?.results?.length,
     confirm: startDate && endDate ? date > startDate && date < endDate : false,
-    start: endDate ? date > endDate : false,
+    start: data.status === "STARTED",
   };
   return (
     <>

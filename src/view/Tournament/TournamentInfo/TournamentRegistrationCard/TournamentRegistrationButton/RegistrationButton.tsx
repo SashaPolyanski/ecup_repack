@@ -8,10 +8,10 @@ import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@/api/hooks/useQuery";
-import { useUserStore } from "@/Zustand/userStore.ts";
+import { useUserStore } from "@/Zustand/userStore";
 import { PaginatedTeamReadOnlyList, TournamentTeamCreate } from "@/api/types";
 import styled from "@emotion/styled";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type RegistrationButton = WithGamePkProps &
   withTournamentPkProps & { openModalHandler: () => void };

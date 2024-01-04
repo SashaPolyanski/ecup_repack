@@ -3,19 +3,19 @@ import styled from "@emotion/styled";
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { TournamentRegistrationProgress } from "./TournamentRegistrationProgress";
-import { useQuery } from "@/api/hooks/useQuery.ts";
+import { useQuery } from "@/api/hooks/useQuery";
 import { TournamentReadOnly } from "@/api/types";
 import { TournamentRegistrationButton } from "./TournamentRegistrationButton";
 import {
   withTournamentPk,
   withTournamentPkProps,
 } from "@/hocs/withTournamentPk";
-import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
+import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { TournamentsPrize } from "@view/Tournament/TournamentInfo/TournamentPrize";
-import { MEDIA_QUERY_SM, MEDIA_QUERY_XL } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM, MEDIA_QUERY_XL } from "@/constants/breackpoints";
 import { Button, notification } from "@shared";
-import { useUserStore } from "@/Zustand/userStore.ts";
-import { useMutation } from "@/api/hooks/useMutation.ts";
+import { useUserStore } from "@/Zustand/userStore";
+import { useMutation } from "@/api/hooks/useMutation";
 
 type TournamentRegistrationCardProps = WithGamePkProps & withTournamentPkProps;
 const RegistrationCardContainer = styled(Box)`
@@ -82,7 +82,9 @@ export const TournamentRegistrationCardComponent: FC<
           teams={data?.teams.length}
           max_teams={data?.max_teams}
         />
-        <TournamentRegistrationButton />
+        <Box mb={2}>
+          <TournamentRegistrationButton />
+        </Box>
         {!user?.is_staff ? null : data?.status === "NOT_STARTED" ? (
           <Button variant={"outlined"} onClick={startTournamentHandler}>
             {t("start")}

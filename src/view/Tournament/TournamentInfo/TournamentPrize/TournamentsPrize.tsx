@@ -12,7 +12,7 @@ import {
 } from "@/hocs/withTournamentPk";
 import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { TournamentPrizeItem } from "./TournamentPrizeItem";
-import { MEDIA_QUERY_XL } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_XL } from "@/constants/breackpoints";
 
 type TournamentsPrizeProps = WithGamePkProps & withTournamentPkProps;
 

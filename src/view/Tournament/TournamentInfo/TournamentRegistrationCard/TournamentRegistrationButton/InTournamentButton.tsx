@@ -62,7 +62,7 @@ export const InTournamentButtonComponent: FC<InTournamentButtonProps> = ({
   };
   return (
     <ButtonContainer>
-      <Button variant={"contained"}>Вы зарегистрированы</Button>
+      <Button variant={"outlined"}>Вы зарегистрированы</Button>
       <UnregisterButton variant={"outlined"} onClick={unRegisteredHandler}>
         {t("cancelRegistration")}
       </UnregisterButton>

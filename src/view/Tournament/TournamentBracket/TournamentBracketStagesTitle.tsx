@@ -3,10 +3,10 @@ import { Box, Stack, useMediaQuery } from "@mui/material";
 import styled from "@emotion/styled";
 import { Button, notification } from "@shared";
 import { TournamentStageReadOnly } from "@/api/types";
-import { MEDIA_QUERY_LG } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_LG } from "@/constants/breackpoints";
 import { useTranslation } from "react-i18next";
-import { useUserStore } from "@/Zustand/userStore.ts";
-import { useMutation } from "@/api/hooks/useMutation.ts";
+import { useUserStore } from "@/Zustand/userStore";
+import { useMutation } from "@/api/hooks/useMutation";
 
 type TournamentBracketStagesTitleProps = {
   id: number;

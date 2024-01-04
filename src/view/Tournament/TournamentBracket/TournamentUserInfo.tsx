@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Avatar, Box, useMediaQuery } from "@mui/material";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type TournamentUserInfoProps = {
   avatar: string;

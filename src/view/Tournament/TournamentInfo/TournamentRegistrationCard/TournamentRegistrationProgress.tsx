@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Box, LinearProgress, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import { useTranslation } from "react-i18next";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type TournamentRegistrationProgressProps = {
   max_teams?: number;

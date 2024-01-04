@@ -4,12 +4,12 @@ import { Box, Typography } from "@mui/material";
 import {
   withTournamentPk,
   withTournamentPkProps,
-} from "@/hocs/withTournamentPk.tsx";
-import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
-import { useQuery } from "@/api/hooks/useQuery.ts";
+} from "@/hocs/withTournamentPk";
+import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
+import { useQuery } from "@/api/hooks/useQuery";
 import { TournamentReadOnly } from "@/api/types";
 import { useTranslation } from "react-i18next";
-import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type TournamentInfoRulesProps = WithGamePkProps & withTournamentPkProps;
 const TournamentTabInfoRulesComponentContainer = styled(Box)`

@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type TournamentUsersTableSelectProps = {
   value?: number;

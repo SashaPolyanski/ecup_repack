@@ -5,7 +5,7 @@ import { matchPath, useLocation } from "react-router-dom";
 import { pages } from "@pages";
 import { Navbar } from "@/app/navbar";
 import { Sidebar } from "@/app/sidebar";
-import { WIDTH } from "@/constants/breackpoints.ts";
+import { WIDTH } from "@/constants/breackpoints";
 
 const Container = styled(Box)`
   display: flex;

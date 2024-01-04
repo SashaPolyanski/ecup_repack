@@ -3,8 +3,8 @@ import {
   withTournamentPk,
   withTournamentPkProps,
 } from "@/hocs/withTournamentPk.tsx";
-import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
-import { useQuery } from "@/api/hooks/useQuery.ts";
+import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
+import { useQuery } from "@/api/hooks/useQuery";
 import {
   MatchReadOnly,
   PaginatedTournamentStageReadOnlyList,
@@ -18,8 +18,8 @@ import {
   MEDIA_QUERY_LG,
   MEDIA_QUERY_MD,
   WIDTH,
-} from "@/constants/breackpoints.ts";
-import { TournamentBracketStagesTitle } from "@view/Tournament/TournamentBracket/TournamentBracketStagesTitle.tsx";
+} from "@/constants/breackpoints";
+import { TournamentBracketStagesTitle } from "./TournamentBracketStagesTitle";
 
 type TournamentBracketProps = WithGamePkProps & withTournamentPkProps;
 const TourmanentBracketStagesContainer = styled(Box)`

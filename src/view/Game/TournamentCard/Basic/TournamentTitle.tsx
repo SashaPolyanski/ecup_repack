@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Box } from "@mui/material";
 import styled from "@emotion/styled";
 import { Tooltip } from "@shared";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type TournamentTitleProps = {
   name: string;

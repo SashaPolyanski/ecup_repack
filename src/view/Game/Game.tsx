@@ -7,9 +7,9 @@ import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { FC, useState } from "react";
 import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
-import { UpcomingTournaments } from "@view/Game/TournamentTab/UpcomingTournaments.tsx";
-import { PastTournaments } from "@view/Game/TournamentTab/PastTournaments.tsx";
-import { CurrentTournaments } from "@view/Game/TournamentTab/CurrentTournaments.tsx";
+import { UpcomingTournaments } from "./TournamentTab/UpcomingTournaments";
+import { PastTournaments } from "./TournamentTab/PastTournaments";
+import { CurrentTournaments } from "./TournamentTab/CurrentTournaments";
 
 const GameContainer = styled(Box)`
   width: 100%;

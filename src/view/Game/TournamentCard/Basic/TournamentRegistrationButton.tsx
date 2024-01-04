@@ -1,19 +1,19 @@
 import { FC, SyntheticEvent } from "react";
 import { Box, Typography } from "@mui/material";
-import { useUserStore } from "@/Zustand/userStore.ts";
-import { useQuery } from "@/api/hooks/useQuery.ts";
+import { useUserStore } from "@/Zustand/userStore";
+import { useQuery } from "@/api/hooks/useQuery";
 import {
   PaginatedTeamReadOnlyList,
   PaginatedTournamentTeamReadOnlyList,
   TournamentReadOnlyStatusEnum,
   TournamentTeamCreate,
 } from "@/api/types";
-import { useMutation } from "@/api/hooks/useMutation.ts";
-import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk.tsx";
+import { useMutation } from "@/api/hooks/useMutation";
+import { withGamePk, WithGamePkProps } from "@/hocs/withGamePk";
 import { Button, notification } from "@shared";
 import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
-import { MEDIA_QUERY_SM } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_SM } from "@/constants/breackpoints";
 
 type TournamentProps = {
   tournamentId: number;

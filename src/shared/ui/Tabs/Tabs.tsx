@@ -1,6 +1,6 @@
 import { Dispatch, FC } from "react";
 import { Tab as MuiTab, Tabs as MuiTabs, useMediaQuery } from "@mui/material";
-import { MEDIA_QUERY_LG } from "@/constants/breackpoints.ts";
+import { MEDIA_QUERY_LG } from "@/constants/breackpoints";
 
 export type Tab = {
   id: number;
